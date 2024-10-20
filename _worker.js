@@ -1067,176 +1067,23 @@ ${วเลสSec}
 	const htmlHead = `
 <head>
 	<title>BEDEBAH: VLESS Configuration</title>
-	<style>
-		//body {
-			//font-family: 'Roboto', sans-serif;
-			//background-color: var(--background-color, #f0f0f0);
-			//color: var(--text-color, #333);
-			//padding: 20px;
-			//margin: 0;
-			//transition: all 0.3s ease;
-		//}
-		//a {
-			//color: var(--link-color, #1a0dab);
-			//text-decoration: none;
-			//transition: color 0.3s;
-		//}
-		a:hover {
-			color: var(--link-hover-color, #1a0dab);
-		}
-		img {
-			max-width: 100%;
-			height: auto;
-			border-radius: 8px;
-			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-		}
-		pre {
-			white-space: pre-wrap;
-			word-wrap: break-word;
-			background-color: var(--pre-background-color, #fff);
-			border: 1px solid var(--pre-border-color, #ddd);
-			padding: 20px;
-			margin: 20px 0;
-			border-radius: 10px;
-			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-			color: var(--pre-text-color, #333);
-			font-size: 1rem;
-		}
-		h1, h2, h3, h4, h5, h6 {
-			color: var(--header-color, #1a0dab);
-			text-shadow: var(--header-shadow, none);
-			font-family: 'Orbitron', sans-serif;
-		}
-		button {
-			background-color: var(--button-background-color, #1a0dab);
-			color: var(--button-text-color, white);
-			border: none;
-			padding: 10px 20px;
-			font-size: 1rem;
-			cursor: pointer;
-			transition: background-color 0.3s, transform 0.3s;
-			border-radius: 5px;
-		}
-		button:hover {
-			background-color: var(--button-hover-background-color, #1a0dab);
-			transform: translateY(-2px);
-		}
-		.container {
-			max-width: 1200px;
-			margin: 0 auto;
-			padding: 20px;
-			background: rgba(255, 255, 255, 0.05);
-			border-radius: 10px;
-			box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-			backdrop-filter: blur(5px);
-			-webkit-backdrop-filter: blur(5px);
-			border: 1px solid rgba(255, 255, 255, 0.1);
-		}
-		.theme-button {
-			margin: 10px;
-			cursor: pointer;
-		}
-		.language-button {
-			margin: 5px;
-			cursor: pointer;
-		}
-		/* Dark mode */
-		.dark {
-			--background-color: #0a0f1c;
-			--text-color: #e0e6f1;
-			--link-color: #1abc9c;
-			--link-hover-color: #16a085;
-			--pre-background-color: #1b2735;
-			--pre-border-color: #34495e;
-			--pre-text-color: #c8d6e5;
-			--header-color: #1abc9c;
-			--header-shadow: 0 0 10px #1abc9c, 0 0 20px #1abc9c, 0 0 30px #1abc9c;
-			--button-background-color: #1abc9c;
-			--button-hover-background-color: #16a085;
-			--button-text-color: #0a0f1c;
-		}
-		/* Gold mode */
-		.gold {
-			--background-color: #1f1f1f;
-			--text-color: #d4af37;
-			--link-color: #ffd700;
-			--link-hover-color: #ffa500;
-			--pre-background-color: #333;
-			--pre-border-color: #555;
-			--pre-text-color: #ffdd44;
-			--header-color: #ffd700;
-			--header-shadow: 0 0 10px #ffd700, 0 0 20px #ffd700, 0 0 30px #ffd700;
-			--button-background-color: #ffd700;
-			--button-hover-background-color: #ffdd44;
-			--button-text-color: #333;
-		}
-		/* Purple mode */
-		.purple {
-			--background-color: #1a0033;
-			--text-color: #d9b3ff;
-			--link-color: #c71585;
-			--link-hover-color: #d02090;
-			--pre-background-color: #330066;
-			--pre-border-color: #663399;
-			--pre-text-color: #e6e6fa;
-			--header-color: #ba55d3;
-			--header-shadow: 0 0 10px #ba55d3, 0 0 20px #ba55d3, 0 0 30px #ba55d3;
-			--button-background-color: #ba55d3;
-			--button-hover-background-color: #dda0dd;
-			--button-text-color: #fff;
-		}
-		/* Modal styles */
-		.modal {
-			display: none;
-			position: fixed;
-			z-index: 1;
-			left: 0;
-			top: 0;
-			width: 100%;
-			height: 100%;
-			overflow: auto;
-			background-color: rgba(0, 0, 0, 0.7);
-			padding-top: 60px;
-		}
-		.modal-content {
-			background-color: #fefefe;
-			margin: 5% auto;
-			padding: 20px;
-			border: 1px solid #888;
-			width: 80%;
-			max-width: 600px;
-			border-radius: 10px;
-			box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-		}
-		.close {
-			color: #aaa;
-			float: right;
-			font-size: 28px;
-			font-weight: bold;
-		}
-		.close:hover,
-		.close:focus {
-			color: black;
-			text-decoration: none;
-			cursor: pointer;
-		}
-		.modal-button {
-			display: block;
-			width: 100%;
-			background-color: #1abc9c;
-			color: white;
-			border: none;
-			padding: 15px;
-			font-size: 1.1rem;
-			cursor: pointer;
-			margin-top: 20px;
-			border-radius: 5px;
-			transition: background-color 0.3s;
-		}
-		.modal-button:hover {
-			background-color: #16a085;
-		}
-	</style>
+	<meta name='description' content='This is a tool for generating VLESS protocol configurations. Give us a star on GitHub https://github.com/win877969/cf-ws if you found it useful!'>
+	<meta name='keywords' content='BEDEBAH, Cloudflare Pages, Cloudflare Worker, Severless'>
+	<meta name='viewport' content='width=device-width, initial-scale=1'>
+	<meta property='og:site_name' content='BEDEBAH: VLESS Configuration' />
+	<meta property='og:type' content='website' />
+	<meta property='og:title' content='BEDEBAH - VLESS Configuration and Subscribe Output' />
+	<meta property='og:description' content='Use Cloudflare Pages and Worker Severless to implement VLESS protocol' />
+	<meta property='og:url' content='https://${hostName}/' />
+	<meta property='og:image' content='https://api.qrserver.com/v1/create-qr-code/?size=500x500&data=${encodeURIComponent(`วเลส://${userIDs.split(",")[0]}@${hostName}${commonUrlPart}`)}' />
+	<meta name='twitter:card' content='summary_large_image' />
+	<meta name='twitter:title' content='BEDEBAH - VLESS Configuration and Subscribe Output' />
+	<meta name='twitter:description' content='Use Cloudflare Pages and Worker Severless to implement VLESS protocol' />
+	<meta name='twitter:url' content='https://${hostName}/' />
+	<meta name='twitter:image' content='https://cloudflare-ipfs.com/ipfs/bafybeigd6i5aavwpr6wvnwuyayklq3omonggta4x2q7kpmgafj357nkcky' />
+	<meta property='og:image:width' content='1500' />
+	<meta property='og:image:height' content='1500' />
+
 	<!-- Add Google Fonts -->
 	<link href='https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@400;700&display=swap' rel='stylesheet'>
 	<!-- Add FontAwesome library -->

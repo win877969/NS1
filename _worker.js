@@ -1064,9 +1064,7 @@ ${วเลสSec}
 >>CLASH<<;
 
 	// HTML Head with CSS and FontAwesome library
-	const htmlHead = `
-<head>
-</head>
+	const htmlHead = 
 
   `;
 

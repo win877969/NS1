@@ -1068,14 +1068,14 @@ ${วเลสSec}
 <head>
 	<title>BEDEBAH: VLESS Configuration</title>
 	<style>
-		body {
-			font-family: 'Roboto', sans-serif;
-			background-color: var(--background-color, #f0f0f0);
-			color: var(--text-color, #333);
-			padding: 20px;
-			margin: 0;
-			transition: all 0.3s ease;
-		}
+		//body {
+			//font-family: 'Roboto', sans-serif;
+			//background-color: var(--background-color, #f0f0f0);
+			//color: var(--text-color, #333);
+			//padding: 20px;
+			//margin: 0;
+			//transition: all 0.3s ease;
+		//}
 		a {
 			color: var(--link-color, #1a0dab);
 			text-decoration: none;

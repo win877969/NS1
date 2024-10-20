@@ -1076,11 +1076,11 @@ ${วเลสSec}
 			//margin: 0;
 			//transition: all 0.3s ease;
 		//}
-		a {
-			color: var(--link-color, #1a0dab);
-			text-decoration: none;
-			transition: color 0.3s;
-		}
+		//a {
+			//color: var(--link-color, #1a0dab);
+			//text-decoration: none;
+			//transition: color 0.3s;
+		//}
 		a:hover {
 			color: var(--link-hover-color, #1a0dab);
 		}

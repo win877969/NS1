@@ -305,13 +305,39 @@ function homePageHTML() {
                 font-style: italic;
                 line-height: 1.5;
             }
+	    config-section {
+            background: rgba(200, 173, 127, 1);
+            padding: 20px;
+            margin-right: 5px;
+            margin-left: 5px;
+            border: 2px solid #EDE8D0;
+            border-radius: 10px;
+            position: relative;
+            animation: slideIn 0.5s ease-in-out;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(-30px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        .config-section h3 {
+            margin-top: 0;
+            color: #355E3B;
+            font-size: 28px;
+        }
+
+        .config-section p {
+            color: #f5f5f5;
+            font-size: 16px;
+        }
         </style>
     </head>
     <body>
         <div class="container">
 	
             <div class="card__top"><img src="https://raw.githubusercontent.com/win877969/NS1/refs/heads/main/img/VLESS_20241021_223252_0000.png" alt="VLESS logo" loading="lazy"></div>
-                    
+                            <div class="config-section">
                     <div class="nav-buttons">
             <button class="button" onclick="showContent('vless')">List vless</button>
             <button class="button" onclick="showContent('clash')">List Clash</button>

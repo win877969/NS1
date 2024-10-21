@@ -501,8 +501,7 @@ function homePageHTML() {
 » Path        : /vl=35.219.15.90
 </b>
 </pre> 
-<hr class="config-divider" />
-<div style="display: none;">
+<div style="display">
    <textarea id="clashTls/10">- name: Digitalocean, LLC (SG)
   server: embeng.ggff.net
   port: 443
@@ -519,7 +518,7 @@ function homePageHTML() {
     headers:
       Host: embeng.ggff.net</textarea>
  </div>
-<div style="display: none;">
+<div style="display">
    <textarea id="clashByu/10">- name: Digitalocean, LLC (SG)
   server: space.byu.id
   port: 443

@@ -170,7 +170,7 @@ function homePageHTML() {
                     color: #ffa500;
                 }
             }
-.card {
+           .card {
             position: relative;
             width: 100%;
             max-width: 600px;
@@ -305,7 +305,81 @@ function homePageHTML() {
                 font-style: italic;
                 line-height: 1.5;
             }
-	    config-section {
+	          .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 90%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: -1;
+        }
+        .profile-pic {
+    width: 300px;
+    height: 300px;
+    box-shadow: 0 0 15px rgba(58, 95, 65, 1);
+    margin: 0;
+		}
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            margin-top: 10px;
+        }
+
+        .header h1 {
+            font-size: 42px;
+            color: #EDE8D0;
+            margin: 0;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            gap: 10px;
+        }
+
+        .nav-buttons .button {
+            background-color: transparent;
+            border: 3px solid #EDE8D0;
+            color: #EDE8D0;
+            padding: 6px 12px;
+            font-size: 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .nav-buttons .button:hover {
+            background-color: #EDE8D0;
+            color: #fff;
+            transform: scale(1.05);
+        }
+
+        .content {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .content.active {
+            display: block;
+            opacity: 1;
+        }
+
+        .config-section {
             background: rgba(200, 173, 127, 1);
             padding: 20px;
             margin-right: 5px;
@@ -330,6 +404,82 @@ function homePageHTML() {
         .config-section p {
             color: #f5f5f5;
             font-size: 16px;
+        }
+
+        .config-toggle {
+            margin-bottom: 10px;
+        }
+
+        .config-content {
+            display: none;
+        }
+
+        .config-content.active {
+            display: block;
+        }
+
+        .config-block {
+            margin-bottom: 10px;
+            padding: 15px;
+            background-color: rgba(200, 173, 127, 1);
+            margin-right: 5px;
+            margin-left: 5px;
+            border-radius: 10px;
+            border: 2px solid #EDE8D0;
+            color: #f5f5f5;
+            transition: background-color 0.3s ease;
+        }
+
+        .config-block h4 {
+            margin-bottom: 8px;
+            color: #355E3B;
+            font-size: 22px;
+            font-weight: 600;
+        }
+
+        .config {
+            background-color: rgba(200, 173, 127, 1);
+            padding: 15px;
+            border-radius: 5px;
+            border: 2px solid #EDE8D0;
+            color: #2d3035;
+            word-wrap: break-word;
+            white-space: pre-wrap;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 15px;
+        }
+        .button {
+            background-color: transparent;
+            border: 2px solid #EDE8D0;
+            color: #EDE8D0;
+            padding: 4px 8px;
+            font-size: 12px;
+            border-radius: 3px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-right: 4px;
+        }
+
+        .button i {
+            margin-right: 3px;
+        }
+
+        .button:hover {
+            background-color: #EDE8D0;
+            color: #fff;
+            transform: scale(1.0);
+        }
+
+        .config-divider {
+            border: none;
+            height: 1px;
+            background: linear-gradient(to right, transparent, #fff, transparent);
+            margin: 20px 0;
         }
         </style>
     </head>

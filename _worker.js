@@ -501,7 +501,90 @@ function homePageHTML() {
 » Path        : /vl=35.219.15.90
 </b>
 </pre> 
-
+<hr class="config-divider" />
+<div style="display: none;">
+   <textarea id="clashTls/10">- name: Digitalocean, LLC (SG)
+  server: embeng.ggff.net
+  port: 443
+  type: vless
+  uuid: Israel=Babi
+  cipher: auto
+  tls: true
+  udp: true
+  skip-cert-verify: true
+  network: ws
+  servername: embeng.ggff.net
+  ws-opts:
+    path: /10
+    headers:
+      Host: embeng.ggff.net</textarea>
+ </div>
+<div style="display: none;">
+   <textarea id="clashByu/10">- name: Digitalocean, LLC (SG)
+  server: space.byu.id
+  port: 443
+  type: vless
+  uuid: Israel=Babi
+  cipher: auto
+  tls: true
+  udp: true
+  skip-cert-verify: true
+  network: ws
+  servername: embeng.ggff.net
+  ws-opts:
+    path: /10
+    headers:
+      Host: embeng.ggff.net</textarea>
+ </div>
+<div class="config-section">
+    <p><strong>ISP:Digitalocean, LLC (SG)</strong> </p>
+    <p><strong>NEGARA :</strong> Singapore</p>
+    <hr />
+    <div class="config-toggle">
+        <button class="button" onclick="toggleConfig(this, 'show clash', 'hide clash')">Show Clash</button>
+        <div class="config-content">
+            <div class="config-block">
+                <h3>TLS:</h3>
+                <p class="config">- name: Digitalocean, LLC (SG)
+  server: embeng.ggff.net
+  port: 443
+  type: vless
+  uuid: Israel=Babi
+  cipher: auto
+  tls: true
+  udp: true
+  skip-cert-verify: true
+  network: ws
+  servername: embeng.ggff.net
+  ws-opts:
+    path: /10
+    headers:
+      Host: embeng.ggff.net</p>
+                <button class="button" onclick='copyClash("clashTls/10")'><i class="fa fa-clipboard"></i>Copy</button>
+            </div>
+            <hr />
+            <div class="config-block">
+                <h3>Byu:</h3>
+                <p class="config">- name: Digitalocean, LLC (SG)
+  server: space.byu.id
+  port: 443
+  type: vless
+  uuid: Israel=Babi
+  cipher: auto
+  tls: true
+  udp: true
+  skip-cert-verify: true
+  network: ws
+  servername: embeng.ggff.net
+  ws-opts:
+    path: /10
+    headers:
+      Host: embeng.ggff.net</p>
+                <button class="button" onclick='copyClash("clashByu/10")'><i class="fa fa-clipboard"></i>Copy</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 <pre><b>V2RAY TLS:443 : <button class="button2" onclick='copyToClipboard("vless://d2eed70a-4102-42b0-8b40-279e6d901a02@cf-prem.bmkg.xyz:443?encryption=none&security=tls&sni=cf-prem.bmkg.xyz&fp=randomized&type=ws&host=cf-prem.bmkg.xyz&path=/vl=35.219.15.90#Telekomunikasi+Indonesia")'><i class="fa fa-clipboard"></i> Copy TLS:443</button>
 vless://d2eed70a-4102-42b0-8b40-279e6d901a02@cf-prem.bmkg.xyz:443?encryption=none&security=tls&sni=cf-prem.bmkg.xyz&fp=randomized&type=ws&host=cf-prem.bmkg.xyz&path=/vl=35.219.15.90#Telekomunikasi+Indonesia</b> </pre>

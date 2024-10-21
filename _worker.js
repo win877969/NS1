@@ -538,7 +538,7 @@ vless://d2eed70a-4102-42b0-8b40-279e6d901a02@cf-prem.bmkg.xyz:80?path=/vl=35.219
   ws-opts:
     path: /vl=35.219.15.90
     headers:
-      Host: cf-prem.bmkg.xyz</b> </pre><pre><b>CLASH NTLS PORT:80 : <button class="button2" onclick='copyToClipboard("proxies :
+      Host: cf-prem.bmkg.xyz</b> </pre><pre><b>CLASH NTLS:80 : <button class="button2" onclick='copyToClipboard("proxies :
 - name: Telekomunikasi Indonesia
   server: cf-prem.bmkg.xyz
   port: 80

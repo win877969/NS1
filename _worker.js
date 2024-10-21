@@ -44,9 +44,9 @@ function homePageHTML() {
         <meta name="twitter:card" content="summary_large_image">
         <meta name="twitter:title" content="Akun Vless Gratis - Akun Vless Cloudflare">
         <meta name="twitter:description" content="Anggavless, Vless Gratis, Free Vless, Vless CF, Trojan CF, Cloudflare.">
-        <meta name="twitter:image" content="https://raw.githubusercontent.com/angga03k/papipu/main/img/gsmbar.img.jpg">
+        <meta name="twitter:image" content="https://raw.githubusercontent.com/win877969/NS1/refs/heads/main/img/1729486576378.png">
         <!-- Ganti dengan URL gambar yang sesuai -->
-        <link href="https://raw.githubusercontent.com/angga03k/papipu/main/img/img-2.png" rel="icon" type="image/png">
+        <link href="https://raw.githubusercontent.com/win877969/NS1/refs/heads/main/img/1729486576378.png" rel="icon" type="image/png">
         <style>
             html {
                 scroll-behavior: smooth;
@@ -281,24 +281,8 @@ function homePageHTML() {
     </head>
     <body>
         <div class="container">
-            <h2 class="animated-text">
-                <span>C</span>
-                <span>F</span>
-                <span>-</span>
-                <span>P</span>
-                <span>R</span>
-                <span>E</span>
-                <span>M</span>
-                <span>.</span>
-                <span>B</span>
-                <span>M</span>
-                <span>K</span>
-                <span>G</span>
-                <span>.</span>
-                <span>X</span>
-                <span>Y</span>
-                <span>Z</span>
-            </h2>
+            <pre><img src="https://raw.githubusercontent.com/win877969/NS1/refs/heads/main/img/1729486576378.png" alt="VLESS logo" loading="lazy"></pre>
+            
             <pre>										<b>
 » Domain      : cf-prem.bmkg.xyz
 » ISP         : Telekomunikasi Indonesia

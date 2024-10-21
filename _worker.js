@@ -501,7 +501,7 @@ function homePageHTML() {
 » Path        : /vl=35.219.15.90
 </b>
 </pre> 
-<div style="display">
+<div style="display: none;">
    <textarea id="clashTls/10">- name: Digitalocean, LLC (SG)
   server: embeng.ggff.net
   port: 443
@@ -518,7 +518,7 @@ function homePageHTML() {
     headers:
       Host: embeng.ggff.net</textarea>
  </div>
-<div style="display">
+<div style="display: none;''>
    <textarea id="clashByu/10">- name: Digitalocean, LLC (SG)
   server: space.byu.id
   port: 443
@@ -535,15 +535,7 @@ function homePageHTML() {
     headers:
       Host: embeng.ggff.net</textarea>
  </div>
-<div class="config-section">
-    <p><strong>ISP:Digitalocean, LLC (SG)</strong> </p>
-    <p><strong>NEGARA :</strong> Singapore</p>
-    <hr />
-    <div class="config-toggle">
-        <button class="button" onclick="toggleConfig(this, 'show clash', 'hide clash')">Show Clash</button>
-        <div class="config-content">
-            <div class="config-block">
-                <h3>TLS:</h3>
+
                 <p class="config">- name: Digitalocean, LLC (SG)
   server: embeng.ggff.net
   port: 443

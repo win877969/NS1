@@ -505,6 +505,7 @@ function homePageHTML() {
 » Path        : /vl=35.219.15.90
 </b>
 </pre> 
+
         <hr class="config-divider" />
         <div id="vless" class="content active">
             <div class="config-section">
@@ -534,7 +535,216 @@ function homePageHTML() {
         </div>
     </div>
 </div>
+<script>
+        function showContent(contentId) {
+            const contents = document.querySelectorAll('.content');
+            contents.forEach(content => {
+                content.classList.remove('active');
+            });
+            document.getElementById(contentId).classList.add('active');
+        }
+        function salinTeks() {
+            var teks = document.getElementById('teksAsli');
+            teks.select();
+            document.execCommand('copy');
+            alert('Teks telah disalin.');
+        }
+        function copyClash(elementId) {
+            const text = document.getElementById(elementId).textContent;
+            navigator.clipboard.writeText(text)
+            .then(() => {
+            const alertBox = document.createElement('div');
+            alertBox.textContent = "Copied to clipboard!";
+            alertBox.style.position = 'fixed';
+            alertBox.style.bottom = '20px';
+            alertBox.style.right = '20px';
+            alertBox.style.backgroundColor = '#EDE8D0';
+            alertBox.style.color = '#fff';
+            alertBox.style.padding = '10px 20px';
+            alertBox.style.borderRadius = '5px';
+            alertBox.style.boxShadow = '0 4px 6px rgba(0,0,0,0.1)';
+            alertBox.style.opacity = '0';
+            alertBox.style.transition = 'opacity 0.5s ease-in-out';
+            document.body.appendChild(alertBox);
+            setTimeout(() => {
+                alertBox.style.opacity = '1';
+            }, 100);
+            setTimeout(() => {
+                alertBox.style.opacity = '0';
+                setTimeout(() => {
+                    document.body.removeChild(alertBox);
+                }, 500);
+            }, 2000);
+        })
+        .catch((err) => {
+            console.error("Failed to copy to clipboard:", err);
+        });
+        }
+function fetchAndDisplayAlert(path) {
+    fetch(path)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            const proxyStatus = data.proxyStatus || "Unknown status";
+            const alertBox = document.createElement('div');
+            alertBox.textContent = `Proxy Status: ${proxyStatus}`;
+            alertBox.style.position = 'fixed';
+            alertBox.style.bottom = '20px';
+            alertBox.style.right = '20px';
+            alertBox.style.backgroundColor = '#EDE8D0';
+            alertBox.style.color = '#fff';
+            alertBox.style.padding = '10px 20px';
+            alertBox.style.borderRadius = '5px';
+            alertBox.style.boxShadow = '0 4px 6px rgba(0,0,0,0.1)';
+            alertBox.style.opacity = '0';
+            alertBox.style.transition = 'opacity 0.5s ease-in-out';
+            document.body.appendChild(alertBox);
+            
+            setTimeout(() => {
+                alertBox.style.opacity = '1';
+            }, 100);
+            
+            setTimeout(() => {
+                alertBox.style.opacity = '0';
+                setTimeout(() => {
+                    document.body.removeChild(alertBox);
+                }, 500);
+            }, 2000);
+        })
+        .catch((err) => {
+            alert("Failed to fetch data or invalid response.");
+        });
+}
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text)
+                .then(() => {
+                    const alertBox = document.createElement('div');
+                    alertBox.textContent = "Copied to clipboard!";
+                    alertBox.style.position = 'fixed';
+                    alertBox.style.bottom = '20px';
+                    alertBox.style.right = '20px';
+                    alertBox.style.backgroundColor = '#EDE8D0';
+                    alertBox.style.color = '#fff';
+                    alertBox.style.padding = '10px 20px';
+                    alertBox.style.borderRadius = '5px';
+                    alertBox.style.boxShadow = '0 4px 6px rgba(0,0,0,0.1)';
+                    alertBox.style.opacity = '0';
+                    alertBox.style.transition = 'opacity 0.5s ease-in-out';
+                    document.body.appendChild(alertBox);
+                    setTimeout(() => {
+                        alertBox.style.opacity = '1';
+                    }, 100);
+                    setTimeout(() => {
+                        alertBox.style.opacity = '0';
+                        setTimeout(() => {
+                            document.body.removeChild(alertBox);
+                        }, 500);
+                    }, 2000);
+                })
+                .catch((err) => {
+                    console.error("Failed to copy to clipboard:", err);
+                });
+        }
 
+        function toggleConfig(button, show, hide) {
+            const configContent = button.nextElementSibling;
+            if (configContent.classList.contains('active')) {
+                configContent.classList.remove('active');
+                button.textContent = show;
+            } else {
+                configContent.classList.add('active');
+                button.textContent = hide;
+            }
+        }
+    </script>
+<hr class="config-divider" />
+<div style="display: none;">
+   <textarea id="clashTls/10">- name: Digitalocean, LLC (SG)
+  server: embeng.ggff.net
+  port: 443
+  type: vless
+  uuid: Israel=Babi
+  cipher: auto
+  tls: true
+  udp: true
+  skip-cert-verify: true
+  network: ws
+  servername: embeng.ggff.net
+  ws-opts:
+    path: /10
+    headers:
+      Host: embeng.ggff.net</textarea>
+ </div>
+<div style="display: none;">
+   <textarea id="clashByu/10">- name: Digitalocean, LLC (SG)
+  server: space.byu.id
+  port: 443
+  type: vless
+  uuid: Israel=Babi
+  cipher: auto
+  tls: true
+  udp: true
+  skip-cert-verify: true
+  network: ws
+  servername: embeng.ggff.net
+  ws-opts:
+    path: /10
+    headers:
+      Host: embeng.ggff.net</textarea>
+ </div>
+<div class="config-section">
+    <p><strong>ISP:Digitalocean, LLC (SG)</strong> </p>
+    <p><strong>NEGARA :</strong> Singapore</p>
+    <hr />
+    <div class="config-toggle">
+        <button class="button" onclick="toggleConfig(this, 'show clash', 'hide clash')">Show Clash</button>
+        <div class="config-content">
+            <div class="config-block">
+                <h3>TLS:</h3>
+                <p class="config">- name: Digitalocean, LLC (SG)
+  server: embeng.ggff.net
+  port: 443
+  type: vless
+  uuid: Israel=Babi
+  cipher: auto
+  tls: true
+  udp: true
+  skip-cert-verify: true
+  network: ws
+  servername: embeng.ggff.net
+  ws-opts:
+    path: /10
+    headers:
+      Host: embeng.ggff.net</p>
+                <button class="button" onclick='copyClash("clashTls/10")'><i class="fa fa-clipboard"></i>Copy</button>
+            </div>
+            <hr />
+            <div class="config-block">
+                <h3>Byu:</h3>
+                <p class="config">- name: Digitalocean, LLC (SG)
+  server: space.byu.id
+  port: 443
+  type: vless
+  uuid: Israel=Babi
+  cipher: auto
+  tls: true
+  udp: true
+  skip-cert-verify: true
+  network: ws
+  servername: embeng.ggff.net
+  ws-opts:
+    path: /10
+    headers:
+      Host: embeng.ggff.net</p>
+                <button class="button" onclick='copyClash("clashByu/10")'><i class="fa fa-clipboard"></i>Copy</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 <pre><b>FORMAT TLS 443 : <button class="button2" onclick='copyToClipboard("vless://d2eed70a-4102-42b0-8b40-279e6d901a02@cf-prem.bmkg.xyz:443?encryption=none&security=tls&sni=cf-prem.bmkg.xyz&fp=randomized&type=ws&host=cf-prem.bmkg.xyz&path=/vl=35.219.15.90#Telekomunikasi+Indonesia")'><i class="fa fa-clipboard"></i> Copy TLS 443</button> vless://d2eed70a-4102-42b0-8b40-279e6d901a02@cf-prem.bmkg.xyz:443?encryption=none&security=tls&sni=cf-prem.bmkg.xyz&fp=randomized&type=ws&host=cf-prem.bmkg.xyz&path=/vl=35.219.15.90#Telekomunikasi+Indonesia</b> </pre><pre><b>FORMAT NTLS 80  : <button class="button2" onclick='copyToClipboard("vless://d2eed70a-4102-42b0-8b40-279e6d901a02@cf-prem.bmkg.xyz:80?path=/vl=35.219.15.90&security=none&encryption=none&host=cf-prem.bmkg.xyz&fp=randomized&type=ws&sni=cf-prem.bmkg.xyz#Telekomunikasi+Indonesia")'><i class="fa fa-clipboard"></i> Copy NTLS 80 </button> vless://d2eed70a-4102-42b0-8b40-279e6d901a02@cf-prem.bmkg.xyz:80?path=/vl=35.219.15.90&security=none&encryption=none&host=cf-prem.bmkg.xyz&fp=randomized&type=ws&sni=cf-prem.bmkg.xyz#Telekomunikasi+Indonesia</b> </pre>

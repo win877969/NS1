@@ -501,153 +501,15 @@ function homePageHTML() {
 » Path        : /vl=35.219.15.90
 </b>
 </pre> 
-<div style="display: none;">
-   <textarea id="clashTls/10">- name: Digitalocean, LLC (SG)
-  server: embeng.ggff.net
-  port: 443
-  type: vless
-  uuid: Israel=Babi
-  cipher: auto
-  tls: true
-  udp: true
-  skip-cert-verify: true
-  network: ws
-  servername: embeng.ggff.net
-  ws-opts:
-    path: /10
-    headers:
-      Host: embeng.ggff.net</textarea>
- </div>
-<div style="display: none;''>
-   <textarea id="clashByu/10">- name: Digitalocean, LLC (SG)
-  server: space.byu.id
-  port: 443
-  type: vless
-  uuid: Israel=Babi
-  cipher: auto
-  tls: true
-  udp: true
-  skip-cert-verify: true
-  network: ws
-  servername: embeng.ggff.net
-  ws-opts:
-    path: /10
-    headers:
-      Host: embeng.ggff.net</textarea>
- </div>
-
-<div class="config-section">
-    <p><strong>ISP:Digitalocean, LLC (SG)</strong> </p>
-    <p><strong>NEGARA :</strong> Singapore</p>
-    <hr />
-    
-
-
-                <p class="config">- name: Digitalocean, LLC (SG)
-  server: embeng.ggff.net
-  port: 443
-  type: vless
-  uuid: Israel=Babi
-  cipher: auto
-  tls: true
-  udp: true
-  skip-cert-verify: true
-  network: ws
-  servername: embeng.ggff.net
-  ws-opts:
-    path: /10
-    headers:
-      Host: embeng.ggff.net</p>
-                <button class="button" onclick='copyClash("clashTls/10")'><i class="fa fa-clipboard"></i>Copy</button>
-            </div>
-            <hr />
-            <div class="config-block">
-                <h3>Byu:</h3>
-                <p class="config">- name: Digitalocean, LLC (SG)
-  server: space.byu.id
-  port: 443
-  type: vless
-  uuid: Israel=Babi
-  cipher: auto
-  tls: true
-  udp: true
-  skip-cert-verify: true
-  network: ws
-  servername: embeng.ggff.net
-  ws-opts:
-    path: /10
-    headers:
-      Host: embeng.ggff.net</p>
-                <button class="button" onclick='copyClash("clashByu/10")'><i class="fa fa-clipboard"></i>Copy</button>
-            </div>
-        
 
 <pre><b>V2RAY TLS:443 : <button class="button2" onclick='copyToClipboard("vless://d2eed70a-4102-42b0-8b40-279e6d901a02@cf-prem.bmkg.xyz:443?encryption=none&security=tls&sni=cf-prem.bmkg.xyz&fp=randomized&type=ws&host=cf-prem.bmkg.xyz&path=/vl=35.219.15.90#Telekomunikasi+Indonesia")'><i class="fa fa-clipboard"></i> Copy TLS:443</button>
 vless://d2eed70a-4102-42b0-8b40-279e6d901a02@cf-prem.bmkg.xyz:443?encryption=none&security=tls&sni=cf-prem.bmkg.xyz&fp=randomized&type=ws&host=cf-prem.bmkg.xyz&path=/vl=35.219.15.90#Telekomunikasi+Indonesia</b> </pre>
 <pre><b>V2RAY NTLS:80 : <button class="button2" onclick='copyToClipboard("vless://d2eed70a-4102-42b0-8b40-279e6d901a02@cf-prem.bmkg.xyz:80?path=/vl=35.219.15.90&security=none&encryption=none&host=cf-prem.bmkg.xyz&fp=randomized&type=ws&sni=cf-prem.bmkg.xyz#Telekomunikasi+Indonesia")'><i class="fa fa-clipboard"></i> Copy NTLS:80 </button> 
 vless://d2eed70a-4102-42b0-8b40-279e6d901a02@cf-prem.bmkg.xyz:80?path=/vl=35.219.15.90&security=none&encryption=none&host=cf-prem.bmkg.xyz&fp=randomized&type=ws&sni=cf-prem.bmkg.xyz#Telekomunikasi+Indonesia</b> </pre>
 
-<pre><b>CLASH TLS:443 : <button class="button2" onclick='copyToClipboard("proxies :
-- name: Telekomunikasi Indonesia
-  server: cf-prem.bmkg.xyz
-  port: 443
-  type: vless
-  uuid: d2eed70a-4102-42b0-8b40-279e6d901a02
-  cipher: auto
-  tls: true
-  udp: true
-  skip-cert-verify: true
-  network: ws
-  servername: cf-prem.bmkg.xyz
-  ws-opts:
-    path: /vl=35.219.15.90
-    headers:
-      Host: cf-prem.bmkg.xyz")'><i class="fa fa-clipboard"></i> Copy TLS 443</button> proxies :
-- name: Telekomunikasi Indonesia
-  server: cf-prem.bmkg.xyz
-  port: 443
-  type: vless
-  uuid: d2eed70a-4102-42b0-8b40-279e6d901a02
-  cipher: auto
-  tls: true
-  udp: true
-  skip-cert-verify: true
-  network: ws
-  servername: cf-prem.bmkg.xyz
-  ws-opts:
-    path: /vl=35.219.15.90
-    headers:
-      Host: cf-prem.bmkg.xyz</b> </pre><pre><b>CLASH NTLS:80 : <button class="button2" onclick='copyToClipboard("proxies :
-- name: Telekomunikasi Indonesia
-  server: cf-prem.bmkg.xyz
-  port: 80
-  type: vless
-  uuid: d2eed70a-4102-42b0-8b40-279e6d901a02
-  cipher: auto
-  tls: false
-  udp: true
-  skip-cert-verify: true
-  network: ws
-  servername: cf-prem.bmkg.xyz
-  ws-opts:
-    path: /vl=35.219.15.90
-    headers:
-      Host: cf-prem.bmkg.xyz")'><i class="fa fa-clipboard"></i> Copy NTLS 80 </button> proxies :
-- name: Telekomunikasi Indonesia
-  server: cf-prem.bmkg.xyz
-  port: 80
-  type: vless
-  uuid: d2eed70a-4102-42b0-8b40-279e6d901a02
-  cipher: auto
-  tls: false
-  udp: true
-  skip-cert-verify: true
-  network: ws
-  servername: cf-prem.bmkg.xyz
-  ws-opts:
-    path: /vl=35.219.15.90
-    headers:
-      Host: cf-prem.bmkg.xyz</b> </pre>
+
+<pre><b>RUANGGURU:443 : <button class="button2" onclick='copyToClipboard("vless://d2eed70a-4102-42b0-8b40-279e6d901a02@ruanfguru.com:443?encryption=none&security=tls&sni=cf-prem.bmkg.xyz&fp=randomized&type=ws&host=cf-prem.bmkg.xyz&path=/vl=35.219.15.90#Telekomunikasi+Indonesia")'><i class="fa fa-clipboard"></i> Copy TLS:443</button>
+ </pre>
 
             <p class="noted">Noted: Pastikan untuk memeriksa konfigurasi dengan teliti sebelum digunakan.</p>
             <div class="watermark"> Develoved by <a href="https://t.me/seaker877" target="_blank">X-VPN</a>

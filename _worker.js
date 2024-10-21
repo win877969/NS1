@@ -170,7 +170,35 @@ function homePageHTML() {
                     color: #ffa500;
                 }
             }
-
+.card {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(8px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
+            border-radius: 12px;
+            padding: 15px;
+            box-sizing: border-box;
+            margin: 15px;
+        }
+        .card:hover {
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.8);
+            transform: translateY(-5px);
+        }
+        .card__top {
+            height: auto;
+            overflow: hidden;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            position: relative;
+        }
+        .card__top img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            display: block;
+        }
             pre {
                 white-space: pre-wrap;
                 word-wrap: break-word;

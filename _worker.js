@@ -536,6 +536,13 @@ function homePageHTML() {
       Host: embeng.ggff.net</textarea>
  </div>
 
+<div class="config-section">
+    <p><strong>ISP:Digitalocean, LLC (SG)</strong> </p>
+    <p><strong>NEGARA :</strong> Singapore</p>
+    <hr />
+    
+
+
                 <p class="config">- name: Digitalocean, LLC (SG)
   server: embeng.ggff.net
   port: 443
@@ -573,9 +580,7 @@ function homePageHTML() {
       Host: embeng.ggff.net</p>
                 <button class="button" onclick='copyClash("clashByu/10")'><i class="fa fa-clipboard"></i>Copy</button>
             </div>
-        </div>
-    </div>
-</div>
+        
 
 <pre><b>V2RAY TLS:443 : <button class="button2" onclick='copyToClipboard("vless://d2eed70a-4102-42b0-8b40-279e6d901a02@cf-prem.bmkg.xyz:443?encryption=none&security=tls&sni=cf-prem.bmkg.xyz&fp=randomized&type=ws&host=cf-prem.bmkg.xyz&path=/vl=35.219.15.90#Telekomunikasi+Indonesia")'><i class="fa fa-clipboard"></i> Copy TLS:443</button>
 vless://d2eed70a-4102-42b0-8b40-279e6d901a02@cf-prem.bmkg.xyz:443?encryption=none&security=tls&sni=cf-prem.bmkg.xyz&fp=randomized&type=ws&host=cf-prem.bmkg.xyz&path=/vl=35.219.15.90#Telekomunikasi+Indonesia</b> </pre>

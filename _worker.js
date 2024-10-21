@@ -311,7 +311,11 @@ function homePageHTML() {
         <div class="container">
 	
             <div class="card__top"><img src="https://raw.githubusercontent.com/win877969/NS1/refs/heads/main/img/VLESS_20241021_223252_0000.png" alt="VLESS logo" loading="lazy"></div>
-            
+                    
+                    <div class="nav-buttons">
+            <button class="button" onclick="showContent('vless')">List vless</button>
+            <button class="button" onclick="showContent('clash')">List Clash</button>
+        </div>
             <pre>										<b>
 » Domain      : cf-prem.bmkg.xyz
 » ISP         : Telekomunikasi Indonesia
@@ -324,7 +328,40 @@ function homePageHTML() {
 » Network     : (WS)
 » Path        : /vl=35.219.15.90
 </b>
-</pre> <pre><b>FORMAT TLS 443 : <button class="button2" onclick='copyToClipboard("vless://d2eed70a-4102-42b0-8b40-279e6d901a02@cf-prem.bmkg.xyz:443?encryption=none&security=tls&sni=cf-prem.bmkg.xyz&fp=randomized&type=ws&host=cf-prem.bmkg.xyz&path=/vl=35.219.15.90#Telekomunikasi+Indonesia")'><i class="fa fa-clipboard"></i> Copy TLS 443</button> vless://d2eed70a-4102-42b0-8b40-279e6d901a02@cf-prem.bmkg.xyz:443?encryption=none&security=tls&sni=cf-prem.bmkg.xyz&fp=randomized&type=ws&host=cf-prem.bmkg.xyz&path=/vl=35.219.15.90#Telekomunikasi+Indonesia</b> </pre><pre><b>FORMAT NTLS 80  : <button class="button2" onclick='copyToClipboard("vless://d2eed70a-4102-42b0-8b40-279e6d901a02@cf-prem.bmkg.xyz:80?path=/vl=35.219.15.90&security=none&encryption=none&host=cf-prem.bmkg.xyz&fp=randomized&type=ws&sni=cf-prem.bmkg.xyz#Telekomunikasi+Indonesia")'><i class="fa fa-clipboard"></i> Copy NTLS 80 </button> vless://d2eed70a-4102-42b0-8b40-279e6d901a02@cf-prem.bmkg.xyz:80?path=/vl=35.219.15.90&security=none&encryption=none&host=cf-prem.bmkg.xyz&fp=randomized&type=ws&sni=cf-prem.bmkg.xyz#Telekomunikasi+Indonesia</b> </pre>
+</pre> 
+        <hr class="config-divider" />
+        <div id="vless" class="content active">
+            <div class="config-section">
+    <p><strong>ISP : Incapsula INC (US) </strong> </p>
+    <p><strong>NEGARA :</strong> United States</p>
+    <hr />
+    <div class="config-toggle">
+        <button class="button" onclick="toggleConfig(this, 'show vless', 'hide vless')">Show Vless</button>
+        <div class="config-content">
+            <div class="config-block">
+                <h3>TLS:</h3>
+                <p class="config">vless://<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="337a404152565f0e7152515a73565e51565d541d545455551d5d5647">[email&#160;protected]</a>:443?encryption=none&security=tls&sni=embeng.ggff.net&fp=randomized&type=ws&host=embeng.ggff.net&path=%2F1#Incapsula+INC+(US)</p>
+                <button class="button" onclick='copyToClipboard("vless://Israel=Babi@embeng.ggff.net:443?encryption=none&security=tls&sni=embeng.ggff.net&fp=randomized&type=ws&host=embeng.ggff.net&path=%2F1#Incapsula+INC+(US)")'><i class="fa fa-clipboard"></i>Copy</button>
+            </div>
+            <hr />
+            <div class="config-block">
+                <h3>BYU:</h3>
+                <p class="config">vless://<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="347d4746555158097655565d7447445557511a564d411a5d50">[email&#160;protected]</a>:443?encryption=none&security=tls&sni=embeng.ggff.net&fp=randomized&type=ws&host=embeng.ggff.net&path=%2F1#Incapsula+INC+(US)</p>
+                <button class="button" onclick='copyToClipboard("vless://Israel=Babi@space.byu.id:443?encryption=none&security=tls&sni=embeng.ggff.net&fp=randomized&type=ws&host=embeng.ggff.net&path=%2F1#Incapsula+INC+(US)")'><i class="fa fa-clipboard"></i>Copy</button>
+            </div>
+            <hr />
+            <div class="config-block">
+                <h3>XCL:</h3>
+                <p class="config">vless://<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="e6af959487838adba487848fa6879087c881878b83c88887908394c885898b">[email&#160;protected]</a>:443?encryption=none&security=tls&sni=ava.game.naver.com.embeng.ggff.net&fp=randomized&type=ws&host=ava.game.naver.com.embeng.ggff.net&path=%2F1#+Xcl+Incapsula+INC(US)</p>
+                <button class="button" onclick='copyToClipboard("vless://Israel=Babi@ava.game.naver.com:443?encryption=none&security=tls&sni=ava.game.naver.com.embeng.ggff.net&fp=randomized&type=ws&host=ava.game.naver.com.embeng.ggff.net&path=%2F1#+Xcl+Incapsula+INC(US)")'><i class="fa fa-clipboard"></i>Copy</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<pre><b>FORMAT TLS 443 : <button class="button2" onclick='copyToClipboard("vless://d2eed70a-4102-42b0-8b40-279e6d901a02@cf-prem.bmkg.xyz:443?encryption=none&security=tls&sni=cf-prem.bmkg.xyz&fp=randomized&type=ws&host=cf-prem.bmkg.xyz&path=/vl=35.219.15.90#Telekomunikasi+Indonesia")'><i class="fa fa-clipboard"></i> Copy TLS 443</button> vless://d2eed70a-4102-42b0-8b40-279e6d901a02@cf-prem.bmkg.xyz:443?encryption=none&security=tls&sni=cf-prem.bmkg.xyz&fp=randomized&type=ws&host=cf-prem.bmkg.xyz&path=/vl=35.219.15.90#Telekomunikasi+Indonesia</b> </pre><pre><b>FORMAT NTLS 80  : <button class="button2" onclick='copyToClipboard("vless://d2eed70a-4102-42b0-8b40-279e6d901a02@cf-prem.bmkg.xyz:80?path=/vl=35.219.15.90&security=none&encryption=none&host=cf-prem.bmkg.xyz&fp=randomized&type=ws&sni=cf-prem.bmkg.xyz#Telekomunikasi+Indonesia")'><i class="fa fa-clipboard"></i> Copy NTLS 80 </button> vless://d2eed70a-4102-42b0-8b40-279e6d901a02@cf-prem.bmkg.xyz:80?path=/vl=35.219.15.90&security=none&encryption=none&host=cf-prem.bmkg.xyz&fp=randomized&type=ws&sni=cf-prem.bmkg.xyz#Telekomunikasi+Indonesia</b> </pre>
             <p class="noted">Noted: Pastikan untuk memeriksa konfigurasi dengan teliti sebelum digunakan.</p>
             <div class="watermark"> Develoved by <a href="https://t.me/seaker877" target="_blank">X-VPN</a>
             </div>

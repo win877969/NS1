@@ -46,7 +46,7 @@ function homePageHTML() {
         <meta name="twitter:description" content="Anggavless, Vless Gratis, Free Vless, Vless CF, Trojan CF, Cloudflare.">
         <meta name="twitter:image" content="https://raw.githubusercontent.com/win877969/NS1/refs/heads/main/img/1729486576378.png">
         <!-- Ganti dengan URL gambar yang sesuai -->
-        <link href="https://raw.githubusercontent.com/win877969/NS1/refs/heads/main/img/1729486576378.png" rel="icon" type="image/png">
+        <link href="https://raw.githubusercontent.com/win877969/NS1/refs/heads/main/img/VLESS_20241021_223252_0000.png" rel="icon" type="image/png">
         <style>
             html {
                 scroll-behavior: smooth;
@@ -310,7 +310,7 @@ function homePageHTML() {
     <body>
         <div class="container">
 	
-            <div class="card__top"><img src="https://raw.githubusercontent.com/win877969/NS1/refs/heads/main/img/1729486576378.png" alt="VLESS logo" loading="lazy"></div>
+            <div class="card__top"><img src="https://raw.githubusercontent.com/win877969/NS1/refs/heads/main/img/VLESS_20241021_223252_0000.png" alt="VLESS logo" loading="lazy"></div>
             
             <pre>										<b>
 » Domain      : cf-prem.bmkg.xyz

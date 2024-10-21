@@ -281,7 +281,8 @@ function homePageHTML() {
     </head>
     <body>
         <div class="container">
-            <pre><img src="https://raw.githubusercontent.com/win877969/NS1/refs/heads/main/img/1729486576378.png" alt="VLESS logo" loading="lazy"></pre>
+	
+            <div class="card__top"><img src="https://raw.githubusercontent.com/win877969/NS1/refs/heads/main/img/1729486576378.png" alt="VLESS logo" loading="lazy"></div>
             
             <pre>										<b>
 » Domain      : cf-prem.bmkg.xyz

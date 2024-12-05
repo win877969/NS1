@@ -1,73 +1,73 @@
 // worker.js
 import { connect } from "cloudflare:sockets";
 var listProxy = [
-   { path: "vless-sg-do1", proxy: "167.71.194.185:8443" },
- // { path: "8.215.59.6:443", proxy: "8.215.59.6:443" },  
- // { path: "147.139.245.56:443", proxy: "147.139.245.56:443" },
- // { path: "103.67.79.230:443", proxy: "103.67.79.230:443" },  
-  { path: "203.194.112.119:8443", proxy: "203.194.112.119:8443" },
-  { path: "111.95.40.14:32414", proxy: "111.95.40.14:32414" },
-  { path: "103.186.1.209:8443", proxy: "103.186.1.209:8443" },
-  { path: "35.219.50.99:443", proxy: "35.219.50.99:443" },
-  { path: "35.219.15.90:443", proxy: "35.219.15.90:443" },
-  { path: "210.186.12.244:443", proxy: "210.186.12.244:443" },
-  { path: "166.88.35.141:443", proxy: "166.88.35.141:443" },
-  { path: "167.71.194.185:8443", proxy: "167.71.194.185:8443" },
-  { path: "89.34.227.166:8443", proxy: "89.34.227.166:8443" },
-  { path: "45.77.36.40:443", proxy: "45.77.36.40:443" },
-  { path: "43.134.34.18:443", proxy: "43.134.34.18:443" },
-  { path: "103.180.193.56:443", proxy: "103.180.193.56:443" },
-  { path: "164.52.2.100:443", proxy: "164.52.2.100:443" },
-  { path: "51.79.254.182:443", proxy: "51.79.254.182:443" },
-  { path: "104.248.145.216:443", proxy: "104.248.145.216:443" },
-  { path: "185.217.5.3:443", proxy: "185.217.5.3:443" },
-  { path: "129.150.50.63:443", proxy: "129.150.50.63:443" },
-  { path: "185.114.78.230:443", proxy: "185.114.78.230:443" },
-  { path: "194.36.179.237:443", proxy: "194.36.179.237:443" },
-  { path: "52.74.101.26:443", proxy: "52.74.101.26:443" },
-  { path: "143.42.66.91:443", proxy: "143.42.66.91:443" },
-{ path: "3.112.21.102:443", proxy: "3.112.21.102:443" },
-{ path: "3.113.64.82:443", proxy: "3.113.64.82:443" },
-{ path: "5.226.48.84:443", proxy: "5.226.48.84:443" },
-{ path: "13.230.34.30:443", proxy: "13.230.34.30:443" },
-{ path: "18.183.158.211:443", proxy: "18.183.158.211:443" },
-{ path: "35.77.126.144:443", proxy: "35.77.126.144:443" },
-{ path: "38.180.29.115:443", proxy: "38.180.29.115:443" },
-{ path: "45.76.198.248:443", proxy: "45.76.198.248:443" },
-{ path: "45.76.220.61:443", proxy: "45.76.220.61:443" },
-{ path: "45.77.130.245:443", proxy: "45.77.130.245:443" },
-{ path: "54.249.135.43:443", proxy: "54.249.135.43:443" },
-{ path: "128.1.18.29:443", proxy: "128.1.18.29:443" },
-{ path: "140.227.233.71:443", proxy: "140.227.233.71:443" },
-{ path: "149.28.21.106:443", proxy: "149.28.21.106:443" },
-{ path: "154.31.113.72:443", proxy: "154.31.113.72:443" },
-{ path: "159.100.194.42:443", proxy: "159.100.194.42:443" },
-{ path: "207.148.105.247:443", proxy: "207.148.105.247:443" },
-{ path: "219.111.17.202:443", proxy: "219.111.17.202:443" },
-{ path: "141.98.196.223:443", proxy: "141.98.196.223:443" },
-{ path: "168.138.46.67:443", proxy: "168.138.46.67:443" },
-{ path: "141.147.163.68:443", proxy: "141.147.163.68:443" },
-{ path: "52.197.230.94:443", proxy: "52.197.230.94:443" },
-{ path: "168.138.212.87:443", proxy: "168.138.212.87:443" },
-{ path: "54.199.222.232:443", proxy: "54.199.222.232:443" },
- { path: "178.128.80.43:443", proxy: "178.128.80.43:443" },
-  { path: "38.180.165.29:443", proxy: "38.180.165.29:443" },
-  { path: "185.103.109.139:443", proxy: "185.103.109.139:443" },
-  { path: "31.28.27.38:443", proxy: "31.28.27.38:443" }
-//  { path: "146.56.169.198:443", proxy: "146.56.169.198:443" },
- // { path: "158.180.94.12:443", proxy: "158.180.94.12:443" },
+   { path: "/vless-sg-do1", proxy: "167.71.194.185:8443" },
+ // { path: "/8.215.59.6:443", proxy: "8.215.59.6:443" },  
+ // { path: "/147.139.245.56:443", proxy: "147.139.245.56:443" },
+ // { path: "/103.67.79.230:443", proxy: "103.67.79.230:443" },  
+  { path: "/203.194.112.119:8443", proxy: "203.194.112.119:8443" },
+  { path: "/111.95.40.14:32414", proxy: "111.95.40.14:32414" },
+  { path: "/103.186.1.209:8443", proxy: "103.186.1.209:8443" },
+  { path: "/35.219.50.99:443", proxy: "35.219.50.99:443" },
+  { path: "/35.219.15.90:443", proxy: "35.219.15.90:443" },
+  { path: "/210.186.12.244:443", proxy: "210.186.12.244:443" },
+  { path: "/166.88.35.141:443", proxy: "166.88.35.141:443" },
+  { path: "/167.71.194.185:8443", proxy: "167.71.194.185:8443" },
+  { path: "/89.34.227.166:8443", proxy: "89.34.227.166:8443" },
+  { path: "/45.77.36.40:443", proxy: "45.77.36.40:443" },
+  { path: "/43.134.34.18:443", proxy: "43.134.34.18:443" },
+  { path: "/103.180.193.56:443", proxy: "103.180.193.56:443" },
+  { path: "/164.52.2.100:443", proxy: "164.52.2.100:443" },
+  { path: "/51.79.254.182:443", proxy: "51.79.254.182:443" },
+  { path: "/104.248.145.216:443", proxy: "104.248.145.216:443" },
+  { path: "/185.217.5.3:443", proxy: "185.217.5.3:443" },
+  { path: "/129.150.50.63:443", proxy: "129.150.50.63:443" },
+  { path: "/185.114.78.230:443", proxy: "185.114.78.230:443" },
+  { path: "/194.36.179.237:443", proxy: "194.36.179.237:443" },
+  { path: "/52.74.101.26:443", proxy: "52.74.101.26:443" },
+  { path: "/143.42.66.91:443", proxy: "143.42.66.91:443" },
+{ path: "/3.112.21.102:443", proxy: "3.112.21.102:443" },
+{ path: "/3.113.64.82:443", proxy: "3.113.64.82:443" },
+{ path: "/5.226.48.84:443", proxy: "5.226.48.84:443" },
+{ path: "/13.230.34.30:443", proxy: "13.230.34.30:443" },
+{ path: "/18.183.158.211:443", proxy: "18.183.158.211:443" },
+{ path: "/35.77.126.144:443", proxy: "35.77.126.144:443" },
+{ path: "/38.180.29.115:443", proxy: "38.180.29.115:443" },
+{ path: "/45.76.198.248:443", proxy: "45.76.198.248:443" },
+{ path: "/45.76.220.61:443", proxy: "45.76.220.61:443" },
+{ path: "/45.77.130.245:443", proxy: "45.77.130.245:443" },
+{ path: "/54.249.135.43:443", proxy: "54.249.135.43:443" },
+{ path: "/128.1.18.29:443", proxy: "128.1.18.29:443" },
+{ path: "/140.227.233.71:443", proxy: "140.227.233.71:443" },
+{ path: "/149.28.21.106:443", proxy: "149.28.21.106:443" },
+{ path: "/154.31.113.72:443", proxy: "154.31.113.72:443" },
+{ path: "/159.100.194.42:443", proxy: "159.100.194.42:443" },
+{ path: "/207.148.105.247:443", proxy: "207.148.105.247:443" },
+{ path: "/219.111.17.202:443", proxy: "219.111.17.202:443" },
+{ path: "/141.98.196.223:443", proxy: "141.98.196.223:443" },
+{ path: "/168.138.46.67:443", proxy: "168.138.46.67:443" },
+{ path: "/141.147.163.68:443", proxy: "141.147.163.68:443" },
+{ path: "/52.197.230.94:443", proxy: "52.197.230.94:443" },
+{ path: "/168.138.212.87:443", proxy: "168.138.212.87:443" },
+{ path: "/54.199.222.232:443", proxy: "54.199.222.232:443" },
+ { path: "/178.128.80.43:443", proxy: "178.128.80.43:443" },
+  { path: "/38.180.165.29:443", proxy: "38.180.165.29:443" },
+  { path: "/185.103.109.139:443", proxy: "185.103.109.139:443" },
+  { path: "/31.28.27.38:443", proxy: "31.28.27.38:443" }
+//  { path: "/146.56.169.198:443", proxy: "146.56.169.198:443" },
+ // { path: "/158.180.94.12:443", proxy: "158.180.94.12:443" },
 // batas
-//  { path: "198.13.56.210:443", proxy: "198.13.56.210:443" },
- // { path: "35.73.102.80:443", proxy: "35.73.102.80:443" }
-//  { path: "185.103.109.139", proxy: "185.103.109.139" },
-//  { path: "178.128.80.43", proxy: "178.128.80.43" },
-//  { path: "35.219.15.90", proxy: "35.219.15.90" },
- // { path: "8.223.39.101", proxy: "8.223.39.101" },
-//  { path: "175.142.86.195", proxy: "175.142.86.195" },
-//  { path: "166.88.35.141", proxy: "166.88.35.141" },
-//  { path: "31.28.27.38", proxy: "31.28.27.38" },
-//  { path: "203.194.112.119", proxy: "203.194.112.119" },
- // { path: "104.17.159.243", proxy: "104.17.159.243" }
+//  { path: "/198.13.56.210:443", proxy: "198.13.56.210:443" },
+ // { path: "/35.73.102.80:443", proxy: "35.73.102.80:443" }
+//  { path: "/185.103.109.139", proxy: "185.103.109.139" },
+//  { path: "/178.128.80.43", proxy: "178.128.80.43" },
+//  { path: "/35.219.15.90", proxy: "35.219.15.90" },
+ // { path: "/8.223.39.101", proxy: "8.223.39.101" },
+//  { path: "/175.142.86.195", proxy: "175.142.86.195" },
+//  { path: "/166.88.35.141", proxy: "166.88.35.141" },
+//  { path: "/31.28.27.38", proxy: "31.28.27.38" },
+//  { path: "/203.194.112.119", proxy: "203.194.112.119" },
+ // { path: "/104.17.159.243", proxy: "104.17.159.243" }
   //tambahin sendiri
 ];
 var proxyIP;
@@ -170,7 +170,7 @@ async function getAllConfigVless(hostName) {
   network: ws
   servername: ${hostName}
   ws-opts:
-    path: /${path}
+    path: ${path}
     headers:
       Host: ${hostName}`;
       
@@ -186,7 +186,7 @@ async function getAllConfigVless(hostName) {
   network: ws
   servername: ava.game.naver.com.${hostName}
   ws-opts:
-    path: /${path}
+    path: ${path}
     headers:
       Host: ava.game.naver.com.${hostName}`;
       
@@ -202,7 +202,7 @@ async function getAllConfigVless(hostName) {
   network: ws
   servername: graph.instagram.com.${hostName}
   ws-opts:
-    path: /${path}
+    path: ${path}
     headers:
       Host: graph.instagram.com.${hostName}`;
       
@@ -218,7 +218,7 @@ async function getAllConfigVless(hostName) {
   network: ws
   servername: quiz.int.vidio.com.${hostName}
   ws-opts:
-    path: /${path}
+    path: ${path}
     headers:
       Host: quiz.int.vidio.com.${hostName}`;
       
@@ -234,7 +234,7 @@ async function getAllConfigVless(hostName) {
   network: ws
   servername: live.iflix.com.${hostName}
   ws-opts:
-    path: /${path}
+    path: ${path}
     headers:
       Host: live.iflix.com.${hostName}`;
       
@@ -250,7 +250,7 @@ async function getAllConfigVless(hostName) {
   network: ws
   servername: support.zoom.us.${hostName}
   ws-opts:
-    path: /${path}
+    path: ${path}
     headers:
       Host: support.zoom.us.${hostName}`;
       
@@ -266,7 +266,7 @@ async function getAllConfigVless(hostName) {
   network: ws
   servername: blog.webex.com.${hostName}
   ws-opts:
-    path: /${path}
+    path: ${path}
     headers:
       Host: blog.webex.com.${hostName}`;
       
@@ -282,7 +282,7 @@ async function getAllConfigVless(hostName) {
   network: ws
   servername: investors.spotify.com.${hostName}
   ws-opts:
-    path: /${path}
+    path: ${path}
     headers:
       Host: investors.spotify.com.${hostName}`;
       
@@ -298,7 +298,7 @@ async function getAllConfigVless(hostName) {
   network: ws
   servername: cache.netflix.com.${hostName}
   ws-opts:
-    path: /${path}
+    path: ${path}
     headers:
       Host: cache.netflix.com.${hostName}`;
       
@@ -314,7 +314,7 @@ async function getAllConfigVless(hostName) {
   network: ws
   servername: zaintest.vuclip.com.${hostName}
   ws-opts:
-    path: /${path}
+    path: ${path}
     headers:
       Host: zaintest.vuclip.com.${hostName}`;
       
@@ -330,7 +330,7 @@ async function getAllConfigVless(hostName) {
   network: ws
   servername: io.ruangguru.com.${hostName}
   ws-opts:
-    path: /${path}
+    path: ${path}
     headers:
       Host: io.ruangguru.com.${hostName}`;
       const clashConfNtls = `- name: ${data.isp} (${data.countryCode})
@@ -344,7 +344,7 @@ async function getAllConfigVless(hostName) {
   skip-cert-verify: true
   network: ws
   ws-opts:
-    path: /${path}
+    path: ${path}
     headers:
       Host: ${hostName}`;
 const clashConfTls11 = `- name: ${data.isp} (${data.countryCode})
@@ -356,7 +356,7 @@ const clashConfTls11 = `- name: ${data.isp} (${data.countryCode})
     sni: ${hostName}
     network: ws
     ws-opts:
-      path: /${path}
+      path: ${path}
       headers:
         Host: ${hostName}
     udp: true `;
@@ -369,7 +369,7 @@ const clashConfTls11 = `- name: ${data.isp} (${data.countryCode})
     sni: ava.game.naver.com.${hostName}
     network: ws
     ws-opts:
-      path: /${path}
+      path: ${path}
       headers:
         Host: ava.game.naver.com.${hostName}
     udp: true `;
@@ -382,7 +382,7 @@ const clashConfTls11 = `- name: ${data.isp} (${data.countryCode})
     sni: graph.instagram.com.${hostName}
     network: ws
     ws-opts:
-      path: /${path}
+      path: ${path}
       headers:
         Host: graph.instagram.com.${hostName}
     udp: true `;
@@ -395,7 +395,7 @@ const clashConfTls11 = `- name: ${data.isp} (${data.countryCode})
     sni: quiz.int.vidio.com.${hostName}
     network: ws
     ws-opts:
-      path: /${path}
+      path: ${path}
       headers:
         Host: quiz.int.vidio.com.${hostName}
     udp: true `;
@@ -408,7 +408,7 @@ const clashConfTls11 = `- name: ${data.isp} (${data.countryCode})
     sni: live.iflix.com.${hostName}
     network: ws
     ws-opts:
-      path: /${path}
+      path: ${path}
       headers:
         Host: live.iflix.com.${hostName}
     udp: true `;
@@ -421,7 +421,7 @@ const clashConfTls11 = `- name: ${data.isp} (${data.countryCode})
     sni: support.zoom.us.${hostName}
     network: ws
     ws-opts:
-      path: /${path}
+      path: ${path}
       headers:
         Host: support.zoom.us.${hostName}
     udp: true `;
@@ -434,7 +434,7 @@ const clashConfTls11 = `- name: ${data.isp} (${data.countryCode})
     sni: blog.webex.com.${hostName}
     network: ws
     ws-opts:
-      path: /${path}
+      path: ${path}
       headers:
         Host: blog.webex.com.${hostName}
     udp: true `;
@@ -447,7 +447,7 @@ const clashConfTls11 = `- name: ${data.isp} (${data.countryCode})
     sni: investors.spotify.com.${hostName}
     network: ws
     ws-opts:
-      path: /${path}
+      path: ${path}
       headers:
         Host: investors.spotify.com.${hostName}
     udp: true `;
@@ -460,7 +460,7 @@ const clashConfTls11 = `- name: ${data.isp} (${data.countryCode})
     sni: cache.netflix.com.${hostName}
     network: ws
     ws-opts:
-      path: /${path}
+      path: ${path}
       headers:
         Host: cache.netflix.com.${hostName}
     udp: true `;
@@ -473,7 +473,7 @@ const clashConfTls11 = `- name: ${data.isp} (${data.countryCode})
     sni: zaintest.vuclip.com.${hostName}
     network: ws
     ws-opts:
-      path: /${path}
+      path: ${path}
       headers:
         Host: zaintest.vuclip.com.${hostName}
     udp: true `;
@@ -486,37 +486,37 @@ const clashConfTls11 = `- name: ${data.isp} (${data.countryCode})
     sni: io.ruangguru.com.${hostName}
     network: ws
     ws-opts:
-      path: /${path}
+      path: ${path}
       headers:
         Host: io.ruangguru.com.${hostName}
     udp: true `;
       clashConfigs += `<div style="display: none;">
-   <textarea id="clashTls%2F${path}">${clashConfTls}</textarea>
-   <textarea id="clashTls1%2F${path}">${clashConfTls1}</textarea>
-   <textarea id="clashTls2%2F${path}">${clashConfTls2}</textarea>
-   <textarea id="clashTls3%2F${path}">${clashConfTls3}</textarea>
-   <textarea id="clashTls4%2F${path}">${clashConfTls4}</textarea>
-   <textarea id="clashTls5%2F${path}">${clashConfTls5}</textarea>
-   <textarea id="clashTls6%2F${path}">${clashConfTls6}</textarea>
-   <textarea id="clashTls7%2F${path}">${clashConfTls7}</textarea>
-   <textarea id="clashTls8%2F${path}">${clashConfTls8}</textarea>
-   <textarea id="clashTls9%2F${path}">${clashConfTls9}</textarea>
-   <textarea id="clashTls10%2F${path}">${clashConfTls10}</textarea>
-   <textarea id="clashTls11%2F${path}">${clashConfTls11}</textarea>
-   <textarea id="clashTls12%2F${path}">${clashConfTls12}</textarea>
-   <textarea id="clashTls13%2F${path}">${clashConfTls13}</textarea>
-   <textarea id="clashTls14%2F${path}">${clashConfTls14}</textarea>
-   <textarea id="clashTls15%2F${path}">${clashConfTls15}</textarea>
-   <textarea id="clashTls16%2F${path}">${clashConfTls16}</textarea>
-   <textarea id="clashTls17%2F${path}">${clashConfTls17}</textarea>
-   <textarea id="clashTls18%2F${path}">${clashConfTls18}</textarea>
-   <textarea id="clashTls19%2F${path}">${clashConfTls19}</textarea>
-   <textarea id="clashTls20%2F${path}">${clashConfTls20}</textarea>
-   <textarea id="clashTls21%2F${path}">${clashConfTls21}</textarea>
+   <textarea id="clashTls${path}">${clashConfTls}</textarea>
+   <textarea id="clashTls1${path}">${clashConfTls1}</textarea>
+   <textarea id="clashTls2${path}">${clashConfTls2}</textarea>
+   <textarea id="clashTls3${path}">${clashConfTls3}</textarea>
+   <textarea id="clashTls4${path}">${clashConfTls4}</textarea>
+   <textarea id="clashTls5${path}">${clashConfTls5}</textarea>
+   <textarea id="clashTls6${path}">${clashConfTls6}</textarea>
+   <textarea id="clashTls7${path}">${clashConfTls7}</textarea>
+   <textarea id="clashTls8${path}">${clashConfTls8}</textarea>
+   <textarea id="clashTls9${path}">${clashConfTls9}</textarea>
+   <textarea id="clashTls10${path}">${clashConfTls10}</textarea>
+   <textarea id="clashTls11${path}">${clashConfTls11}</textarea>
+   <textarea id="clashTls12${path}">${clashConfTls12}</textarea>
+   <textarea id="clashTls13${path}">${clashConfTls13}</textarea>
+   <textarea id="clashTls14${path}">${clashConfTls14}</textarea>
+   <textarea id="clashTls15${path}">${clashConfTls15}</textarea>
+   <textarea id="clashTls16${path}">${clashConfTls16}</textarea>
+   <textarea id="clashTls17${path}">${clashConfTls17}</textarea>
+   <textarea id="clashTls18${path}">${clashConfTls18}</textarea>
+   <textarea id="clashTls19${path}">${clashConfTls19}</textarea>
+   <textarea id="clashTls20${path}">${clashConfTls20}</textarea>
+   <textarea id="clashTls21${path}">${clashConfTls21}</textarea>
 
    </div>
 <div style="display: none;">
-   <textarea id="clashNtls%2F${path}">${clashConfNtls}</textarea>
+   <textarea id="clashNtls${path}">${clashConfNtls}</textarea>
  </div>
  <div id="clash${path}" class="tabcontent1">
    
@@ -555,28 +555,28 @@ const clashConfTls11 = `- name: ${data.isp} (${data.countryCode})
             <div class="config-block">
                 <h3>TROJAN CLASH TLS:</h3>
                 <p class="config">${clashConfTls11}</p>
-                <button class="button2" onclick='copyClash("clashTls11%2F${path}")'><i class="fa fa-clipboard"></i>Copy</button>
+                <button class="button2" onclick='copyClash("clashTls11${path}")'><i class="fa fa-clipboard"></i>Copy</button>
           </div>
           <p class="config">» ava.game.naver.com
-                <button class="button2" onclick='copyClash("clashTls12%2F${path}")'><i class="fa fa-clipboard"></i>Copy</button></p>
+                <button class="button2" onclick='copyClash("clashTls12${path}")'><i class="fa fa-clipboard"></i>Copy</button></p>
           <p class="config">» graph.instagram.com
-                <button class="button2" onclick='copyClash("clashTls13%2F${path}")'><i class="fa fa-clipboard"></i>Copy</button></p>
+                <button class="button2" onclick='copyClash("clashTls13${path}")'><i class="fa fa-clipboard"></i>Copy</button></p>
           <p class="config">» quiz.int.vidio.com
-                <button class="button2" onclick='copyClash("clashTls14%2F${path}")'><i class="fa fa-clipboard"></i>Copy</button></p>
+                <button class="button2" onclick='copyClash("clashTls14${path}")'><i class="fa fa-clipboard"></i>Copy</button></p>
           <p class="config">» live.iflix.com
-                <button class="button2" onclick='copyClash("clashTls15%2F${path}")'><i class="fa fa-clipboard"></i>Copy</button></p>
+                <button class="button2" onclick='copyClash("clashTls15${path}")'><i class="fa fa-clipboard"></i>Copy</button></p>
           <p class="config">» support.zoom.us
-                <button class="button2" onclick='copyClash("clashTls16%2F${path}")'><i class="fa fa-clipboard"></i>Copy</button></p>
+                <button class="button2" onclick='copyClash("clashTls16${path}")'><i class="fa fa-clipboard"></i>Copy</button></p>
           <p class="config">» blog.webex.com
-                <button class="button2" onclick='copyClash("clashTls17%2F${path}")'><i class="fa fa-clipboard"></i>Copy</button></p>
+                <button class="button2" onclick='copyClash("clashTls17${path}")'><i class="fa fa-clipboard"></i>Copy</button></p>
           <p class="config">» investors.spotify.com
-                <button class="button2" onclick='copyClash("clashTls18%2F${path}")'><i class="fa fa-clipboard"></i>Copy</button></p>
+                <button class="button2" onclick='copyClash("clashTls18${path}")'><i class="fa fa-clipboard"></i>Copy</button></p>
           <p class="config">» cache.netflix.com 
-                <button class="button2" onclick='copyClash("clashTls19%2F${path}")'><i class="fa fa-clipboard"></i>Copy</button></p>
+                <button class="button2" onclick='copyClash("clashTls19${path}")'><i class="fa fa-clipboard"></i>Copy</button></p>
           <p class="config">» zaintest.vuclip.com
-                <button class="button2" onclick='copyClash("clashTls20%2F${path}")'><i class="fa fa-clipboard"></i>Copy</button></p>
+                <button class="button2" onclick='copyClash("clashTls20${path}")'><i class="fa fa-clipboard"></i>Copy</button></p>
           <p class="config">» io.ruangguru.com 
-                <button class="button2" onclick='copyClash("clashTls21%2F${path}")'><i class="fa fa-clipboard"></i>Copy</button></p>
+                <button class="button2" onclick='copyClash("clashTls21${path}")'><i class="fa fa-clipboard"></i>Copy</button></p>
           
                 
         </div>
@@ -595,8 +595,8 @@ const clashConfTls11 = `- name: ${data.isp} (${data.countryCode})
 » Port NTLS   : 80
 » Security    : auto
 » Network     : (WS)
-» Path Vless  : /${path}
-» Path Trojan : /${path}</p>
+» Path Vless  : ${path}
+» Path Trojan : ${path}</p>
 <hr class="config-divider" /></b>
 
 </pre>  </div><hr class="config-divider" /><div class="config-section"> 

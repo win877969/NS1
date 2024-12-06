@@ -124,8 +124,8 @@ async function getAllConfigVless(env, hostName, listProxy) {
 » Port NTLS   : 80
 » Security    : auto
 » Network     : (WS)
-» Path Vless  : ${proxyIP}:${proxyPort}
-» Path Trojan : ${proxyIP}:${proxyPort}</p>
+» Path Vless  : /vl=${proxyIP}:${proxyPort}
+» Path Trojan : /tr=${proxyIP}:${proxyPort}</p>
 <hr class="config-divider" /></b>
 
 </pre>  </div><hr class="config-divider" /><div class="config-section"> 

@@ -109,7 +109,7 @@ async function getAllConfigVless(env, hostName, listProxy) {
 
    v2raytable += ` <tr> 
        
-<td class="tablinks" onclick="openCity(event, 'v2ray${proxyIP}:${proxyPort}')"><p style="font-size: 24px; "><a href="#v2ray${proxyIP}:${proxyPort}">${data.isp} | (${data.countryCode})</a></p><hr class="config-divider" /></td>
+<td class="tablinks" onclick="openCity(event, 'v2ray${proxyIP}:${proxyPort}')"><p style="font-size: 24px; "><a href="#v2ray${proxyIP}:${proxyPort}">${isp} | (${country})</a></p><hr class="config-divider" /></td>
 </tr>
       
         `;
@@ -117,8 +117,8 @@ async function getAllConfigVless(env, hostName, listProxy) {
                                   <div class="config-section">  <pre><b>               
 <hr class="config-divider" /> <p class="config">
 » Domain      : ${hostName}
-» ISP         : ${data.isp}
-» Country     : (${data.countryCode})
+» ISP         : ${isp}
+» Country     : (${country})
 » UUID        : ${generateUUIDv4()}
 » Port TLS    : 443
 » Port NTLS   : 80
@@ -129,7 +129,7 @@ async function getAllConfigVless(env, hostName, listProxy) {
 <hr class="config-divider" /></b>
 
 </pre>  </div><hr class="config-divider" /><div class="config-section"> 
-       <p style="font-size: 28px; "><strong>ISP  :  ${data.isp} (${data.countryCode}) </strong> </p>
+       <p style="font-size: 28px; "><strong>ISP  :  ${isp} (${country}) </strong> </p>
     <hr />
     
         <div class="config-block">

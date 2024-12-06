@@ -7,7 +7,7 @@ var worker_default = {
   async fetch(request, url, ctx) {
     try {
       // Parse the list of proxies from the environment variable
-      const listProxyURL = (url.'https://raw.githubusercontent.com/bexnxx001/proxyip/main/ip.txt' || "")
+      const listProxyURL = 'https://raw.githubusercontent.com/bexnxx001/proxyip/main/ip.txt'
         .split("\n")
         .filter(Boolean)
         .map(entry => {

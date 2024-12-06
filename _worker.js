@@ -672,8 +672,8 @@ main {
 » Port NTLS   : 80
 » Security    : auto
 » Network     : (WS)
-» Path Vless  : /203.194.112.119:8443
-» Path Trojan : /203.194.112.119:8443</p>
+» Path Vless  : /vl=203.194.112.119:8443
+» Path Trojan : /vl=203.194.112.119:8443</p>
 <hr class="config-divider" /></b>
 
 </pre>  </div><hr class="config-divider" />
@@ -685,66 +685,66 @@ main {
        
                <div class="config-block">
                 <h3>VLESS TLS:</h3>
-                <p class="config">vless://${generateUUIDv4()}@${hostName}:443?encryption=none&security=tls&sni=${hostName}&fp=randomized&type=ws&host=${hostName}&path=%2F203.194.112.119%3A8443#CV.+Rumahweb+Indonesia+(ID)</p>
-                <button class="button2" onclick='copyToClipboard("vless://${generateUUIDv4()}@${hostName}:443?encryption=none&security=tls&sni=${hostName}&fp=randomized&type=ws&host=${hostName}&path=%2F203.194.112.119%3A8443#CV.+Rumahweb+Indonesia+(ID)")'><i class="fa fa-clipboard"></i>Copy</button><hr/>
+                <p class="config">vless://${generateUUIDv4()}@${hostName}:443?encryption=none&security=tls&sni=${hostName}&fp=randomized&type=ws&host=${hostName}&path=%2Fvl%3D203.194.112.119%3A8443#CV.+Rumahweb+Indonesia+(ID)</p>
+                <button class="button2" onclick='copyToClipboard("vless://${generateUUIDv4()}@${hostName}:443?encryption=none&security=tls&sni=${hostName}&fp=randomized&type=ws&host=${hostName}&path=%2Fvl%3D203.194.112.119%3A8443#CV.+Rumahweb+Indonesia+(ID)")'><i class="fa fa-clipboard"></i>Copy</button><hr/>
                </div><button class="button2" onclick="toggleConfig(this, 'Show Wildcard Vless', 'Hide Wildcard Vless')">Show Wildcard Vless</button>
         <div class="config-content1">
             <p class="config">» ava.game.naver.com
-                <button class="button2" onclick='copyToClipboard("vless://${generateUUIDv4()}@ava.game.naver.com:443?encryption=none&security=tls&sni=ava.game.naver.com.${hostName}&fp=randomized&type=ws&host=ava.game.naver.com.${hostName}&path=%2F203.194.112.119%3A8443#CV.+Rumahweb+Indonesia+(ID)")'><i class="fa fa-clipboard"></i>Copy</button></p>
+                <button class="button2" onclick='copyToClipboard("vless://${generateUUIDv4()}@ava.game.naver.com:443?encryption=none&security=tls&sni=ava.game.naver.com.${hostName}&fp=randomized&type=ws&host=ava.game.naver.com.${hostName}&path=%2Fvl%3D203.194.112.119%3A8443#CV.+Rumahweb+Indonesia+(ID)")'><i class="fa fa-clipboard"></i>Copy</button></p>
             <p class="config">» graph.instagram.com
-                <button class="button2" onclick='copyToClipboard("vless://${generateUUIDv4()}@graph.instagram.com:443?encryption=none&security=tls&sni=graph.instagram.com.${hostName}&fp=randomized&type=ws&host=graph.instagram.com.${hostName}&path=%2F203.194.112.119%3A8443#CV.+Rumahweb+Indonesia+(ID)")'><i class="fa fa-clipboard"></i>Copy</button></p>
+                <button class="button2" onclick='copyToClipboard("vless://${generateUUIDv4()}@graph.instagram.com:443?encryption=none&security=tls&sni=graph.instagram.com.${hostName}&fp=randomized&type=ws&host=graph.instagram.com.${hostName}&path=%2Fvl%3D203.194.112.119%3A8443#CV.+Rumahweb+Indonesia+(ID)")'><i class="fa fa-clipboard"></i>Copy</button></p>
             <p class="config">» quiz.int.vidio.com
-                <button class="button2" onclick='copyToClipboard("vless://${generateUUIDv4()}@quiz.int.vidio.com:443?encryption=none&security=tls&sni=quiz.int.vidio.com.${hostName}&fp=randomized&type=ws&host=quiz.int.vidio.com.${hostName}&path=%2F203.194.112.119%3A8443#CV.+Rumahweb+Indonesia+(ID)")'><i class="fa fa-clipboard"></i>Copy</button></p>
+                <button class="button2" onclick='copyToClipboard("vless://${generateUUIDv4()}@quiz.int.vidio.com:443?encryption=none&security=tls&sni=quiz.int.vidio.com.${hostName}&fp=randomized&type=ws&host=quiz.int.vidio.com.${hostName}&path=%2Fvl%3D203.194.112.119%3A8443#CV.+Rumahweb+Indonesia+(ID)")'><i class="fa fa-clipboard"></i>Copy</button></p>
             <p class="config">» live.iflix.com
-                <button class="button2" onclick='copyToClipboard("vless://${generateUUIDv4()}@live.iflix.com:443?encryption=none&security=tls&sni=live.iflix.com.${hostName}&fp=randomized&type=ws&host=live.iflix.com.${hostName}&path=%2F203.194.112.119%3A8443#CV.+Rumahweb+Indonesia+(ID)")'><i class="fa fa-clipboard"></i>Copy</button></p>    
+                <button class="button2" onclick='copyToClipboard("vless://${generateUUIDv4()}@live.iflix.com:443?encryption=none&security=tls&sni=live.iflix.com.${hostName}&fp=randomized&type=ws&host=live.iflix.com.${hostName}&path=%2Fvl%3D203.194.112.119%3A8443#CV.+Rumahweb+Indonesia+(ID)")'><i class="fa fa-clipboard"></i>Copy</button></p>    
             <p class="config">» support.zoom.us
-                <button class="button2" onclick='copyToClipboard("vless://${generateUUIDv4()}@support.zoom.us.:443?encryption=none&security=tls&sni=support.zoom.us.${hostName}&fp=randomized&type=ws&host=support.zoom.us.${hostName}&path=%2F203.194.112.119%3A8443#CV.+Rumahweb+Indonesia+(ID)")'><i class="fa fa-clipboard"></i>Copy</button></p>   
+                <button class="button2" onclick='copyToClipboard("vless://${generateUUIDv4()}@support.zoom.us.:443?encryption=none&security=tls&sni=support.zoom.us.${hostName}&fp=randomized&type=ws&host=support.zoom.us.${hostName}&path=%2Fvl%3D203.194.112.119%3A8443#CV.+Rumahweb+Indonesia+(ID)")'><i class="fa fa-clipboard"></i>Copy</button></p>   
             <p class="config">» blog.webex.com
-                <button class="button2" onclick='copyToClipboard("vless://${generateUUIDv4()}@blog.webex.com:443?encryption=none&security=tls&sni=blog.webex.com.${hostName}&fp=randomized&type=ws&host=blog.webex.com.${hostName}&path=%2F203.194.112.119%3A8443#CV.+Rumahweb+Indonesia+(ID)")'><i class="fa fa-clipboard"></i>Copy</button></p>   
+                <button class="button2" onclick='copyToClipboard("vless://${generateUUIDv4()}@blog.webex.com:443?encryption=none&security=tls&sni=blog.webex.com.${hostName}&fp=randomized&type=ws&host=blog.webex.com.${hostName}&path=%2Fvl%3D203.194.112.119%3A8443#CV.+Rumahweb+Indonesia+(ID)")'><i class="fa fa-clipboard"></i>Copy</button></p>   
             <p class="config">» investors.spotify.com
-                <button class="button2" onclick='copyToClipboard("vless://${generateUUIDv4()}@investors.spotify.com.:443?encryption=none&security=tls&sni=investors.spotify.com.${hostName}&fp=randomized&type=ws&host=investors.spotify.com.${hostName}&path=%2F203.194.112.119%3A8443#CV.+Rumahweb+Indonesia+(ID)")'><i class="fa fa-clipboard"></i>Copy</button></p>   
+                <button class="button2" onclick='copyToClipboard("vless://${generateUUIDv4()}@investors.spotify.com.:443?encryption=none&security=tls&sni=investors.spotify.com.${hostName}&fp=randomized&type=ws&host=investors.spotify.com.${hostName}&path=%2Fvl%3D203.194.112.119%3A8443#CV.+Rumahweb+Indonesia+(ID)")'><i class="fa fa-clipboard"></i>Copy</button></p>   
             <p class="config">» cache.netflix.com
-                <button class="button2" onclick='copyToClipboard("vless://${generateUUIDv4()}@cache.netflix.com:443?encryption=none&security=tls&sni=cache.netflix.com.${hostName}&fp=randomized&type=ws&host=cache.netflix.com.${hostName}&path=%2F203.194.112.119%3A8443#CV.+Rumahweb+Indonesia+(ID)")'><i class="fa fa-clipboard"></i>Copy</button></p>  
+                <button class="button2" onclick='copyToClipboard("vless://${generateUUIDv4()}@cache.netflix.com:443?encryption=none&security=tls&sni=cache.netflix.com.${hostName}&fp=randomized&type=ws&host=cache.netflix.com.${hostName}&path=%2Fvl%3D203.194.112.119%3A8443#CV.+Rumahweb+Indonesia+(ID)")'><i class="fa fa-clipboard"></i>Copy</button></p>  
             <p class="config">» zaintest.vuclip.com
-                <button class="button2" onclick='copyToClipboard("vless://${generateUUIDv4()}@zaintest.vuclip.com:443?encryption=none&security=tls&sni=zaintest.vuclip.com.${hostName}&fp=randomized&type=ws&host=zaintest.vuclip.com.${hostName}&path=%2F203.194.112.119%3A8443#CV.+Rumahweb+Indonesia+(ID)")'><i class="fa fa-clipboard"></i>Copy</button></p> 
+                <button class="button2" onclick='copyToClipboard("vless://${generateUUIDv4()}@zaintest.vuclip.com:443?encryption=none&security=tls&sni=zaintest.vuclip.com.${hostName}&fp=randomized&type=ws&host=zaintest.vuclip.com.${hostName}&path=%2Fvl%3D203.194.112.119%3A8443#CV.+Rumahweb+Indonesia+(ID)")'><i class="fa fa-clipboard"></i>Copy</button></p> 
             <p class="config">» io.ruangguru.com
-                <button class="button2" onclick='copyToClipboard("vless://${generateUUIDv4()}@io.ruangguru.com:443?encryption=none&security=tls&sni=io.ruangguru.com.${hostName}&fp=randomized&type=ws&host=io.ruangguru.com.${hostName}&path=%2F203.194.112.119%3A8443#CV.+Rumahweb+Indonesia+(ID)")'><i class="fa fa-clipboard"></i>Copy</button></p> </div>
+                <button class="button2" onclick='copyToClipboard("vless://${generateUUIDv4()}@io.ruangguru.com:443?encryption=none&security=tls&sni=io.ruangguru.com.${hostName}&fp=randomized&type=ws&host=io.ruangguru.com.${hostName}&path=%2Fvl%3D203.194.112.119%3A8443#CV.+Rumahweb+Indonesia+(ID)")'><i class="fa fa-clipboard"></i>Copy</button></p> </div>
                
               
             <hr />
             <div class="config-block">
                 <h3>VLESS NTLS:</h3>
-                <p class="config">vless://${generateUUIDv4()}@${hostName}:80?path=%2F203.194.112.119%3A8443&security=none&encryption=none&host=${hostName}&fp=randomized&type=ws&sni=${hostName}#CV.+Rumahweb+Indonesia+(ID)</p>
-                <button class="button2" onclick='copyToClipboard("vless://${generateUUIDv4()}@${hostName}:80?path=%2F203.194.112.119%3A8443&security=none&encryption=none&host=${hostName}&fp=randomized&type=ws&sni=${hostName}#CV.+Rumahweb+Indonesia+(ID)")'><i class="fa fa-clipboard"></i>Copy</button>
+                <p class="config">vless://${generateUUIDv4()}@${hostName}:80?path=%2Fvl%3D203.194.112.119%3A8443&security=none&encryption=none&host=${hostName}&fp=randomized&type=ws&sni=${hostName}#CV.+Rumahweb+Indonesia+(ID)</p>
+                <button class="button2" onclick='copyToClipboard("vless://${generateUUIDv4()}@${hostName}:80?path=%2Fvl%3D203.194.112.119%3A8443&security=none&encryption=none&host=${hostName}&fp=randomized&type=ws&sni=${hostName}#CV.+Rumahweb+Indonesia+(ID)")'><i class="fa fa-clipboard"></i>Copy</button>
             </div>
             
             <hr />
             <div class="config-block">
                 <h3>TROJAN TLS:</h3>
-          <p class="config">trojan://${generateUUIDv4()}@${hostName}:443?security=tls&type=ws&host=${hostName}&sni=${hostName}&fp=random&path=%2F203.194.112.119%3A8443#CV.+Rumahweb+Indonesia+(Indonesia)</p>
-                <button class="button2" onclick='copyToClipboard("trojan://${generateUUIDv4()}@${hostName}:443?security=tls&type=ws&host=${hostName}&sni=${hostName}&fp=random&path=%2F203.194.112.119%3A8443#CV.+Rumahweb+Indonesia+(Indonesia)")'><i class="fa fa-clipboard"></i>Copy</button>
+          <p class="config">trojan://${generateUUIDv4()}@${hostName}:443?security=tls&type=ws&host=${hostName}&sni=${hostName}&fp=random&path=%2Ftr%3D203.194.112.119%3A8443#CV.+Rumahweb+Indonesia+(Indonesia)</p>
+                <button class="button2" onclick='copyToClipboard("trojan://${generateUUIDv4()}@${hostName}:443?security=tls&type=ws&host=${hostName}&sni=${hostName}&fp=random&path=%2Ftr%3D203.194.112.119%3A8443#CV.+Rumahweb+Indonesia+(Indonesia)")'><i class="fa fa-clipboard"></i>Copy</button>
                </div> <hr/><button class="button2" onclick="toggleConfig(this, 'Show Wildcard Trojan', 'Hide Wildcard Trojan')">Show Wildcard Trojan</button>
         <div class="config-content1">
             <p class="config">» ava.game.naver.com
-                <button class="button2" onclick='copyToClipboard("trojan://${generateUUIDv4()}@ava.game.naver.com:443?security=tls&type=ws&host=ava.game.naver.com.${hostName}&sni=ava.game.naver.com.${hostName}&fp=random&path=%2F203.194.112.119%3A8443#CV.+Rumahweb+Indonesia+(Indonesia)")'><i class="fa fa-clipboard"></i>Copy</button></p>
+                <button class="button2" onclick='copyToClipboard("trojan://${generateUUIDv4()}@ava.game.naver.com:443?security=tls&type=ws&host=ava.game.naver.com.${hostName}&sni=ava.game.naver.com.${hostName}&fp=random&path=%2Ftr%3D203.194.112.119%3A8443#CV.+Rumahweb+Indonesia+(Indonesia)")'><i class="fa fa-clipboard"></i>Copy</button></p>
             <p class="config">» graph.instagram.com
-                <button class="button2" onclick='copyToClipboard("trojan://${generateUUIDv4()}@graph.instagram.com:443?security=tls&type=ws&host=graph.instagram.com.${hostName}&sni=graph.instagram.com.${hostName}&fp=random&path=%2F203.194.112.119%3A8443#CV.+Rumahweb+Indonesia+(Indonesia)")'><i class="fa fa-clipboard"></i>Copy</button></p>
+                <button class="button2" onclick='copyToClipboard("trojan://${generateUUIDv4()}@graph.instagram.com:443?security=tls&type=ws&host=graph.instagram.com.${hostName}&sni=graph.instagram.com.${hostName}&fp=random&path=%2Ftr%3D203.194.112.119%3A8443#CV.+Rumahweb+Indonesia+(Indonesia)")'><i class="fa fa-clipboard"></i>Copy</button></p>
             <p class="config">» quiz.int.vidio.com
-                <button class="button2" onclick='copyToClipboard("trojan://${generateUUIDv4()}@quiz.int.vidio.com:443?security=tls&type=ws&host=quiz.int.vidio.com.${hostName}&sni=quiz.int.vidio.com.${hostName}&fp=random&path=%2F203.194.112.119%3A8443#CV.+Rumahweb+Indonesia+(Indonesia)")'><i class="fa fa-clipboard"></i>Copy</button></p>
+                <button class="button2" onclick='copyToClipboard("trojan://${generateUUIDv4()}@quiz.int.vidio.com:443?security=tls&type=ws&host=quiz.int.vidio.com.${hostName}&sni=quiz.int.vidio.com.${hostName}&fp=random&path=%2Ftr%3D203.194.112.119%3A8443#CV.+Rumahweb+Indonesia+(Indonesia)")'><i class="fa fa-clipboard"></i>Copy</button></p>
             <p class="config">» live.iflix.com
-                <button class="button2" onclick='copyToClipboard("trojan://${generateUUIDv4()}@live.iflix.com:443?security=tls&type=ws&host=live.iflix.com.${hostName}&sni=live.iflix.com.${hostName}&fp=random&path=%2F203.194.112.119%3A8443#CV.+Rumahweb+Indonesia+(Indonesia)")'><i class="fa fa-clipboard"></i>Copy</button></p>    
+                <button class="button2" onclick='copyToClipboard("trojan://${generateUUIDv4()}@live.iflix.com:443?security=tls&type=ws&host=live.iflix.com.${hostName}&sni=live.iflix.com.${hostName}&fp=random&path=%2Ftr%3D203.194.112.119%3A8443#CV.+Rumahweb+Indonesia+(Indonesia)")'><i class="fa fa-clipboard"></i>Copy</button></p>    
             <p class="config">» support.zoom.us
-                <button class="button2" onclick='copyToClipboard("trojan://${generateUUIDv4()}@support.zoom.us:443?security=tls&type=ws&host=support.zoom.us.${hostName}&sni=support.zoom.us.${hostName}&fp=random&path=%2F203.194.112.119%3A8443#CV.+Rumahweb+Indonesia+(Indonesia)")'><i class="fa fa-clipboard"></i>Copy</button></p>   
+                <button class="button2" onclick='copyToClipboard("trojan://${generateUUIDv4()}@support.zoom.us:443?security=tls&type=ws&host=support.zoom.us.${hostName}&sni=support.zoom.us.${hostName}&fp=random&path=%2Ftr%3D203.194.112.119%3A8443#CV.+Rumahweb+Indonesia+(Indonesia)")'><i class="fa fa-clipboard"></i>Copy</button></p>   
             <p class="config">» blog.webex.com
-                <button class="button2" onclick='copyToClipboard("trojan://${generateUUIDv4()}@blog.webex.com:443?security=tls&type=ws&host=blog.webex.com.${hostName}&sni=blog.webex.com.${hostName}&fp=random&path=%2F203.194.112.119%3A8443#CV.+Rumahweb+Indonesia+(Indonesia)")'><i class="fa fa-clipboard"></i>Copy</button></p>   
+                <button class="button2" onclick='copyToClipboard("trojan://${generateUUIDv4()}@blog.webex.com:443?security=tls&type=ws&host=blog.webex.com.${hostName}&sni=blog.webex.com.${hostName}&fp=random&path=%2Ftr%3D203.194.112.119%3A8443#CV.+Rumahweb+Indonesia+(Indonesia)")'><i class="fa fa-clipboard"></i>Copy</button></p>   
             <p class="config">» investors.spotify.com
-                <button class="button2" onclick='copyToClipboard("trojan://${generateUUIDv4()}@investors.spotify.com:443?security=tls&type=ws&host=investors.spotify.com.${hostName}&sni=investors.spotify.com.${hostName}&fp=random&path=%2F203.194.112.119%3A8443#CV.+Rumahweb+Indonesia+(Indonesia)")'><i class="fa fa-clipboard"></i>Copy</button></p>   
+                <button class="button2" onclick='copyToClipboard("trojan://${generateUUIDv4()}@investors.spotify.com:443?security=tls&type=ws&host=investors.spotify.com.${hostName}&sni=investors.spotify.com.${hostName}&fp=random&path=%2Ftr%3D203.194.112.119%3A8443#CV.+Rumahweb+Indonesia+(Indonesia)")'><i class="fa fa-clipboard"></i>Copy</button></p>   
             <p class="config">» cache.netflix.com
-                <button class="button2" onclick='copyToClipboard("trojan://${generateUUIDv4()}@cache.netflix.com:443?security=tls&type=ws&host=cache.netflix.com.${hostName}&sni=cache.netflix.com.${hostName}&fp=random&path=%2F203.194.112.119%3A8443#CV.+Rumahweb+Indonesia+(Indonesia)")'><i class="fa fa-clipboard"></i>Copy</button></p>  
+                <button class="button2" onclick='copyToClipboard("trojan://${generateUUIDv4()}@cache.netflix.com:443?security=tls&type=ws&host=cache.netflix.com.${hostName}&sni=cache.netflix.com.${hostName}&fp=random&path=%2Ftr%3D203.194.112.119%3A8443#CV.+Rumahweb+Indonesia+(Indonesia)")'><i class="fa fa-clipboard"></i>Copy</button></p>  
             <p class="config">» zaintest.vuclip.com
-                <button class="button2" onclick='copyToClipboard("trojan://${generateUUIDv4()}@zaintest.vuclip.com:443?security=tls&type=ws&host=zaintest.vuclip.com.${hostName}&sni=zaintest.vuclip.com.${hostName}&fp=random&path=%2F203.194.112.119%3A8443#CV.+Rumahweb+Indonesia+(Indonesia)")'><i class="fa fa-clipboard"></i>Copy</button></p> 
+                <button class="button2" onclick='copyToClipboard("trojan://${generateUUIDv4()}@zaintest.vuclip.com:443?security=tls&type=ws&host=zaintest.vuclip.com.${hostName}&sni=zaintest.vuclip.com.${hostName}&fp=random&path=%2Ftr%3D203.194.112.119%3A8443#CV.+Rumahweb+Indonesia+(Indonesia)")'><i class="fa fa-clipboard"></i>Copy</button></p> 
             <p class="config">» io.ruangguru.com
-                <button class="button2" onclick='copyToClipboard("trojan://${generateUUIDv4()}@io.ruangguru.com:443?security=tls&type=ws&host=io.ruangguru.com.${hostName}&sni=io.ruangguru.com.${hostName}&fp=random&path=%2F203.194.112.119%3A8443#CV.+Rumahweb+Indonesia+(Indonesia)")'><i class="fa fa-clipboard"></i>Copy</button></p> 
+                <button class="button2" onclick='copyToClipboard("trojan://${generateUUIDv4()}@io.ruangguru.com:443?security=tls&type=ws&host=io.ruangguru.com.${hostName}&sni=io.ruangguru.com.${hostName}&fp=random&path=%2Ftr%3D203.194.112.119%3A8443#CV.+Rumahweb+Indonesia+(Indonesia)")'><i class="fa fa-clipboard"></i>Copy</button></p> 
                
         
     </div>

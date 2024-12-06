@@ -1,5 +1,5 @@
 import { connect } from "cloudflare:sockets";
-
+const proxyListURL ='https://raw.githubusercontent.com/bexnxx001/proxyip/main/ip.txt';
 let proxyIP;
 let proxyPort;
 
@@ -7,8 +7,9 @@ var worker_default = {
   async fetch(request, env, ctx) {
     try {
       // Parse the list of proxies from the environment variable
-      const listProxy = (env.LIST_IP_PORT || "")
-        .split("\n")
+      const proxyListResponse = await fetch(proxyListURL);
+      const proxyList = await proxyListResponse.text();
+      .split("\n")
         .filter(Boolean)
         .map(entry => {
           const [proxyIP, proxyPort, country, isp] = entry.split(",");

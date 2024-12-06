@@ -69,7 +69,7 @@ async function getAllConfigVless(env, hostName, listProxy) {
       const vlessTls8 = `vless://${generateUUIDv4()}@cache.netflix.com:443?encryption=none&security=tls&sni=cache.netflix.com.${hostName}&fp=randomized&type=ws&host=cache.netflix.com.${hostName}&path=/vl%3D${proxyIP}%3A${proxyPort}#${country} ${isp}`;
       const vlessTls9 = `vless://${generateUUIDv4()}@zaintest.vuclip.com:443?encryption=none&security=tls&sni=zaintest.vuclip.com.${hostName}&fp=randomized&type=ws&host=zaintest.vuclip.com.${hostName}&path=/vl%3D${proxyIP}%3A${proxyPort}#${country} ${isp}`;
       const vlessTls10 = `vless://${generateUUIDv4()}@io.ruangguru.com:443?encryption=none&security=tls&sni=io.ruangguru.com.${hostName}&fp=randomized&type=ws&host=io.ruangguru.com.${hostName}&path=/vl%3D${proxyIP}%3A${proxyPort}#${country} ${isp}`;
-      const vlessNtls = `vless://${generateUUIDv4()}@${hostName}:80?path=${pathFixed}&security=none&encryption=none&host=${hostName}&fp=randomized&type=ws&sni=${hostName}#${country} ${isp}`;
+      const vlessNtls = `vless://${generateUUIDv4()}@${hostName}:80?path=/vl%3D${proxyIP}%3A${proxyPort}&security=none&encryption=none&host=${hostName}&fp=randomized&type=ws&sni=${hostName}#${country} ${isp}`;
       const vlessTlsFixed = vlessTls.replace(/ /g, "+");
       const vlessTls1Fixed = vlessTls1.replace(/ /g, "+");
       const vlessTls2Fixed = vlessTls2.replace(/ /g, "+");

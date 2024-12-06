@@ -1,129 +1,75 @@
-// worker.js
 import { connect } from "cloudflare:sockets";
-var listProxy = [
-   { path: "/vless-sg-do1", proxy: "167.71.194.185:8443" },
- // { path: "/8.215.59.6:443", proxy: "8.215.59.6:443" },  
- // { path: "/147.139.245.56:443", proxy: "147.139.245.56:443" },
- // { path: "/103.67.79.230:443", proxy: "103.67.79.230:443" },  
-  { path: "/203.194.112.119:8443", proxy: "203.194.112.119:8443" },
-  { path: "/111.95.40.14:32414", proxy: "111.95.40.14:32414" },
-  { path: "/103.186.1.209:8443", proxy: "103.186.1.209:8443" },
-  { path: "/35.219.50.99:443", proxy: "35.219.50.99:443" },
-  { path: "/35.219.15.90:443", proxy: "35.219.15.90:443" },
-  { path: "/210.186.12.244:443", proxy: "210.186.12.244:443" },
-  { path: "/166.88.35.141:443", proxy: "166.88.35.141:443" },
-  { path: "/167.71.194.185:8443", proxy: "167.71.194.185:8443" },
-  { path: "/89.34.227.166:8443", proxy: "89.34.227.166:8443" },
-  { path: "/45.77.36.40:443", proxy: "45.77.36.40:443" },
-  { path: "/43.134.34.18:443", proxy: "43.134.34.18:443" },
-  { path: "/103.180.193.56:443", proxy: "103.180.193.56:443" },
-  { path: "/164.52.2.100:443", proxy: "164.52.2.100:443" },
-  { path: "/51.79.254.182:443", proxy: "51.79.254.182:443" },
-  { path: "/104.248.145.216:443", proxy: "104.248.145.216:443" },
-  { path: "/185.217.5.3:443", proxy: "185.217.5.3:443" },
-  { path: "/129.150.50.63:443", proxy: "129.150.50.63:443" },
-  { path: "/185.114.78.230:443", proxy: "185.114.78.230:443" },
-  { path: "/194.36.179.237:443", proxy: "194.36.179.237:443" },
-  { path: "/52.74.101.26:443", proxy: "52.74.101.26:443" },
-  { path: "/143.42.66.91:443", proxy: "143.42.66.91:443" },
-{ path: "/3.112.21.102:443", proxy: "3.112.21.102:443" },
-{ path: "/3.113.64.82:443", proxy: "3.113.64.82:443" },
-{ path: "/5.226.48.84:443", proxy: "5.226.48.84:443" },
-{ path: "/13.230.34.30:443", proxy: "13.230.34.30:443" },
-{ path: "/18.183.158.211:443", proxy: "18.183.158.211:443" },
-{ path: "/35.77.126.144:443", proxy: "35.77.126.144:443" },
-{ path: "/38.180.29.115:443", proxy: "38.180.29.115:443" },
-{ path: "/45.76.198.248:443", proxy: "45.76.198.248:443" },
-{ path: "/45.76.220.61:443", proxy: "45.76.220.61:443" },
-{ path: "/45.77.130.245:443", proxy: "45.77.130.245:443" },
-{ path: "/54.249.135.43:443", proxy: "54.249.135.43:443" },
-{ path: "/128.1.18.29:443", proxy: "128.1.18.29:443" },
-{ path: "/140.227.233.71:443", proxy: "140.227.233.71:443" },
-{ path: "/149.28.21.106:443", proxy: "149.28.21.106:443" },
-{ path: "/154.31.113.72:443", proxy: "154.31.113.72:443" },
-{ path: "/159.100.194.42:443", proxy: "159.100.194.42:443" },
-{ path: "/207.148.105.247:443", proxy: "207.148.105.247:443" },
-{ path: "/219.111.17.202:443", proxy: "219.111.17.202:443" },
-{ path: "/141.98.196.223:443", proxy: "141.98.196.223:443" },
-{ path: "/168.138.46.67:443", proxy: "168.138.46.67:443" },
-{ path: "/141.147.163.68:443", proxy: "141.147.163.68:443" },
-{ path: "/52.197.230.94:443", proxy: "52.197.230.94:443" },
-{ path: "/168.138.212.87:443", proxy: "168.138.212.87:443" },
-{ path: "/54.199.222.232:443", proxy: "54.199.222.232:443" },
- { path: "/178.128.80.43:443", proxy: "178.128.80.43:443" },
-  { path: "/38.180.165.29:443", proxy: "38.180.165.29:443" },
-  { path: "/185.103.109.139:443", proxy: "185.103.109.139:443" },
-  { path: "/31.28.27.38:443", proxy: "31.28.27.38:443" }
-//  { path: "/146.56.169.198:443", proxy: "146.56.169.198:443" },
- // { path: "/158.180.94.12:443", proxy: "158.180.94.12:443" },
-// batas
-//  { path: "/198.13.56.210:443", proxy: "198.13.56.210:443" },
- // { path: "/35.73.102.80:443", proxy: "35.73.102.80:443" }
-//  { path: "/185.103.109.139", proxy: "185.103.109.139" },
-//  { path: "/178.128.80.43", proxy: "178.128.80.43" },
-//  { path: "/35.219.15.90", proxy: "35.219.15.90" },
- // { path: "/8.223.39.101", proxy: "8.223.39.101" },
-//  { path: "/175.142.86.195", proxy: "175.142.86.195" },
-//  { path: "/166.88.35.141", proxy: "166.88.35.141" },
-//  { path: "/31.28.27.38", proxy: "31.28.27.38" },
-//  { path: "/203.194.112.119", proxy: "203.194.112.119" },
- // { path: "/104.17.159.243", proxy: "104.17.159.243" }
-  //tambahin sendiri
-];
-var proxyIP;
-var proxyPort;
+
+let proxyIP;
+let proxyPort;
+
 var worker_default = {
-  async fetch(request, ctx) {
+  async fetch(request, env, ctx) {
     try {
-      proxyIP = proxyIP;
-      const url = new URL(request.url);
+      // Parse the list of proxies from the environment variable
+      const listProxy = (env.LIST_IP_PORT || "")
+        .split("\n")
+        .filter(Boolean)
+        .map(entry => {
+          const [proxyIP, proxyPort, country, isp] = entry.split(",");
+          return {
+            proxyIP: proxyIP || "Unknown",
+            proxyPort: proxyPort || "Unknown",
+            country: country || "Unknown",
+            isp: isp || "Unknown ISP"
+          };
+        });
+
       const upgradeHeader = request.headers.get("Upgrade");
-      for (const entry of listProxy) {
-        if (url.pathname === entry.path) {
-          [proxyIP, proxyPort] = entry.proxy.split(':');
-          break;
+      const url = new URL(request.url);
+
+      if (upgradeHeader === "websocket") {
+        if (url.pathname.includes("/vl=")) {
+          proxyIP = url.pathname.split("vl=")[1];
+          return await vlessOverWSHandler(request);
+        } else if (url.pathname.includes("/tr=")) {
+          proxyIP = url.pathname.split("tr=")[1];
+          return await trojanOverWSHandler(request);
+        } else {
+          proxyIP = "cdn.xn--b6gac.eu.org";
+          return await vlessOverWSHandler(request);
         }
       }
-      if (upgradeHeader === "websocket" && proxyIP) {
-        return await vlessOverWSHandler(request);
-      }
-      const allConfig = await getAllConfigVless(request.headers.get("Host"));
+
+      const allConfig = await getAllConfigVless(env, request.headers.get("Host"), listProxy);
+
       return new Response(allConfig, {
         status: 200,
         headers: { "Content-Type": "text/html;charset=utf-8" }
       });
     } catch (err) {
-      return new Response(err.toString(), { status: 500 });
+      return new Response(`An error occurred: ${err.toString()}`, {
+        status: 500
+      });
     }
   }
 };
-async function getAllConfigVless(hostName) {
-  try {    
+
+async function getAllConfigVless(env, hostName, listProxy) {
+  try {
     let v2rayConfigs = "";
-    let v2raylist = "";
-    let showconfig = "";
-    let clashlist = "";
-    let clashConfigs = "";
     let v2raytable = "";
-    let clashtable = "";    
+    let vlessConfigs = "";
+    let trojanConfigs = "";
     for (const entry of listProxy) {
-      const { path, proxy } = entry;
-      const [ipOnly] = proxy.split(':');
-      const response = await fetch(`http://ip-api.com/json/${ipOnly}`);
-      const data = await response.json();
-      const pathFixed = encodeURIComponent(path);
-      const vlessTls = `vless://${generateUUIDv4()}@${hostName}:443?encryption=none&security=tls&sni=${hostName}&fp=randomized&type=ws&host=${hostName}&path=%2F${pathFixed}#${data.isp} (${data.countryCode})`;
-      const vlessTls1 = `vless://${generateUUIDv4()}@ava.game.naver.com:443?encryption=none&security=tls&sni=ava.game.naver.com.${hostName}&fp=randomized&type=ws&host=ava.game.naver.com.${hostName}&path=%2F${pathFixed}#${data.isp} (${data.countryCode})`;
-      const vlessTls2 = `vless://${generateUUIDv4()}@graph.instagram.com:443?encryption=none&security=tls&sni=graph.instagram.com.${hostName}&fp=randomized&type=ws&host=graph.instagram.com.${hostName}&path=%2F${pathFixed}#${data.isp} (${data.countryCode})`;
-      const vlessTls3 = `vless://${generateUUIDv4()}@quiz.int.vidio.com:443?encryption=none&security=tls&sni=quiz.int.vidio.com.${hostName}&fp=randomized&type=ws&host=quiz.int.vidio.com.${hostName}&path=%2F${pathFixed}#${data.isp} (${data.countryCode})`;
-      const vlessTls4 = `vless://${generateUUIDv4()}@live.iflix.com:443?encryption=none&security=tls&sni=live.iflix.com.${hostName}&fp=randomized&type=ws&host=live.iflix.com.${hostName}&path=%2F${pathFixed}#${data.isp} (${data.countryCode})`;
-      const vlessTls5 = `vless://${generateUUIDv4()}@support.zoom.us.:443?encryption=none&security=tls&sni=support.zoom.us.${hostName}&fp=randomized&type=ws&host=support.zoom.us.${hostName}&path=%2F${pathFixed}#${data.isp} (${data.countryCode})`;
-      const vlessTls6 = `vless://${generateUUIDv4()}@blog.webex.com:443?encryption=none&security=tls&sni=blog.webex.com.${hostName}&fp=randomized&type=ws&host=blog.webex.com.${hostName}&path=%2F${pathFixed}#${data.isp} (${data.countryCode})`;
-      const vlessTls7 = `vless://${generateUUIDv4()}@investors.spotify.com.:443?encryption=none&security=tls&sni=investors.spotify.com.${hostName}&fp=randomized&type=ws&host=investors.spotify.com.${hostName}&path=%2F${pathFixed}#${data.isp} (${data.countryCode})`;
-      const vlessTls8 = `vless://${generateUUIDv4()}@cache.netflix.com:443?encryption=none&security=tls&sni=cache.netflix.com.${hostName}&fp=randomized&type=ws&host=cache.netflix.com.${hostName}&path=%2F${pathFixed}#${data.isp} (${data.countryCode})`;
-      const vlessTls9 = `vless://${generateUUIDv4()}@zaintest.vuclip.com:443?encryption=none&security=tls&sni=zaintest.vuclip.com.${hostName}&fp=randomized&type=ws&host=zaintest.vuclip.com.${hostName}&path=%2F${pathFixed}#${data.isp} (${data.countryCode})`;
-      const vlessTls10 = `vless://${generateUUIDv4()}@io.ruangguru.com:443?encryption=none&security=tls&sni=io.ruangguru.com.${hostName}&fp=randomized&type=ws&host=io.ruangguru.com.${hostName}&path=%2F${pathFixed}#${data.isp} (${data.countryCode})`;
-      const vlessNtls = `vless://${generateUUIDv4()}@${hostName}:80?path=%2F${pathFixed}&security=none&encryption=none&host=${hostName}&fp=randomized&type=ws&sni=${hostName}#${data.isp} (${data.countryCode})`;
+      const { proxyIP, proxyPort, country, isp } = entry;
+      const vlessTls = `vless://${generateUUIDv4()}@${hostName}:443?encryption=none&security=tls&sni=${hostName}&fp=randomized&type=ws&host=${hostName}&path=/vl%3D${proxyIP}%3A${proxyPort}#${country} ${isp}`;
+      const vlessTls1 = `vless://${generateUUIDv4()}@ava.game.naver.com:443?encryption=none&security=tls&sni=ava.game.naver.com.${hostName}&fp=randomized&type=ws&host=ava.game.naver.com.${hostName}&path=/vl%3D${proxyIP}%3A${proxyPort}#${country} ${isp}`;
+      const vlessTls2 = `vless://${generateUUIDv4()}@graph.instagram.com:443?encryption=none&security=tls&sni=graph.instagram.com.${hostName}&fp=randomized&type=ws&host=graph.instagram.com.${hostName}&path=/vl%3D${proxyIP}%3A${proxyPort}#${country} ${isp}`;
+      const vlessTls3 = `vless://${generateUUIDv4()}@quiz.int.vidio.com:443?encryption=none&security=tls&sni=quiz.int.vidio.com.${hostName}&fp=randomized&type=ws&host=quiz.int.vidio.com.${hostName}&path=/vl%3D${proxyIP}%3A${proxyPort}#${country} ${isp}`;
+      const vlessTls4 = `vless://${generateUUIDv4()}@live.iflix.com:443?encryption=none&security=tls&sni=live.iflix.com.${hostName}&fp=randomized&type=ws&host=live.iflix.com.${hostName}&path=/vl%3D${proxyIP}%3A${proxyPort}#${country} ${isp}`;
+      const vlessTls5 = `vless://${generateUUIDv4()}@support.zoom.us.:443?encryption=none&security=tls&sni=support.zoom.us.${hostName}&fp=randomized&type=ws&host=support.zoom.us.${hostName}&path=/vl%3D${proxyIP}%3A${proxyPort}#${country} ${isp}`;
+      const vlessTls6 = `vless://${generateUUIDv4()}@blog.webex.com:443?encryption=none&security=tls&sni=blog.webex.com.${hostName}&fp=randomized&type=ws&host=blog.webex.com.${hostName}&path=/vl%3D${proxyIP}%3A${proxyPort}#${country} ${isp}`;
+      const vlessTls7 = `vless://${generateUUIDv4()}@investors.spotify.com.:443?encryption=none&security=tls&sni=investors.spotify.com.${hostName}&fp=randomized&type=ws&host=investors.spotify.com.${hostName}&path=/vl%3D${proxyIP}%3A${proxyPort}#${country} ${isp}`;
+      const vlessTls8 = `vless://${generateUUIDv4()}@cache.netflix.com:443?encryption=none&security=tls&sni=cache.netflix.com.${hostName}&fp=randomized&type=ws&host=cache.netflix.com.${hostName}&path=/vl%3D${proxyIP}%3A${proxyPort}#${country} ${isp}`;
+      const vlessTls9 = `vless://${generateUUIDv4()}@zaintest.vuclip.com:443?encryption=none&security=tls&sni=zaintest.vuclip.com.${hostName}&fp=randomized&type=ws&host=zaintest.vuclip.com.${hostName}&path=/vl%3D${proxyIP}%3A${proxyPort}#${country} ${isp}`;
+      const vlessTls10 = `vless://${generateUUIDv4()}@io.ruangguru.com:443?encryption=none&security=tls&sni=io.ruangguru.com.${hostName}&fp=randomized&type=ws&host=io.ruangguru.com.${hostName}&path=/vl%3D${proxyIP}%3A${proxyPort}#${country} ${isp}`;
+      const vlessNtls = `vless://${generateUUIDv4()}@${hostName}:80?path=${pathFixed}&security=none&encryption=none&host=${hostName}&fp=randomized&type=ws&sni=${hostName}#${country} ${isp}`;
       const vlessTlsFixed = vlessTls.replace(/ /g, "+");
       const vlessTls1Fixed = vlessTls1.replace(/ /g, "+");
       const vlessTls2Fixed = vlessTls2.replace(/ /g, "+");
@@ -136,17 +82,17 @@ async function getAllConfigVless(hostName) {
       const vlessTls9Fixed = vlessTls9.replace(/ /g, "+");
       const vlessTls10Fixed = vlessTls10.replace(/ /g, "+");
       const vlessNtlsFixed = vlessNtls.replace(/ /g, "+");
-      const trojanTls = `trojan://${generateUUIDv4()}@${hostName}:443?security=tls&type=ws&host=${hostName}&sni=${hostName}&fp=random&path=%2F${pathFixed}#${data.isp} (${data.country})`;
-      const trojanTls1 = `trojan://${generateUUIDv4()}@ava.game.naver.com:443?security=tls&type=ws&host=ava.game.naver.com.${hostName}&sni=ava.game.naver.com.${hostName}&fp=random&path=%2F${pathFixed}#${data.isp} (${data.country})`;
-      const trojanTls2 = `trojan://${generateUUIDv4()}@graph.instagram.com:443?security=tls&type=ws&host=graph.instagram.com.${hostName}&sni=graph.instagram.com.${hostName}&fp=random&path=%2F${pathFixed}#${data.isp} (${data.country})`;
-      const trojanTls3 = `trojan://${generateUUIDv4()}@quiz.int.vidio.com:443?security=tls&type=ws&host=quiz.int.vidio.com.${hostName}&sni=quiz.int.vidio.com.${hostName}&fp=random&path=%2F${pathFixed}#${data.isp} (${data.country})`;
-      const trojanTls4 = `trojan://${generateUUIDv4()}@live.iflix.com:443?security=tls&type=ws&host=live.iflix.com.${hostName}&sni=live.iflix.com.${hostName}&fp=random&path=%2F${pathFixed}#${data.isp} (${data.country})`;
-      const trojanTls5 = `trojan://${generateUUIDv4()}@support.zoom.us:443?security=tls&type=ws&host=support.zoom.us.${hostName}&sni=support.zoom.us.${hostName}&fp=random&path=%2F${pathFixed}#${data.isp} (${data.country})`;
-      const trojanTls6 = `trojan://${generateUUIDv4()}@blog.webex.com:443?security=tls&type=ws&host=blog.webex.com.${hostName}&sni=blog.webex.com.${hostName}&fp=random&path=%2F${pathFixed}#${data.isp} (${data.country})`;
-      const trojanTls7 = `trojan://${generateUUIDv4()}@investors.spotify.com:443?security=tls&type=ws&host=investors.spotify.com.${hostName}&sni=investors.spotify.com.${hostName}&fp=random&path=%2F${pathFixed}#${data.isp} (${data.country})`;
-      const trojanTls8 = `trojan://${generateUUIDv4()}@cache.netflix.com:443?security=tls&type=ws&host=cache.netflix.com.${hostName}&sni=cache.netflix.com.${hostName}&fp=random&path=%2F${pathFixed}#${data.isp} (${data.country})`;
-      const trojanTls9 = `trojan://${generateUUIDv4()}@zaintest.vuclip.com:443?security=tls&type=ws&host=zaintest.vuclip.com.${hostName}&sni=zaintest.vuclip.com.${hostName}&fp=random&path=%2F${pathFixed}#${data.isp} (${data.country})`;
-      const trojanTls10 = `trojan://${generateUUIDv4()}@io.ruangguru.com:443?security=tls&type=ws&host=io.ruangguru.com.${hostName}&sni=io.ruangguru.com.${hostName}&fp=random&path=%2F${pathFixed}#${data.isp} (${data.country})`;
+      const trojanTls = `trojan://${generateUUIDv4()}@${hostName}:443?security=tls&type=ws&host=${hostName}&sni=${hostName}&fp=random&path=/tr%3D${proxyIP}%3A${proxyPort}#${country} ${isp}`;
+      const trojanTls1 = `trojan://${generateUUIDv4()}@ava.game.naver.com:443?security=tls&type=ws&host=ava.game.naver.com.${hostName}&sni=ava.game.naver.com.${hostName}&fp=random&path=/tr%3D${proxyIP}%3A${proxyPort}#${country} ${isp}`;
+      const trojanTls2 = `trojan://${generateUUIDv4()}@graph.instagram.com:443?security=tls&type=ws&host=graph.instagram.com.${hostName}&sni=graph.instagram.com.${hostName}&fp=random&path=/tr%3D${proxyIP}%3A${proxyPort}#${country} ${isp}`;
+      const trojanTls3 = `trojan://${generateUUIDv4()}@quiz.int.vidio.com:443?security=tls&type=ws&host=quiz.int.vidio.com.${hostName}&sni=quiz.int.vidio.com.${hostName}&fp=random&path=/tr%3D${proxyIP}%3A${proxyPort}#${country} ${isp}`;
+      const trojanTls4 = `trojan://${generateUUIDv4()}@live.iflix.com:443?security=tls&type=ws&host=live.iflix.com.${hostName}&sni=live.iflix.com.${hostName}&fp=random&path=/tr%3D${proxyIP}%3A${proxyPort}#${country} ${isp}`;
+      const trojanTls5 = `trojan://${generateUUIDv4()}@support.zoom.us:443?security=tls&type=ws&host=support.zoom.us.${hostName}&sni=support.zoom.us.${hostName}&fp=random&path=/tr%3D${proxyIP}%3A${proxyPort}#${country} ${isp}`;
+      const trojanTls6 = `trojan://${generateUUIDv4()}@blog.webex.com:443?security=tls&type=ws&host=blog.webex.com.${hostName}&sni=blog.webex.com.${hostName}&fp=random&path=/tr%3D${proxyIP}%3A${proxyPort}#${country} ${isp}`;
+      const trojanTls7 = `trojan://${generateUUIDv4()}@investors.spotify.com:443?security=tls&type=ws&host=investors.spotify.com.${hostName}&sni=investors.spotify.com.${hostName}&fp=random&path=/tr%3D${proxyIP}%3A${proxyPort}#${country} ${isp}`;
+      const trojanTls8 = `trojan://${generateUUIDv4()}@cache.netflix.com:443?security=tls&type=ws&host=cache.netflix.com.${hostName}&sni=cache.netflix.com.${hostName}&fp=random&path=/tr%3D${proxyIP}%3A${proxyPort}#${country} ${isp}`;
+      const trojanTls9 = `trojan://${generateUUIDv4()}@zaintest.vuclip.com:443?security=tls&type=ws&host=zaintest.vuclip.com.${hostName}&sni=zaintest.vuclip.com.${hostName}&fp=random&path=/tr%3D${proxyIP}%3A${proxyPort}#${country} ${isp}`;
+      const trojanTls10 = `trojan://${generateUUIDv4()}@io.ruangguru.com:443?security=tls&type=ws&host=io.ruangguru.com.${hostName}&sni=io.ruangguru.com.${hostName}&fp=random&path=/tr%3D${proxyIP}%3A${proxyPort}#${country} ${isp}`;
       const trojanTlsFixed = trojanTls.replace(/ /g, '+');
       const trojanTlsFixed1 = trojanTls1.replace(/ /g, '+');
       const trojanTlsFixed2 = trojanTls2.replace(/ /g, '+');
@@ -158,433 +104,16 @@ async function getAllConfigVless(hostName) {
       const trojanTlsFixed8 = trojanTls8.replace(/ /g, '+');
       const trojanTlsFixed9 = trojanTls9.replace(/ /g, '+');
       const trojanTlsFixed10 = trojanTls10.replace(/ /g, '+');           
-      const clashConfTls = `- name: ${data.isp} (${data.countryCode})
-  server: ${hostName}
-  port: 443
-  type: vless
-  uuid: ${generateUUIDv4()}
-  cipher: auto
-  tls: true
-  udp: true
-  skip-cert-verify: true
-  network: ws
-  servername: ${hostName}
-  ws-opts:
-    path: ${path}
-    headers:
-      Host: ${hostName}`;
       
-      const clashConfTls1 = `- name: ${data.isp} (${data.countryCode})
-  server: ava.game.naver.com
-  port: 443
-  type: vless
-  uuid: ${generateUUIDv4()}
-  cipher: auto
-  tls: true
-  udp: true
-  skip-cert-verify: true
-  network: ws
-  servername: ava.game.naver.com.${hostName}
-  ws-opts:
-    path: ${path}
-    headers:
-      Host: ava.game.naver.com.${hostName}`;
-      
-      const clashConfTls2 = `- name: ${data.isp} (${data.countryCode})
-  server: graph.instagram.com
-  port: 443
-  type: vless
-  uuid: ${generateUUIDv4()}
-  cipher: auto
-  tls: true
-  udp: true
-  skip-cert-verify: true
-  network: ws
-  servername: graph.instagram.com.${hostName}
-  ws-opts:
-    path: ${path}
-    headers:
-      Host: graph.instagram.com.${hostName}`;
-      
-      const clashConfTls3 = `- name: ${data.isp} (${data.countryCode})
-  server: quiz.int.vidio.com
-  port: 443
-  type: vless
-  uuid: ${generateUUIDv4()}
-  cipher: auto
-  tls: true
-  udp: true
-  skip-cert-verify: true
-  network: ws
-  servername: quiz.int.vidio.com.${hostName}
-  ws-opts:
-    path: ${path}
-    headers:
-      Host: quiz.int.vidio.com.${hostName}`;
-      
-      const clashConfTls4 = `- name: ${data.isp} (${data.countryCode})
-  server: live.iflix.com
-  port: 443
-  type: vless
-  uuid: ${generateUUIDv4()}
-  cipher: auto
-  tls: true
-  udp: true
-  skip-cert-verify: true
-  network: ws
-  servername: live.iflix.com.${hostName}
-  ws-opts:
-    path: ${path}
-    headers:
-      Host: live.iflix.com.${hostName}`;
-      
-      const clashConfTls5 = `- name: ${data.isp} (${data.countryCode})
-  server: support.zoom.us
-  port: 443
-  type: vless
-  uuid: ${generateUUIDv4()}
-  cipher: auto
-  tls: true
-  udp: true
-  skip-cert-verify: true
-  network: ws
-  servername: support.zoom.us.${hostName}
-  ws-opts:
-    path: ${path}
-    headers:
-      Host: support.zoom.us.${hostName}`;
-      
-      const clashConfTls6 = `- name: ${data.isp} (${data.countryCode})
-  server: blog.webex.com
-  port: 443
-  type: vless
-  uuid: ${generateUUIDv4()}
-  cipher: auto
-  tls: true
-  udp: true
-  skip-cert-verify: true
-  network: ws
-  servername: blog.webex.com.${hostName}
-  ws-opts:
-    path: ${path}
-    headers:
-      Host: blog.webex.com.${hostName}`;
-      
-      const clashConfTls7 = `- name: ${data.isp} (${data.countryCode})
-  server: investors.spotify.com
-  port: 443
-  type: vless
-  uuid: ${generateUUIDv4()}
-  cipher: auto
-  tls: true
-  udp: true
-  skip-cert-verify: true
-  network: ws
-  servername: investors.spotify.com.${hostName}
-  ws-opts:
-    path: ${path}
-    headers:
-      Host: investors.spotify.com.${hostName}`;
-      
-      const clashConfTls8 = `- name: ${data.isp} (${data.countryCode})
-  server: cache.netflix.com
-  port: 443
-  type: vless
-  uuid: ${generateUUIDv4()}
-  cipher: auto
-  tls: true
-  udp: true
-  skip-cert-verify: true
-  network: ws
-  servername: cache.netflix.com.${hostName}
-  ws-opts:
-    path: ${path}
-    headers:
-      Host: cache.netflix.com.${hostName}`;
-      
-      const clashConfTls9 = `- name: ${data.isp} (${data.countryCode})
-  server: zaintest.vuclip.com
-  port: 443
-  type: vless
-  uuid: ${generateUUIDv4()}
-  cipher: auto
-  tls: true
-  udp: true
-  skip-cert-verify: true
-  network: ws
-  servername: zaintest.vuclip.com.${hostName}
-  ws-opts:
-    path: ${path}
-    headers:
-      Host: zaintest.vuclip.com.${hostName}`;
-      
-      const clashConfTls10 = `- name: ${data.isp} (${data.countryCode})
-  server: io.ruangguru.com
-  port: 443
-  type: vless
-  uuid: ${generateUUIDv4()}
-  cipher: auto
-  tls: true
-  udp: true
-  skip-cert-verify: true
-  network: ws
-  servername: io.ruangguru.com.${hostName}
-  ws-opts:
-    path: ${path}
-    headers:
-      Host: io.ruangguru.com.${hostName}`;
-      const clashConfNtls = `- name: ${data.isp} (${data.countryCode})
-  server: ${hostName}
-  port: 80
-  type: vless
-  uuid: ${generateUUIDv4()}
-  cipher: auto
-  tls: false
-  udp: true
-  skip-cert-verify: true
-  network: ws
-  ws-opts:
-    path: ${path}
-    headers:
-      Host: ${hostName}`;
-const clashConfTls11 = `- name: ${data.isp} (${data.countryCode})
-    server: ${hostName}
-    port: 443
-    type: trojan
-    password: ${generateUUIDv4()}
-    skip-cert-verify: true
-    sni: ${hostName}
-    network: ws
-    ws-opts:
-      path: ${path}
-      headers:
-        Host: ${hostName}
-    udp: true `;
-      const clashConfTls12 = `- name: ${data.isp} (${data.countryCode})
-    server: ava.game.naver.com
-    port: 443
-    type: trojan
-    password: ${generateUUIDv4()}
-    skip-cert-verify: true
-    sni: ava.game.naver.com.${hostName}
-    network: ws
-    ws-opts:
-      path: ${path}
-      headers:
-        Host: ava.game.naver.com.${hostName}
-    udp: true `;
-      const clashConfTls13 = `- name: ${data.isp} (${data.countryCode})
-    server: graph.instagram.com
-    port: 443
-    type: trojan
-    password: ${generateUUIDv4()}
-    skip-cert-verify: true
-    sni: graph.instagram.com.${hostName}
-    network: ws
-    ws-opts:
-      path: ${path}
-      headers:
-        Host: graph.instagram.com.${hostName}
-    udp: true `;
-      const clashConfTls14 = `- name: ${data.isp} (${data.countryCode})
-    server: quiz.int.vidio.com
-    port: 443
-    type: trojan
-    password: ${generateUUIDv4()}
-    skip-cert-verify: true
-    sni: quiz.int.vidio.com.${hostName}
-    network: ws
-    ws-opts:
-      path: ${path}
-      headers:
-        Host: quiz.int.vidio.com.${hostName}
-    udp: true `;
-      const clashConfTls15 = `- name: ${data.isp} (${data.countryCode})
-    server: live.iflix.com
-    port: 443
-    type: trojan
-    password: ${generateUUIDv4()}
-    skip-cert-verify: true
-    sni: live.iflix.com.${hostName}
-    network: ws
-    ws-opts:
-      path: ${path}
-      headers:
-        Host: live.iflix.com.${hostName}
-    udp: true `;
-      const clashConfTls16 = `- name: ${data.isp} (${data.countryCode})
-    server: support.zoom.us
-    port: 443
-    type: trojan
-    password: ${generateUUIDv4()}
-    skip-cert-verify: true
-    sni: support.zoom.us.${hostName}
-    network: ws
-    ws-opts:
-      path: ${path}
-      headers:
-        Host: support.zoom.us.${hostName}
-    udp: true `;
-      const clashConfTls17 = `- name: ${data.isp} (${data.countryCode})
-    server: blog.webex.com
-    port: 443
-    type: trojan
-    password: ${generateUUIDv4()}
-    skip-cert-verify: true
-    sni: blog.webex.com.${hostName}
-    network: ws
-    ws-opts:
-      path: ${path}
-      headers:
-        Host: blog.webex.com.${hostName}
-    udp: true `;
-      const clashConfTls18 = `- name: ${data.isp} (${data.countryCode})
-    server: investors.spotify.com
-    port: 443
-    type: trojan
-    password: ${generateUUIDv4()}
-    skip-cert-verify: true
-    sni: investors.spotify.com.${hostName}
-    network: ws
-    ws-opts:
-      path: ${path}
-      headers:
-        Host: investors.spotify.com.${hostName}
-    udp: true `;
-      const clashConfTls19 = `- name: ${data.isp} (${data.countryCode})
-    server: cache.netflix.com
-    port: 443
-    type: trojan
-    password: ${generateUUIDv4()}
-    skip-cert-verify: true
-    sni: cache.netflix.com.${hostName}
-    network: ws
-    ws-opts:
-      path: ${path}
-      headers:
-        Host: cache.netflix.com.${hostName}
-    udp: true `;
-      const clashConfTls20 = `- name: ${data.isp} (${data.countryCode})
-    server: zaintest.vuclip.com
-    port: 443
-    type: trojan
-    password: ${generateUUIDv4()}
-    skip-cert-verify: true
-    sni: zaintest.vuclip.com.${hostName}
-    network: ws
-    ws-opts:
-      path: ${path}
-      headers:
-        Host: zaintest.vuclip.com.${hostName}
-    udp: true `;
-      const clashConfTls21 = `- name: ${data.isp} (${data.countryCode})
-    server: io.ruangguru.com
-    port: 443
-    type: trojan
-    password: ${generateUUIDv4()}
-    skip-cert-verify: true
-    sni: io.ruangguru.com.${hostName}
-    network: ws
-    ws-opts:
-      path: ${path}
-      headers:
-        Host: io.ruangguru.com.${hostName}
-    udp: true `;
-      clashConfigs += `<div style="display: none;">
-   <textarea id="clashTls${path}">${clashConfTls}</textarea>
-   <textarea id="clashTls1${path}">${clashConfTls1}</textarea>
-   <textarea id="clashTls2${path}">${clashConfTls2}</textarea>
-   <textarea id="clashTls3${path}">${clashConfTls3}</textarea>
-   <textarea id="clashTls4${path}">${clashConfTls4}</textarea>
-   <textarea id="clashTls5${path}">${clashConfTls5}</textarea>
-   <textarea id="clashTls6${path}">${clashConfTls6}</textarea>
-   <textarea id="clashTls7${path}">${clashConfTls7}</textarea>
-   <textarea id="clashTls8${path}">${clashConfTls8}</textarea>
-   <textarea id="clashTls9${path}">${clashConfTls9}</textarea>
-   <textarea id="clashTls10${path}">${clashConfTls10}</textarea>
-   <textarea id="clashTls11${path}">${clashConfTls11}</textarea>
-   <textarea id="clashTls12${path}">${clashConfTls12}</textarea>
-   <textarea id="clashTls13${path}">${clashConfTls13}</textarea>
-   <textarea id="clashTls14${path}">${clashConfTls14}</textarea>
-   <textarea id="clashTls15${path}">${clashConfTls15}</textarea>
-   <textarea id="clashTls16${path}">${clashConfTls16}</textarea>
-   <textarea id="clashTls17${path}">${clashConfTls17}</textarea>
-   <textarea id="clashTls18${path}">${clashConfTls18}</textarea>
-   <textarea id="clashTls19${path}">${clashConfTls19}</textarea>
-   <textarea id="clashTls20${path}">${clashConfTls20}</textarea>
-   <textarea id="clashTls21${path}">${clashConfTls21}</textarea>
+     
 
-   </div>
-<div style="display: none;">
-   <textarea id="clashNtls${path}">${clashConfNtls}</textarea>
- </div>
- <div id="clash${path}" class="tabcontent1">
-   
-<div class="config-section">
-    <p><strong>ISP :  ${data.isp} (${data.countryCode})</strong> </p>
-    <hr/>
-    <div class="config-toggle">
-        <div class="config-block">
-                <h3>TROJAN TLS:</h3>
-          <p class="config">${trojanTlsFixed}</p>
-                <button class="button2" onclick='copyToClipboard("${trojanTlsFixed}")'><i class="fa fa-clipboard"></i>Copy</button>
-               </div> 
-            <p class="config">» ava.game.naver.com
-                <button class="button2" onclick='copyToClipboard("${trojanTlsFixed1}")'><i class="fa fa-clipboard"></i>Copy</button></p>
-            <p class="config">» graph.instagram.com
-                <button class="button2" onclick='copyToClipboard("${trojanTlsFixed2}")'><i class="fa fa-clipboard"></i>Copy</button></p>
-            <p class="config">» quiz.int.vidio.com
-                <button class="button2" onclick='copyToClipboard("${trojanTlsFixed3}")'><i class="fa fa-clipboard"></i>Copy</button></p>
-            <p class="config">» live.iflix.com
-                <button class="button2" onclick='copyToClipboard("${trojanTlsFixed4}")'><i class="fa fa-clipboard"></i>Copy</button></p>    
-            <p class="config">» support.zoom.us
-                <button class="button2" onclick='copyToClipboard("${trojanTlsFixed5}")'><i class="fa fa-clipboard"></i>Copy</button></p>   
-            <p class="config">» blog.webex.com
-                <button class="button2" onclick='copyToClipboard("${trojanTlsFixed6}")'><i class="fa fa-clipboard"></i>Copy</button></p>   
-            <p class="config">» investors.spotify.com
-                <button class="button2" onclick='copyToClipboard("${trojanTlsFixed7}")'><i class="fa fa-clipboard"></i>Copy</button></p>   
-            <p class="config">» cache.netflix.com
-                <button class="button2" onclick='copyToClipboard("${trojanTlsFixed8}")'><i class="fa fa-clipboard"></i>Copy</button></p>  
-            <p class="config">» zaintest.vuclip.com
-                <button class="button2" onclick='copyToClipboard("${trojanTlsFixed9}")'><i class="fa fa-clipboard"></i>Copy</button></p> 
-            <p class="config">» io.ruangguru.com
-                <button class="button2" onclick='copyToClipboard("${trojanTlsFixed10}")'><i class="fa fa-clipboard"></i>Copy</button></p> 
-               
-          
-            <hr />
-            <div class="config-block">
-                <h3>TROJAN CLASH TLS:</h3>
-                <p class="config">${clashConfTls11}</p>
-                <button class="button2" onclick='copyClash("clashTls11${path}")'><i class="fa fa-clipboard"></i>Copy</button>
-          </div>
-          <p class="config">» ava.game.naver.com
-                <button class="button2" onclick='copyClash("clashTls12${path}")'><i class="fa fa-clipboard"></i>Copy</button></p>
-          <p class="config">» graph.instagram.com
-                <button class="button2" onclick='copyClash("clashTls13${path}")'><i class="fa fa-clipboard"></i>Copy</button></p>
-          <p class="config">» quiz.int.vidio.com
-                <button class="button2" onclick='copyClash("clashTls14${path}")'><i class="fa fa-clipboard"></i>Copy</button></p>
-          <p class="config">» live.iflix.com
-                <button class="button2" onclick='copyClash("clashTls15${path}")'><i class="fa fa-clipboard"></i>Copy</button></p>
-          <p class="config">» support.zoom.us
-                <button class="button2" onclick='copyClash("clashTls16${path}")'><i class="fa fa-clipboard"></i>Copy</button></p>
-          <p class="config">» blog.webex.com
-                <button class="button2" onclick='copyClash("clashTls17${path}")'><i class="fa fa-clipboard"></i>Copy</button></p>
-          <p class="config">» investors.spotify.com
-                <button class="button2" onclick='copyClash("clashTls18${path}")'><i class="fa fa-clipboard"></i>Copy</button></p>
-          <p class="config">» cache.netflix.com 
-                <button class="button2" onclick='copyClash("clashTls19${path}")'><i class="fa fa-clipboard"></i>Copy</button></p>
-          <p class="config">» zaintest.vuclip.com
-                <button class="button2" onclick='copyClash("clashTls20${path}")'><i class="fa fa-clipboard"></i>Copy</button></p>
-          <p class="config">» io.ruangguru.com 
-                <button class="button2" onclick='copyClash("clashTls21${path}")'><i class="fa fa-clipboard"></i>Copy</button></p>
-          
-                
-        </div>
-    </div>
-</div>
-<hr class="config-divider" />
-`;
-      v2rayConfigs += `  <div id="v2ray${path}" class="tabcontent">
+   v2raytable += ` <tr> 
+       
+<td class="tablinks" onclick="openCity(event, 'v2ray${path}')"><p style="font-size: 24px; "><a href="#v2ray${path}">${data.isp} | (${data.countryCode})</a></p><hr class="config-divider" /></td>
+</tr>
+      
+        `;
+   v2rayConfigs += `  <div id="v2ray${path}" class="tabcontent">
                                   <div class="config-section">  <pre><b>               
 <hr class="config-divider" /> <p class="config">
 » Domain      : ${hostName}
@@ -673,42 +202,23 @@ const clashConfTls11 = `- name: ${data.isp} (${data.countryCode})
 
 
 `;
-      showconfig += `<pre><b>
+
+    trojanConfigs += `<div class="config-section">
+    <p><strong>ISP  :  ${isp} (${country}) </strong> </p>
+    <hr />
+    <div class="config-toggle">
+        <button class="button" onclick="toggleConfig(this, 'show Trojan', 'hide Trojan')">Show Trojan</button>
+        <div class="config-content">
+            <div class="config-block">
+                <h3>TLS-Only:</h3>
+                <p class="config">${trojanTlsFixed}</p>
+                <button class="button" onclick='copyToClipboard("${trojanTlsFixed}")'><i class="fa fa-clipboard"></i>Copy</button>
+            </div>
+            <hr />
+        </div>
+    </div>
+</div>
 <hr class="config-divider" />
-» Domain      : ${hostName}
-» ISP         : BIZNET
-» Country     : Indonesia
-» City        : Jakarta
-» UUID        : ${generateUUIDv4()}
-» Port TLS    : 443
-» Port NTLS   : 80
-» Security    : auto
-» Network     : (WS)
-» Path Vless  : /35.219.15.90:443
-» Path Trojan : /35.219.15.90:443
-<hr class="config-divider" /></b>
-</pre> 
-            
-      
-       `;
-      clashlist += `
-      <tr> 
-      <button class="tablinks" onclick="openCity(event, 'v2ray1')"  id="defaultOpen">LIST V2RAY</button>
-
-      <td class="tabs" onclick="showContent('clash${path}')"> ${data.isp} | (${data.countryCode})<hr class="config-divider" /></td>
-     </tr>
-
-`;
-      v2raytable += ` <tr> 
-       
-<td class="tablinks" onclick="openCity(event, 'v2ray${path}')"><p style="font-size: 24px; "><a href="#v2ray${path}">${data.isp} | (${data.countryCode})</a></p><hr class="config-divider" /></td>
-</tr>
-      
-        `;
-      clashtable += `<tr> 
-      <td class="tabv2ray" onclick="openPage('clash${path}')">${data.isp} | (${data.countryCode})<hr class="config-divider" /></td>
-   </tr>
-
 `;
     }
     const htmlConfigs = `
@@ -1468,7 +978,396 @@ function generateUUIDv4() {
     randomValues[15].toString(16).padStart(2, "0")
   ].join("").replace(/^(.{8})(.{4})(.{4})(.{4})(.{12})$/, "$1-$2-$3-$4-$5");
 }
+
+
 async function vlessOverWSHandler(request) {
+	const webSocketPair = new WebSocketPair();
+	const [client, webSocket] = Object.values(webSocketPair);
+
+	webSocket.accept();
+
+	let address = '';
+	let portWithRandomLog = '';
+	const log = (info, event) => {
+		console.log(`[${address}:${portWithRandomLog}] ${info}`, event || '');
+	};
+	const earlyDataHeader = request.headers.get('sec-websocket-protocol') || '';
+
+	const readableWebSocketStream = makeReadableWebSocketStream(webSocket, earlyDataHeader, log);
+
+	let remoteSocketWapper = {
+		value: null,
+	};
+	let udpStreamWrite = null;
+	let isDns = false;
+
+	readableWebSocketStream.pipeTo(new WritableStream({
+		async write(chunk, controller) {
+			if (isDns && udpStreamWrite) {
+				return udpStreamWrite(chunk);
+			}
+			if (remoteSocketWapper.value) {
+				const writer = remoteSocketWapper.value.writable.getWriter()
+				await writer.write(chunk);
+				writer.releaseLock();
+				return;
+			}
+
+			const {
+				hasError,
+				message,
+				portRemote = 443,
+				addressRemote = '',
+				rawDataIndex,
+				vlessVersion = new Uint8Array([0, 0]),
+				isUDP,
+			} = processVlessHeader(chunk);
+			address = addressRemote;
+			portWithRandomLog = `${portRemote}--${Math.random()} ${isUDP ? 'udp ' : 'tcp '
+				} `;
+			if (hasError) {
+				throw new Error(message); 
+				return;
+			}
+			if (isUDP) {
+				if (portRemote === 53) {
+					isDns = true;
+				} else {
+					throw new Error('UDP proxy only enable for DNS which is port 53');
+					return;
+				}
+			}
+			const vlessResponseHeader = new Uint8Array([vlessVersion[0], 0]);
+			const rawClientData = chunk.slice(rawDataIndex);
+
+			if (isDns) {
+				const { write } = await handleUDPOutBound(webSocket, vlessResponseHeader, log);
+				udpStreamWrite = write;
+				udpStreamWrite(rawClientData);
+				return;
+			}
+			handleTCPOutBound(remoteSocketWapper, addressRemote, portRemote, rawClientData, webSocket, vlessResponseHeader, log);
+		},
+		close() {
+			log(`readableWebSocketStream is close`);
+		},
+		abort(reason) {
+			log(`readableWebSocketStream is abort`, JSON.stringify(reason));
+		},
+	})).catch((err) => {
+		log('readableWebSocketStream pipeTo error', err);
+	});
+
+	return new Response(null, {
+		status: 101,
+		webSocket: client,
+	});
+}
+
+async function handleTCPOutBound(remoteSocket, addressRemote, portRemote, rawClientData, webSocket, vlessResponseHeader, log,) {
+	async function connectAndWrite(address, port) {
+		const tcpSocket = connect({
+			hostname: address,
+			port: port,
+		});
+		remoteSocket.value = tcpSocket;
+		log(`connected to ${address}:${port}`);
+		const writer = tcpSocket.writable.getWriter();
+		await writer.write(rawClientData);
+		writer.releaseLock();
+		return tcpSocket;
+	}
+
+	async function retry() {
+		const tcpSocket = await connectAndWrite(proxyIP.split(/[:=]/)[0] || addressRemote, proxyIP.split(/[:=]/)[1] || portRemote);
+		tcpSocket.closed.catch(error => {
+			console.log('retry tcpSocket closed error', error);
+		}).finally(() => {
+			safeCloseWebSocket(webSocket);
+		})
+		remoteSocketToWS(tcpSocket, webSocket, vlessResponseHeader, null, log);
+	}
+
+	const tcpSocket = await connectAndWrite(addressRemote, portRemote);
+
+	remoteSocketToWS(tcpSocket, webSocket, vlessResponseHeader, retry, log);
+}
+
+function makeReadableWebSocketStream(webSocketServer, earlyDataHeader, log) {
+	let readableStreamCancel = false;
+	const stream = new ReadableStream({
+		start(controller) {
+			webSocketServer.addEventListener('message', (event) => {
+				if (readableStreamCancel) {
+					return;
+				}
+				const message = event.data;
+				controller.enqueue(message);
+			});
+			webSocketServer.addEventListener('close', () => {
+				safeCloseWebSocket(webSocketServer);
+				if (readableStreamCancel) {
+					return;
+				}
+				controller.close();
+			}
+			);
+			webSocketServer.addEventListener('error', (err) => {
+				log('webSocketServer has error');
+				controller.error(err);
+			}
+			);
+			const { earlyData, error } = base64ToArrayBuffer(earlyDataHeader);
+			if (error) {
+				controller.error(error);
+			} else if (earlyData) {
+				controller.enqueue(earlyData);
+			}
+		},
+
+		pull(controller) {
+		},
+		cancel(reason) {
+			if (readableStreamCancel) {
+				return;
+			}
+			log(`ReadableStream was canceled, due to ${reason}`)
+			readableStreamCancel = true;
+			safeCloseWebSocket(webSocketServer);
+		}
+	});
+
+	return stream;
+
+}
+function processVlessHeader(
+	vlessBuffer
+) {
+	if (vlessBuffer.byteLength < 24) {
+		return {
+			hasError: true,
+			message: 'invalid data',
+		};
+	}
+	const version = new Uint8Array(vlessBuffer.slice(0, 1));
+	let isValidUser = true;
+	let isUDP = false;
+	if (!isValidUser) {
+		return {
+			hasError: true,
+			message: 'invalid user',
+		};
+	}
+
+	const optLength = new Uint8Array(vlessBuffer.slice(17, 18))[0];
+
+	const command = new Uint8Array(
+		vlessBuffer.slice(18 + optLength, 18 + optLength + 1)
+	)[0];
+	if (command === 1) {
+	} else if (command === 2) {
+		isUDP = true;
+	} else {
+		return {
+			hasError: true,
+			message: `command ${command} is not support, command 01-tcp,02-udp,03-mux`,
+		};
+	}
+	const portIndex = 18 + optLength + 1;
+	const portBuffer = vlessBuffer.slice(portIndex, portIndex + 2);
+	const portRemote = new DataView(portBuffer).getUint16(0);
+
+	let addressIndex = portIndex + 2;
+	const addressBuffer = new Uint8Array(
+		vlessBuffer.slice(addressIndex, addressIndex + 1)
+	);
+
+	const addressType = addressBuffer[0];
+	let addressLength = 0;
+	let addressValueIndex = addressIndex + 1;
+	let addressValue = '';
+	switch (addressType) {
+		case 1:
+			addressLength = 4;
+			addressValue = new Uint8Array(
+				vlessBuffer.slice(addressValueIndex, addressValueIndex + addressLength)
+			).join('.');
+			break;
+		case 2:
+			addressLength = new Uint8Array(
+				vlessBuffer.slice(addressValueIndex, addressValueIndex + 1)
+			)[0];
+			addressValueIndex += 1;
+			addressValue = new TextDecoder().decode(
+				vlessBuffer.slice(addressValueIndex, addressValueIndex + addressLength)
+			);
+			break;
+		case 3:
+			addressLength = 16;
+			const dataView = new DataView(
+				vlessBuffer.slice(addressValueIndex, addressValueIndex + addressLength)
+			);
+			const ipv6 = [];
+			for (let i = 0; i < 8; i++) {
+				ipv6.push(dataView.getUint16(i * 2).toString(16));
+			}
+			addressValue = ipv6.join(':');
+			break;
+		default:
+			return {
+				hasError: true,
+				message: `invild  addressType is ${addressType}`,
+			};
+	}
+	if (!addressValue) {
+		return {
+			hasError: true,
+			message: `addressValue is empty, addressType is ${addressType}`,
+		};
+	}
+
+	return {
+		hasError: false,
+		addressRemote: addressValue,
+		addressType,
+		portRemote,
+		rawDataIndex: addressValueIndex + addressLength,
+		vlessVersion: version,
+		isUDP,
+	};
+}
+
+async function remoteSocketToWS(remoteSocket, webSocket, vlessResponseHeader, retry, log) {
+	let remoteChunkCount = 0;
+	let chunks = [];
+	let vlessHeader = vlessResponseHeader;
+	let hasIncomingData = false;
+	await remoteSocket.readable
+		.pipeTo(
+			new WritableStream({
+				start() {
+				},
+				async write(chunk, controller) {
+					hasIncomingData = true;
+					if (webSocket.readyState !== WS_READY_STATE_OPEN) {
+						controller.error(
+							'webSocket.readyState is not open, maybe close'
+						);
+					}
+					if (vlessHeader) {
+						webSocket.send(await new Blob([vlessHeader, chunk]).arrayBuffer());
+						vlessHeader = null;
+					} else {
+						webSocket.send(chunk);
+					}
+				},
+				close() {
+					log(`remoteConnection!.readable is close with hasIncomingData is ${hasIncomingData}`);
+				},
+				abort(reason) {
+					console.error(`remoteConnection!.readable abort`, reason);
+				},
+			})
+		)
+		.catch((error) => {
+			console.error(
+				`remoteSocketToWS has exception `,
+				error.stack || error
+			);
+			safeCloseWebSocket(webSocket);
+		});
+	if (hasIncomingData === false && retry) {
+		log(`retry`)
+		retry();
+	}
+}
+
+function base64ToArrayBuffer(base64Str) {
+	if (!base64Str) {
+		return { error: null };
+	}
+	try {
+		base64Str = base64Str.replace(/-/g, '+').replace(/_/g, '/');
+		const decode = atob(base64Str);
+		const arryBuffer = Uint8Array.from(decode, (c) => c.charCodeAt(0));
+		return { earlyData: arryBuffer.buffer, error: null };
+	} catch (error) {
+		return { error };
+	}
+}
+
+
+const WS_READY_STATE_OPEN = 1;
+const WS_READY_STATE_CLOSING = 2;
+function safeCloseWebSocket(socket) {
+	try {
+		if (socket.readyState === WS_READY_STATE_OPEN || socket.readyState === WS_READY_STATE_CLOSING) {
+			socket.close();
+		}
+	} catch (error) {
+		console.error('safeCloseWebSocket error', error);
+	}
+}
+
+async function handleUDPOutBound(webSocket, vlessResponseHeader, log) {
+
+	let isVlessHeaderSent = false;
+	const transformStream = new TransformStream({
+		start(controller) {
+
+		},
+		transform(chunk, controller) {
+			for (let index = 0; index < chunk.byteLength;) {
+				const lengthBuffer = chunk.slice(index, index + 2);
+				const udpPakcetLength = new DataView(lengthBuffer).getUint16(0);
+				const udpData = new Uint8Array(
+					chunk.slice(index + 2, index + 2 + udpPakcetLength)
+				);
+				index = index + 2 + udpPakcetLength;
+				controller.enqueue(udpData);
+			}
+		},
+		flush(controller) {
+		}
+	});
+	transformStream.readable.pipeTo(new WritableStream({
+		async write(chunk) {
+			const resp = await fetch('https://1.1.1.1/dns-query',
+				{
+					method: 'POST',
+					headers: {
+						'content-type': 'application/dns-message',
+					},
+					body: chunk,
+				})
+			const dnsQueryResult = await resp.arrayBuffer();
+			const udpSize = dnsQueryResult.byteLength;
+			const udpSizeBuffer = new Uint8Array([(udpSize >> 8) & 0xff, udpSize & 0xff]);
+			if (webSocket.readyState === WS_READY_STATE_OPEN) {
+				log(`doh success and dns message length is ${udpSize}`);
+				if (isVlessHeaderSent) {
+					webSocket.send(await new Blob([udpSizeBuffer, dnsQueryResult]).arrayBuffer());
+				} else {
+					webSocket.send(await new Blob([vlessResponseHeader, udpSizeBuffer, dnsQueryResult]).arrayBuffer());
+					isVlessHeaderSent = true;
+				}
+			}
+		}
+	})).catch((error) => {
+		log('dns udp has error' + error)
+	});
+
+	const writer = transformStream.writable.getWriter();
+
+	return {
+		write(chunk) {
+			writer.write(chunk);
+		}
+	};
+}
+
+
+async function trojanOverWSHandler(request) {
   const webSocketPair = new WebSocketPair();
   const [client, webSocket] = Object.values(webSocketPair);
   webSocket.accept();
@@ -1478,75 +1377,141 @@ async function vlessOverWSHandler(request) {
     console.log(`[${address}:${portWithRandomLog}] ${info}`, event || "");
   };
   const earlyDataHeader = request.headers.get("sec-websocket-protocol") || "";
-  const readableWebSocketStream = makeReadableWebSocketStream(webSocket, earlyDataHeader, log);
+  const readableWebSocketStream = makeReadableWebSocketStream2(webSocket, earlyDataHeader, log);
   let remoteSocketWapper = {
-    value: null
+    value: null,
   };
   let udpStreamWrite = null;
-  let isDns = false;
-  readableWebSocketStream.pipeTo(new WritableStream({
-    async write(chunk, controller) {
-      if (isDns && udpStreamWrite) {
-        return udpStreamWrite(chunk);
-      }
-      if (remoteSocketWapper.value) {
-        const writer = remoteSocketWapper.value.writable.getWriter();
-        await writer.write(chunk);
-        writer.releaseLock();
-        return;
-      }
-      const {
-        hasError,
-        message,
-        portRemote = 443,
-        addressRemote = "",
-        rawDataIndex,
-        vlessVersion = new Uint8Array([0, 0]),
-        isUDP
-      } = processVlessHeader(chunk);
-      address = addressRemote;
-      portWithRandomLog = `${portRemote}--${Math.random()} ${isUDP ? "udp " : "tcp "} `;
-      if (hasError) {
-        throw new Error(message);
-        return;
-      }
-      if (isUDP) {
-        if (portRemote === 53) {
-          isDns = true;
-        } else {
-          throw new Error("UDP proxy only enable for DNS which is port 53");
-          return;
-        }
-      }
-      const vlessResponseHeader = new Uint8Array([vlessVersion[0], 0]);
-      const rawClientData = chunk.slice(rawDataIndex);
-      if (isDns) {
-        const { write } = await handleUDPOutBound(webSocket, vlessResponseHeader, log);
-        udpStreamWrite = write;
-        udpStreamWrite(rawClientData);
-        return;
-      }
-      handleTCPOutBound(remoteSocketWapper, addressRemote, portRemote, rawClientData, webSocket, vlessResponseHeader, log);
-    },
-    close() {
-      log(`readableWebSocketStream is close`);
-    },
-    abort(reason) {
-      log(`readableWebSocketStream is abort`, JSON.stringify(reason));
-    }
-  })).catch((err) => {
-    log("readableWebSocketStream pipeTo error", err);
-  });
+  readableWebSocketStream
+    .pipeTo(
+      new WritableStream({
+        async write(chunk, controller) {
+          if (udpStreamWrite) {
+            return udpStreamWrite(chunk);
+          }
+          if (remoteSocketWapper.value) {
+            const writer = remoteSocketWapper.value.writable.getWriter();
+            await writer.write(chunk);
+            writer.releaseLock();
+            return;
+          }
+          const {
+            hasError,
+            message,
+            portRemote = 443,
+            addressRemote = "",
+            rawClientData,
+          } = await parseTrojanHeader(chunk);
+          address = addressRemote;
+          portWithRandomLog = `${portRemote}--${Math.random()} tcp`;
+          if (hasError) {
+            throw new Error(message);
+            return;
+          }
+          handleTCPOutBound2(remoteSocketWapper, addressRemote, portRemote, rawClientData, webSocket, log);
+        },
+        close() {
+          log(`readableWebSocketStream is closed`);
+        },
+        abort(reason) {
+          log(`readableWebSocketStream is aborted`, JSON.stringify(reason));
+        },
+      })
+    )
+    .catch((err) => {
+      log("readableWebSocketStream pipeTo error", err);
+    });
   return new Response(null, {
     status: 101,
-    webSocket: client
+    webSocket: client,
   });
 }
-async function handleTCPOutBound(remoteSocket, addressRemote, portRemote, rawClientData, webSocket, vlessResponseHeader, log) {
+
+async function parseTrojanHeader(buffer) {
+  if (buffer.byteLength < 56) {
+    return {
+      hasError: true,
+      message: "invalid data",
+    };
+  }
+  let crLfIndex = 56;
+  if (new Uint8Array(buffer.slice(56, 57))[0] !== 0x0d || new Uint8Array(buffer.slice(57, 58))[0] !== 0x0a) {
+    return {
+      hasError: true,
+      message: "invalid header format (missing CR LF)",
+    };
+  }
+
+  const socks5DataBuffer = buffer.slice(crLfIndex + 2);
+  if (socks5DataBuffer.byteLength < 6) {
+    return {
+      hasError: true,
+      message: "invalid SOCKS5 request data",
+    };
+  }
+
+  const view = new DataView(socks5DataBuffer);
+  const cmd = view.getUint8(0);
+  if (cmd !== 1) {
+    return {
+      hasError: true,
+      message: "unsupported command, only TCP (CONNECT) is allowed",
+    };
+  }
+
+  const atype = view.getUint8(1);
+  let addressLength = 0;
+  let addressIndex = 2;
+  let address = "";
+  switch (atype) {
+    case 1:
+      addressLength = 4;
+      address = new Uint8Array(socks5DataBuffer.slice(addressIndex, addressIndex + addressLength)).join(".");
+      break;
+    case 3:
+      addressLength = new Uint8Array(socks5DataBuffer.slice(addressIndex, addressIndex + 1))[0];
+      addressIndex += 1;
+      address = new TextDecoder().decode(socks5DataBuffer.slice(addressIndex, addressIndex + addressLength));
+      break;
+    case 4:
+      addressLength = 16;
+      const dataView = new DataView(socks5DataBuffer.slice(addressIndex, addressIndex + addressLength));
+      const ipv6 = [];
+      for (let i = 0; i < 8; i++) {
+        ipv6.push(dataView.getUint16(i * 2).toString(16));
+      }
+      address = ipv6.join(":");
+      break;
+    default:
+      return {
+        hasError: true,
+        message: `invalid addressType is ${atype}`,
+      };
+  }
+
+  if (!address) {
+    return {
+      hasError: true,
+      message: `address is empty, addressType is ${atype}`,
+    };
+  }
+
+  const portIndex = addressIndex + addressLength;
+  const portBuffer = socks5DataBuffer.slice(portIndex, portIndex + 2);
+  const portRemote = new DataView(portBuffer).getUint16(0);
+  return {
+    hasError: false,
+    addressRemote: address,
+    portRemote,
+    rawClientData: socks5DataBuffer.slice(portIndex + 4),
+  };
+}
+
+async function handleTCPOutBound2(remoteSocket, addressRemote, portRemote, rawClientData, webSocket, log) {
   async function connectAndWrite(address, port) {
     const tcpSocket2 = connect({
       hostname: address,
-      port
+      port,
     });
     remoteSocket.value = tcpSocket2;
     log(`connected to ${address}:${port}`);
@@ -1556,18 +1521,21 @@ async function handleTCPOutBound(remoteSocket, addressRemote, portRemote, rawCli
     return tcpSocket2;
   }
   async function retry() {
-    const tcpSocket2 = await connectAndWrite(proxyIP || addressRemote, proxyPort || portRemote);
-    tcpSocket2.closed.catch((error) => {
-      console.log("retry tcpSocket closed error", error);
-    }).finally(() => {
-      safeCloseWebSocket(webSocket);
-    });
-    remoteSocketToWS(tcpSocket2, webSocket, vlessResponseHeader, null, log);
+    const tcpSocket2 = await connectAndWrite(proxyIP.split(/[:=]/)[0] || addressRemote, proxyIP.split(/[:=]/)[1] || portRemote);
+    tcpSocket2.closed
+      .catch((error) => {
+        console.log("retry tcpSocket closed error", error);
+      })
+      .finally(() => {
+        safeCloseWebSocket2(webSocket);
+      });
+    remoteSocketToWS2(tcpSocket2, webSocket, null, log);
   }
   const tcpSocket = await connectAndWrite(addressRemote, portRemote);
-  remoteSocketToWS(tcpSocket, webSocket, vlessResponseHeader, retry, log);
+  remoteSocketToWS2(tcpSocket, webSocket, retry, log);
 }
-function makeReadableWebSocketStream(webSocketServer, earlyDataHeader, log) {
+
+function makeReadableWebSocketStream2(webSocketServer, earlyDataHeader, log) {
   let readableStreamCancel = false;
   const stream = new ReadableStream({
     start(controller) {
@@ -1578,175 +1546,69 @@ function makeReadableWebSocketStream(webSocketServer, earlyDataHeader, log) {
         const message = event.data;
         controller.enqueue(message);
       });
-      webSocketServer.addEventListener(
-        "close",
-        () => {
-          safeCloseWebSocket(webSocketServer);
-          if (readableStreamCancel) {
-            return;
-          }
-          controller.close();
+      webSocketServer.addEventListener("close", () => {
+        safeCloseWebSocket2(webSocketServer);
+        if (readableStreamCancel) {
+          return;
         }
-      );
-      webSocketServer.addEventListener(
-        "error",
-        (err) => {
-          log("webSocketServer has error");
-          controller.error(err);
-        }
-      );
-      const { earlyData, error } = base64ToArrayBuffer(earlyDataHeader);
+        controller.close();
+      });
+      webSocketServer.addEventListener("error", (err) => {
+        log("webSocketServer error");
+        controller.error(err);
+      });
+      const { earlyData, error } = base64ToArrayBuffer2(earlyDataHeader);
       if (error) {
         controller.error(error);
       } else if (earlyData) {
         controller.enqueue(earlyData);
       }
     },
-    pull(controller) {
-    },
+    pull(controller) {},
     cancel(reason) {
       if (readableStreamCancel) {
         return;
       }
-      log(`ReadableStream was canceled, due to ${reason}`);
+      log(`readableStream was canceled, due to ${reason}`);
       readableStreamCancel = true;
-      safeCloseWebSocket(webSocketServer);
-    }
+      safeCloseWebSocket2(webSocketServer);
+    },
   });
   return stream;
 }
-function processVlessHeader(vlessBuffer) {
-  if (vlessBuffer.byteLength < 24) {
-    return {
-      hasError: true,
-      message: "invalid data"
-    };
-  }
-  const version = new Uint8Array(vlessBuffer.slice(0, 1));
-  let isValidUser = true;
-  let isUDP = false;
-  if (!isValidUser) {
-    return {
-      hasError: true,
-      message: "invalid user"
-    };
-  }
-  const optLength = new Uint8Array(vlessBuffer.slice(17, 18))[0];
-  const command = new Uint8Array(
-    vlessBuffer.slice(18 + optLength, 18 + optLength + 1)
-  )[0];
-  if (command === 1) {
-  } else if (command === 2) {
-    isUDP = true;
-  } else {
-    return {
-      hasError: true,
-      message: `command ${command} is not support, command 01-tcp,02-udp,03-mux`
-    };
-  }
-  const portIndex = 18 + optLength + 1;
-  const portBuffer = vlessBuffer.slice(portIndex, portIndex + 2);
-  const portRemote = new DataView(portBuffer).getUint16(0);
-  let addressIndex = portIndex + 2;
-  const addressBuffer = new Uint8Array(
-    vlessBuffer.slice(addressIndex, addressIndex + 1)
-  );
-  const addressType = addressBuffer[0];
-  let addressLength = 0;
-  let addressValueIndex = addressIndex + 1;
-  let addressValue = "";
-  switch (addressType) {
-    case 1:
-      addressLength = 4;
-      addressValue = new Uint8Array(
-        vlessBuffer.slice(addressValueIndex, addressValueIndex + addressLength)
-      ).join(".");
-      break;
-    case 2:
-      addressLength = new Uint8Array(
-        vlessBuffer.slice(addressValueIndex, addressValueIndex + 1)
-      )[0];
-      addressValueIndex += 1;
-      addressValue = new TextDecoder().decode(
-        vlessBuffer.slice(addressValueIndex, addressValueIndex + addressLength)
-      );
-      break;
-    case 3:
-      addressLength = 16;
-      const dataView = new DataView(
-        vlessBuffer.slice(addressValueIndex, addressValueIndex + addressLength)
-      );
-      const ipv6 = [];
-      for (let i = 0; i < 8; i++) {
-        ipv6.push(dataView.getUint16(i * 2).toString(16));
-      }
-      addressValue = ipv6.join(":");
-      break;
-    default:
-      return {
-        hasError: true,
-        message: `invild  addressType is ${addressType}`
-      };
-  }
-  if (!addressValue) {
-    return {
-      hasError: true,
-      message: `addressValue is empty, addressType is ${addressType}`
-    };
-  }
-  return {
-    hasError: false,
-    addressRemote: addressValue,
-    addressType,
-    portRemote,
-    rawDataIndex: addressValueIndex + addressLength,
-    vlessVersion: version,
-    isUDP
-  };
-}
-async function remoteSocketToWS(remoteSocket, webSocket, vlessResponseHeader, retry, log) {
-  let remoteChunkCount = 0;
-  let chunks = [];
-  let vlessHeader = vlessResponseHeader;
+
+async function remoteSocketToWS2(remoteSocket, webSocket, retry, log) {
   let hasIncomingData = false;
-  await remoteSocket.readable.pipeTo(
-    new WritableStream({
-      start() {
-      },
-      async write(chunk, controller) {
-        hasIncomingData = true;
-        if (webSocket.readyState !== WS_READY_STATE_OPEN) {
-          controller.error(
-            "webSocket.readyState is not open, maybe close"
-          );
-        }
-        if (vlessHeader) {
-          webSocket.send(await new Blob([vlessHeader, chunk]).arrayBuffer());
-          vlessHeader = null;
-        } else {
+  await remoteSocket.readable
+    .pipeTo(
+      new WritableStream({
+        start() {},
+        async write(chunk, controller) {
+          hasIncomingData = true;
+          if (webSocket.readyState !== WS_READY_STATE_OPEN) {
+            controller.error("webSocket connection is not open");
+          }
           webSocket.send(chunk);
-        }
-      },
-      close() {
-        log(`remoteConnection!.readable is close with hasIncomingData is ${hasIncomingData}`);
-      },
-      abort(reason) {
-        console.error(`remoteConnection!.readable abort`, reason);
-      }
-    })
-  ).catch((error) => {
-    console.error(
-      `remoteSocketToWS has exception `,
-      error.stack || error
-    );
-    safeCloseWebSocket(webSocket);
-  });
+        },
+        close() {
+          log(`remoteSocket.readable is closed, hasIncomingData: ${hasIncomingData}`);
+        },
+        abort(reason) {
+          console.error("remoteSocket.readable abort", reason);
+        },
+      })
+    )
+    .catch((error) => {
+      console.error(`remoteSocketToWS2 error:`, error.stack || error);
+      safeCloseWebSocket2(webSocket);
+    });
   if (hasIncomingData === false && retry) {
     log(`retry`);
     retry();
   }
 }
-function base64ToArrayBuffer(base64Str) {
+
+function base64ToArrayBuffer2(base64Str) {
   if (!base64Str) {
     return { error: null };
   }
@@ -1759,71 +1621,20 @@ function base64ToArrayBuffer(base64Str) {
     return { error };
   }
 }
-var WS_READY_STATE_OPEN = 1;
-var WS_READY_STATE_CLOSING = 2;
-function safeCloseWebSocket(socket) {
+
+let WS_READY_STATE_OPEN2 = 1;
+let WS_READY_STATE_CLOSING2 = 2;
+
+function safeCloseWebSocket2(socket) {
   try {
-    if (socket.readyState === WS_READY_STATE_OPEN || socket.readyState === WS_READY_STATE_CLOSING) {
+    if (socket.readyState === WS_READY_STATE_OPEN2 || socket.readyState === WS_READY_STATE_CLOSING2) {
       socket.close();
     }
   } catch (error) {
-    console.error("safeCloseWebSocket error", error);
+    console.error("safeCloseWebSocket2 error", error);
   }
 }
-async function handleUDPOutBound(webSocket, vlessResponseHeader, log) {
-  let isVlessHeaderSent = false;
-  const transformStream = new TransformStream({
-    start(controller) {
-    },
-    transform(chunk, controller) {
-      for (let index = 0; index < chunk.byteLength; ) {
-        const lengthBuffer = chunk.slice(index, index + 2);
-        const udpPakcetLength = new DataView(lengthBuffer).getUint16(0);
-        const udpData = new Uint8Array(
-          chunk.slice(index + 2, index + 2 + udpPakcetLength)
-        );
-        index = index + 2 + udpPakcetLength;
-        controller.enqueue(udpData);
-      }
-    },
-    flush(controller) {
-    }
-  });
-  transformStream.readable.pipeTo(new WritableStream({
-    async write(chunk) {
-      const resp = await fetch(
-        "https://1.1.1.1/dns-query",
-        {
-          method: "POST",
-          headers: {
-            "content-type": "application/dns-message"
-          },
-          body: chunk
-        }
-      );
-      const dnsQueryResult = await resp.arrayBuffer();
-      const udpSize = dnsQueryResult.byteLength;
-      const udpSizeBuffer = new Uint8Array([udpSize >> 8 & 255, udpSize & 255]);
-      if (webSocket.readyState === WS_READY_STATE_OPEN) {
-        log(`doh success and dns message length is ${udpSize}`);
-        if (isVlessHeaderSent) {
-          webSocket.send(await new Blob([udpSizeBuffer, dnsQueryResult]).arrayBuffer());
-        } else {
-          webSocket.send(await new Blob([vlessResponseHeader, udpSizeBuffer, dnsQueryResult]).arrayBuffer());
-          isVlessHeaderSent = true;
-        }
-      }
-    }
-  })).catch((error) => {
-    log("dns udp has error" + error);
-  });
-  const writer = transformStream.writable.getWriter();
-  return {
-    write(chunk) {
-      writer.write(chunk);
-    }
-  };
-}
+
 export {
   worker_default as default
 };

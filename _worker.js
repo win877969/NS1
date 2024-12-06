@@ -4,10 +4,10 @@ let proxyIP;
 let proxyPort;
 
 var worker_default = {
-  async fetch(request, url, ctx) {
+  async fetch(request, env, ctx) {
     try {
       // Parse the list of proxies from the environment variable
-      const listProxyURL = 'https://raw.githubusercontent.com/bexnxx001/proxyip/main/ip.txt'
+      const listProxy = (env.LIST_IP_PORT || "")
         .split("\n")
         .filter(Boolean)
         .map(entry => {

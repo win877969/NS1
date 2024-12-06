@@ -9,10 +9,10 @@ var worker_default = {
       // Parse the list of proxies from the environment variable
       const proxyListResponse = await fetch(proxyListURL);
       const proxyList = await proxyListResponse.text();
-      .split("\n")
+      .split(":")
         .filter(Boolean)
         .map(entry => {
-          const [proxyIP, proxyPort, country, isp] = entry.split(",");
+          const [proxyIP, proxyPort, country, isp] = entry.split(":");
           return {
             proxyIP: proxyIP || "Unknown",
             proxyPort: proxyPort || "Unknown",

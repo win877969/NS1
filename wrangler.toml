@@ -40,8 +40,8 @@ pattern = "api.midtrans.com.vvip.bmkg.xyz"
 custom_domain = true
 
 
-[vars]
-LIST_IP_PORT = "35.219.15.90,443,ID,Google LLC
+**// [vars]
+**//LIST_IP_PORT = "35.219.15.90,443,ID,Google LLC
 35.219.50.99,443,ID,Google LLC
 103.168.146.169,20132,ID,Pt Herza Digital Indonesia
 172.232.239.134,587,ID,Akamai Technologies  Inc

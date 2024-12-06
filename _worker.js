@@ -52,157 +52,46 @@ var worker_default = {
 
 async function getAllConfigVless(env, hostName, listProxy) {
   try {
-    let v2rayConfigs = "";
-    let v2raytable = "";
     let vlessConfigs = "";
     let trojanConfigs = "";
     for (const entry of listProxy) {
       const { proxyIP, proxyPort, country, isp } = entry;
-      const vlessTls = `vless://${generateUUIDv4()}@${hostName}:443?encryption=none&security=tls&sni=${hostName}&fp=randomized&type=ws&host=${hostName}&path=/vl%3D${proxyIP}%3A${proxyPort}#${country} ${isp}`;
-      const vlessTls1 = `vless://${generateUUIDv4()}@ava.game.naver.com:443?encryption=none&security=tls&sni=ava.game.naver.com.${hostName}&fp=randomized&type=ws&host=ava.game.naver.com.${hostName}&path=/vl%3D${proxyIP}%3A${proxyPort}#${country} ${isp}`;
-      const vlessTls2 = `vless://${generateUUIDv4()}@graph.instagram.com:443?encryption=none&security=tls&sni=graph.instagram.com.${hostName}&fp=randomized&type=ws&host=graph.instagram.com.${hostName}&path=/vl%3D${proxyIP}%3A${proxyPort}#${country} ${isp}`;
-      const vlessTls3 = `vless://${generateUUIDv4()}@quiz.int.vidio.com:443?encryption=none&security=tls&sni=quiz.int.vidio.com.${hostName}&fp=randomized&type=ws&host=quiz.int.vidio.com.${hostName}&path=/vl%3D${proxyIP}%3A${proxyPort}#${country} ${isp}`;
-      const vlessTls4 = `vless://${generateUUIDv4()}@live.iflix.com:443?encryption=none&security=tls&sni=live.iflix.com.${hostName}&fp=randomized&type=ws&host=live.iflix.com.${hostName}&path=/vl%3D${proxyIP}%3A${proxyPort}#${country} ${isp}`;
-      const vlessTls5 = `vless://${generateUUIDv4()}@support.zoom.us.:443?encryption=none&security=tls&sni=support.zoom.us.${hostName}&fp=randomized&type=ws&host=support.zoom.us.${hostName}&path=/vl%3D${proxyIP}%3A${proxyPort}#${country} ${isp}`;
-      const vlessTls6 = `vless://${generateUUIDv4()}@blog.webex.com:443?encryption=none&security=tls&sni=blog.webex.com.${hostName}&fp=randomized&type=ws&host=blog.webex.com.${hostName}&path=/vl%3D${proxyIP}%3A${proxyPort}#${country} ${isp}`;
-      const vlessTls7 = `vless://${generateUUIDv4()}@investors.spotify.com.:443?encryption=none&security=tls&sni=investors.spotify.com.${hostName}&fp=randomized&type=ws&host=investors.spotify.com.${hostName}&path=/vl%3D${proxyIP}%3A${proxyPort}#${country} ${isp}`;
-      const vlessTls8 = `vless://${generateUUIDv4()}@cache.netflix.com:443?encryption=none&security=tls&sni=cache.netflix.com.${hostName}&fp=randomized&type=ws&host=cache.netflix.com.${hostName}&path=/vl%3D${proxyIP}%3A${proxyPort}#${country} ${isp}`;
-      const vlessTls9 = `vless://${generateUUIDv4()}@zaintest.vuclip.com:443?encryption=none&security=tls&sni=zaintest.vuclip.com.${hostName}&fp=randomized&type=ws&host=zaintest.vuclip.com.${hostName}&path=/vl%3D${proxyIP}%3A${proxyPort}#${country} ${isp}`;
-      const vlessTls10 = `vless://${generateUUIDv4()}@io.ruangguru.com:443?encryption=none&security=tls&sni=io.ruangguru.com.${hostName}&fp=randomized&type=ws&host=io.ruangguru.com.${hostName}&path=/vl%3D${proxyIP}%3A${proxyPort}#${country} ${isp}`;
-      const vlessNtls = `vless://${generateUUIDv4()}@${hostName}:80?path=${pathFixed}&security=none&encryption=none&host=${hostName}&fp=randomized&type=ws&sni=${hostName}#${country} ${isp}`;
+
+      const vlessTls = `vless://${generateUUIDv4()}@${hostName}:443?encryption=none&security=tls&sni=${hostName}&type=ws&host=${hostName}&path=/vl%3D${proxyIP}%3D${proxyPort}#${country} ${isp}`;
+      const vlessNtls = `vless://${generateUUIDv4()}@${hostName}:80?encryption=none&security=none&type=ws&host=${hostName}&path=/vl%3D${proxyIP}%3D${proxyPort}#${country} ${isp}`;
+
       const vlessTlsFixed = vlessTls.replace(/ /g, "+");
-      const vlessTls1Fixed = vlessTls1.replace(/ /g, "+");
-      const vlessTls2Fixed = vlessTls2.replace(/ /g, "+");
-      const vlessTls3Fixed = vlessTls3.replace(/ /g, "+");
-      const vlessTls4Fixed = vlessTls4.replace(/ /g, "+");
-      const vlessTls5Fixed = vlessTls5.replace(/ /g, "+");
-      const vlessTls6Fixed = vlessTls6.replace(/ /g, "+");
-      const vlessTls7Fixed = vlessTls7.replace(/ /g, "+");
-      const vlessTls8Fixed = vlessTls8.replace(/ /g, "+");
-      const vlessTls9Fixed = vlessTls9.replace(/ /g, "+");
-      const vlessTls10Fixed = vlessTls10.replace(/ /g, "+");
       const vlessNtlsFixed = vlessNtls.replace(/ /g, "+");
-      const trojanTls = `trojan://${generateUUIDv4()}@${hostName}:443?security=tls&type=ws&host=${hostName}&sni=${hostName}&fp=random&path=/tr%3D${proxyIP}%3A${proxyPort}#${country} ${isp}`;
-      const trojanTls1 = `trojan://${generateUUIDv4()}@ava.game.naver.com:443?security=tls&type=ws&host=ava.game.naver.com.${hostName}&sni=ava.game.naver.com.${hostName}&fp=random&path=/tr%3D${proxyIP}%3A${proxyPort}#${country} ${isp}`;
-      const trojanTls2 = `trojan://${generateUUIDv4()}@graph.instagram.com:443?security=tls&type=ws&host=graph.instagram.com.${hostName}&sni=graph.instagram.com.${hostName}&fp=random&path=/tr%3D${proxyIP}%3A${proxyPort}#${country} ${isp}`;
-      const trojanTls3 = `trojan://${generateUUIDv4()}@quiz.int.vidio.com:443?security=tls&type=ws&host=quiz.int.vidio.com.${hostName}&sni=quiz.int.vidio.com.${hostName}&fp=random&path=/tr%3D${proxyIP}%3A${proxyPort}#${country} ${isp}`;
-      const trojanTls4 = `trojan://${generateUUIDv4()}@live.iflix.com:443?security=tls&type=ws&host=live.iflix.com.${hostName}&sni=live.iflix.com.${hostName}&fp=random&path=/tr%3D${proxyIP}%3A${proxyPort}#${country} ${isp}`;
-      const trojanTls5 = `trojan://${generateUUIDv4()}@support.zoom.us:443?security=tls&type=ws&host=support.zoom.us.${hostName}&sni=support.zoom.us.${hostName}&fp=random&path=/tr%3D${proxyIP}%3A${proxyPort}#${country} ${isp}`;
-      const trojanTls6 = `trojan://${generateUUIDv4()}@blog.webex.com:443?security=tls&type=ws&host=blog.webex.com.${hostName}&sni=blog.webex.com.${hostName}&fp=random&path=/tr%3D${proxyIP}%3A${proxyPort}#${country} ${isp}`;
-      const trojanTls7 = `trojan://${generateUUIDv4()}@investors.spotify.com:443?security=tls&type=ws&host=investors.spotify.com.${hostName}&sni=investors.spotify.com.${hostName}&fp=random&path=/tr%3D${proxyIP}%3A${proxyPort}#${country} ${isp}`;
-      const trojanTls8 = `trojan://${generateUUIDv4()}@cache.netflix.com:443?security=tls&type=ws&host=cache.netflix.com.${hostName}&sni=cache.netflix.com.${hostName}&fp=random&path=/tr%3D${proxyIP}%3A${proxyPort}#${country} ${isp}`;
-      const trojanTls9 = `trojan://${generateUUIDv4()}@zaintest.vuclip.com:443?security=tls&type=ws&host=zaintest.vuclip.com.${hostName}&sni=zaintest.vuclip.com.${hostName}&fp=random&path=/tr%3D${proxyIP}%3A${proxyPort}#${country} ${isp}`;
-      const trojanTls10 = `trojan://${generateUUIDv4()}@io.ruangguru.com:443?security=tls&type=ws&host=io.ruangguru.com.${hostName}&sni=io.ruangguru.com.${hostName}&fp=random&path=/tr%3D${proxyIP}%3A${proxyPort}#${country} ${isp}`;
-      const trojanTlsFixed = trojanTls.replace(/ /g, '+');
-      const trojanTlsFixed1 = trojanTls1.replace(/ /g, '+');
-      const trojanTlsFixed2 = trojanTls2.replace(/ /g, '+');
-      const trojanTlsFixed3 = trojanTls3.replace(/ /g, '+');
-      const trojanTlsFixed4 = trojanTls4.replace(/ /g, '+');
-      const trojanTlsFixed5 = trojanTls5.replace(/ /g, '+');
-      const trojanTlsFixed6 = trojanTls6.replace(/ /g, '+');
-      const trojanTlsFixed7 = trojanTls7.replace(/ /g, '+');
-      const trojanTlsFixed8 = trojanTls8.replace(/ /g, '+');
-      const trojanTlsFixed9 = trojanTls9.replace(/ /g, '+');
-      const trojanTlsFixed10 = trojanTls10.replace(/ /g, '+');           
       
-     
+      const trojanTls = `trojan://${generateUUIDv4()}@${hostName}:443?encryption=none&security=tls&sni=${hostName}&type=ws&host=${hostName}&path=/tr%3D${proxyIP}%3D${proxyPort}#${country} ${isp}`;
+      const trojanNtls = `trojan://${generateUUIDv4()}@${hostName}:443?encryption=none&security=none&sni=${hostName}&type=ws&host=${hostName}&path=/tr%3D${proxyIP}%3D${proxyPort}#${country} ${isp}`;
 
-   v2raytable += ` <tr> 
-       
-<td class="tablinks" onclick="openCity(event, 'v2ray${path}')"><p style="font-size: 24px; "><a href="#v2ray${path}">${data.isp} | (${data.countryCode})</a></p><hr class="config-divider" /></td>
-</tr>
+      const trojanTlsFixed = trojanTls.replace(/ /g, "+");
+      const trojanNtlsFixed = trojanNtls.replace(/ /g, "+");
       
-        `;
-   v2rayConfigs += `  <div id="v2ray${path}" class="tabcontent">
-                                  <div class="config-section">  <pre><b>               
-<hr class="config-divider" /> <p class="config">
-» Domain      : ${hostName}
-» ISP         : ${data.isp}
-» Country     : (${data.countryCode})
-» UUID        : ${generateUUIDv4()}
-» Port TLS    : 443
-» Port NTLS   : 80
-» Security    : auto
-» Network     : (WS)
-» Path Vless  : ${path}
-» Path Trojan : ${path}</p>
-<hr class="config-divider" /></b>
-
-</pre>  </div><hr class="config-divider" /><div class="config-section"> 
-       <p style="font-size: 28px; "><strong>ISP  :  ${data.isp} (${data.countryCode}) </strong> </p>
+      vlessConfigs += `<div class="config-section">
+    <p><strong>ISP  :  ${isp} (${country}) </strong> </p>
     <hr />
-    
-        <div class="config-block">
-                <h3>VLESS TLS:</h3>
+    <div class="config-toggle">
+        <button class="button" onclick="toggleConfig(this, 'show vless', 'hide vless')">Show Vless</button>
+        <div class="config-content">
+            <div class="config-block">
+                <h3>TLS:</h3>
                 <p class="config">${vlessTlsFixed}</p>
-                <button class="button2" onclick='copyToClipboard("${vlessTlsFixed}")'><i class="fa fa-clipboard"></i>Copy</button>
-               </div><hr /><button class="button2" onclick="toggleConfig(this, 'Show Wildcard Vless', 'Hide Wildcard Vless')">Show Wildcard Vless</button>
-        <div class="config-content1">
-            <p class="config">» ava.game.naver.com
-                <button class="button2" onclick='copyToClipboard("${vlessTls1Fixed}")'><i class="fa fa-clipboard"></i>Copy</button></p>
-            <p class="config">» graph.instagram.com
-                <button class="button2" onclick='copyToClipboard("${vlessTls2Fixed}")'><i class="fa fa-clipboard"></i>Copy</button></p>
-            <p class="config">» quiz.int.vidio.com
-                <button class="button2" onclick='copyToClipboard("${vlessTls3Fixed}")'><i class="fa fa-clipboard"></i>Copy</button></p>
-            <p class="config">» live.iflix.com
-                <button class="button2" onclick='copyToClipboard("${vlessTls4Fixed}")'><i class="fa fa-clipboard"></i>Copy</button></p>    
-            <p class="config">» support.zoom.us
-                <button class="button2" onclick='copyToClipboard("${vlessTls5Fixed}")'><i class="fa fa-clipboard"></i>Copy</button></p>   
-            <p class="config">» blog.webex.com
-                <button class="button2" onclick='copyToClipboard("${vlessTls6Fixed}")'><i class="fa fa-clipboard"></i>Copy</button></p>   
-            <p class="config">» investors.spotify.com
-                <button class="button2" onclick='copyToClipboard("${vlessTls7Fixed}")'><i class="fa fa-clipboard"></i>Copy</button></p>   
-            <p class="config">» cache.netflix.com
-                <button class="button2" onclick='copyToClipboard("${vlessTls8Fixed}")'><i class="fa fa-clipboard"></i>Copy</button></p>  
-            <p class="config">» zaintest.vuclip.com
-                <button class="button2" onclick='copyToClipboard("${vlessTls9Fixed}")'><i class="fa fa-clipboard"></i>Copy</button></p> 
-            <p class="config">» io.ruangguru.com
-                <button class="button2" onclick='copyToClipboard("${vlessTls10Fixed}")'><i class="fa fa-clipboard"></i>Copy</button></p> </div>
-              <hr /> 
-              
-            <div class="config-block">
-                <h3>VLESS NTLS:</h3>
-                <p class="config">${vlessNtlsFixed}</p>
-                <button class="button2" onclick='copyToClipboard("${vlessNtlsFixed}")'><i class="fa fa-clipboard"></i>Copy</button>
-            </div><hr /> 
-            <div class="config-block">
-                <h3>TROJAN TLS:</h3>
-          <p class="config">${trojanTlsFixed}</p>
-                <button class="button2" onclick='copyToClipboard("${trojanTlsFixed}")'><i class="fa fa-clipboard"></i>Copy</button>
-               </div> <hr /> <button class="button2" onclick="toggleConfig(this, 'Show Wildcard Trojan', 'Hide Wildcard Trojan')">Show Wildcard Trojan</button>
-        <div class="config-content1">
-            <p class="config">» ava.game.naver.com
-                <button class="button2" onclick='copyToClipboard("${trojanTlsFixed1}")'><i class="fa fa-clipboard"></i>Copy</button></p>
-            <p class="config">» graph.instagram.com
-                <button class="button2" onclick='copyToClipboard("${trojanTlsFixed2}")'><i class="fa fa-clipboard"></i>Copy</button></p>
-            <p class="config">» quiz.int.vidio.com
-                <button class="button2" onclick='copyToClipboard("${trojanTlsFixed3}")'><i class="fa fa-clipboard"></i>Copy</button></p>
-            <p class="config">» live.iflix.com
-                <button class="button2" onclick='copyToClipboard("${trojanTlsFixed4}")'><i class="fa fa-clipboard"></i>Copy</button></p>    
-            <p class="config">» support.zoom.us
-                <button class="button2" onclick='copyToClipboard("${trojanTlsFixed5}")'><i class="fa fa-clipboard"></i>Copy</button></p>   
-            <p class="config">» blog.webex.com
-                <button class="button2" onclick='copyToClipboard("${trojanTlsFixed6}")'><i class="fa fa-clipboard"></i>Copy</button></p>   
-            <p class="config">» investors.spotify.com
-                <button class="button2" onclick='copyToClipboard("${trojanTlsFixed7}")'><i class="fa fa-clipboard"></i>Copy</button></p>   
-            <p class="config">» cache.netflix.com
-                <button class="button2" onclick='copyToClipboard("${trojanTlsFixed8}")'><i class="fa fa-clipboard"></i>Copy</button></p>  
-            <p class="config">» zaintest.vuclip.com
-                <button class="button2" onclick='copyToClipboard("${trojanTlsFixed9}")'><i class="fa fa-clipboard"></i>Copy</button></p> 
-            <p class="config">» io.ruangguru.com
-                <button class="button2" onclick='copyToClipboard("${trojanTlsFixed10}")'><i class="fa fa-clipboard"></i>Copy</button></p> </div>
-               
-          
+                <button class="button" onclick='copyToClipboard("${vlessTlsFixed}")'><i class="fa fa-clipboard"></i>Copy</button>
+            </div>
             <hr />
-           <a href="#defaultOpen">BACK TO SEARCH</a> 
-
-       
-        
-    </div>    </div>
-
-
+            <div class="config-block">
+                <h3>NTLS:</h3>
+                <p class="config">${vlessNtlsFixed}</p>
+                <button class="button" onclick='copyToClipboard("${vlessNtlsFixed}")'><i class="fa fa-clipboard"></i>Copy</button>
+            </div>
+            <hr />
+        </div>
+    </div>
+</div>
+<hr class="config-divider" />
 `;
-
     trojanConfigs += `<div class="config-section">
     <p><strong>ISP  :  ${isp} (${country}) </strong> </p>
     <hr />
@@ -224,609 +113,280 @@ async function getAllConfigVless(env, hostName, listProxy) {
     const htmlConfigs = `
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="utf-8">
-    <title>FREE | CF | VLESS | TROJAN | BMKG-XYZ</title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="" name="keywords">
-    <meta content="" name="description">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Vless | Noir7R | CLoudFlare</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4C+6PCWJ+8zzHcXQjXGp6n5Yh9rX0x5fOdPaOqO+e2X4R5C1aE/BSqPIG+8y3O6APa8w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="icon" href="https://raw.githubusercontent.com/AFRcloud/BG/main/icons8-film-noir-80.png" type="image/png">
+    <style>
+    body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    color: #f5f5f5;
+    background-color: #2d3b48; /* Dark Blue-gray */
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    min-height: 100vh;
+    overflow: hidden;
+}
+.author-link {
+    position: absolute;
+    bottom: 10px;
+    right: 200px;
+    font-weight: bold;
+    font-style: italic;
+    color: #ff25f2; /* Warna emas */
+    font-size: 30px;
+    text-decoration: none;
+    z-index: 10;
+  }
 
-    <!-- Favicon -->
-    
-<link href="https://bmkg.xyz/bot/bootstrap.min.css" rel="stylesheet">
-   
-  <link href="https://bmkg.xyz/css/config.css" rel="stylesheet">
-   <link href="https://bmkg.xyz/bot/tables/table.css" rel="stylesheet">
-    <!-- Custom styles for this template -->
-
-  <!-- Fonts and icons -->
-  
-<style>
-  body {
-  
-  background-color: #000;
-}
-  div.dt-container .dt-search input {
-  border: 1px solid #fff;
-  border-radius: 3px;
-  padding: 5px;
-  background-color: red;
-  color: inherit;
-  margin-left: 3px;
-}
-  div.dt-container .dt-length,
-div.dt-container .dt-search,
-div.dt-container .dt-info,
-div.dt-container .dt-processing,
-div.dt-container .dt-paging {
-  color: inherit;
-}
-  html.dark .dt-container .dt-search input,
-html.dark .dt-container .dt-length select {
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  background-color: blue;
-}
-*[dir=rtl] div.dt-container div.dt-search input {
-  margin: 0 3px 0 0;
-}
-  div.dt-container .dt-paging .dt-paging-button {
-  box-sizing: border-box;
-  display: inline-block;
-  min-width: 1.5em;
-  padding: 0.5em 1em;
-  margin-left: 2px;
-  text-align: center;
-  text-decoration: none !important;
-  cursor: pointer;
-  color: inherit !important;
-  border: 1px solid #fff;
-  border-radius: 2px;
-  background: #b60000;
-}
-}
-div.dt-container .dt-paging .dt-paging-button:hover {
-  color: white !important;
-  border: 1px solid #fff;
-  background-color: #b60000;
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #585858), color-stop(100%, #111)); /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(top, #b60000 0%, #00869e 100%); /* Chrome10+,Safari5.1+ */
-  background: -moz-linear-gradient(top, #b60000 0%, #00869e 100%); /* FF3.6+ */
-  background: -ms-linear-gradient(top, #b60000 0%, #00869e 100%); /* IE10+ */
-  background: -o-linear-gradient(top, #b60000 0%, #00869e 100%); /* Opera 11.10+ */
-  background: linear-gradient(to bottom, #b60000 0%, #00869e 100%); /* W3C */
-}
-div.dt-container .dt-paging .dt-paging-button:active {
-  outline: none;
-  background-color: #0090a9;
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #2b2b2b), color-stop(100%, #0c0c0c)); /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(top, #b60000 0%, #00869e 100%); /* Chrome10+,Safari5.1+ */
-  background: -moz-linear-gradient(top, #b60000 0%, #00869e 100%); /* FF3.6+ */
-  background: -ms-linear-gradient(top, #b60000 0%, #00869e 100%); /* IE10+ */
-  background: -o-linear-gradient(top, #b60000 0%, #00869e 100%); /* Opera 11.10+ */
-  background: linear-gradient(to bottom, #b60000 0%, #00869e 100%); /* W3C */
-  box-shadow: inset 0 0 3px #0090a9;
-}
-
-  html.dark .dt-container .dt-paging .dt-paging-button.current, html.dark .dt-container .dt-paging .dt-paging-button.current:hover {
-  border: 1px solid rgba(164, 0, 0, 0.9);
-  background: rgba(164, 0, 0, 0.9);
-}
-html.dark .dt-container .dt-paging .dt-paging-button.disabled, html.dark .dt-container .dt-paging .dt-paging-button.disabled:hover, html.dark .dt-container .dt-paging .dt-paging-button.disabled:active {
-  color: #0090a9 !important;
-}
-html.dark .dt-container .dt-paging .dt-paging-button:hover {
-  border: 1px solid rgba(164, 0, 0, 0.9);
-  background: rgba(164, 0, 0, 0.9);
-}
-html.dark .dt-container .dt-paging .dt-paging-button:active {
-  background: #0090a9;
-}
+  .author-link:hover {
+    color: #e11ecb; /* Warna emas lebih terang saat hover */
+  }
 .container {
-  max-width: 960px;
-  background-color: #000;
+    width: 100%;
+    max-width: 1200px;
+    margin: 3px;
+    background: rgba(0, 0, 0, 0.8); /* Dark transparent background */
+    backdrop-filter: blur(10px);
+    animation: fadeIn 1s ease-in-out;
+    overflow-y: auto;
+    max-height: 100vh;
 }
 
-.border-top { border-top: 1px solid #e5e5e5; }
-.border-bottom { border-bottom: 1px solid #e5e5e5; }
-.border-top-gray { border-top-color: #adb5bd; }
-
-.box-shadow { box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05); }
-
-.lh-condensed { line-height: 1.25; }
-
-  :root {
-        --primary: #EB1616;
-        --secondary: #000000;
-        --light: #000000;
-        --dark: #000000;       
-        --accent-: #ff00ff;        
-        --darker-: #040608;
-        --card-bg: rgba(8, 12, 20, 0.71);
-        --glow: 0 0 25px rgba(205, 0, 0, 1);
-      }  
-header {
-  background-color: grey;
-  position: fixed;
-  left: 0;
-  width: 0%;
-  text-align: center;
-}
-.header {
-  background-color: grey;
-  position: fixed;
-  left: 0;
-
-  width: 0%;
-  text-align: center;
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(15, 15, 15, 0.4);
+    z-index: -1;
 }
 
-  .button2 {
-                background-color: #ffa500;
-                border: none;
-                color: #1e1e1e;
-                padding: 6px 12px;
-                text-align: center;
-                text-decoration: none;
-                font-size: 20px;
-                border: 1px solid #3c3c3c;
-                border-radius: 5px;
-                animation: slideIn 0.5s ease-in-out;
-                box-shadow: inset 0 10px 20px rgba(0, 0, 0, 0.5);
-                transition: background-color 0.3s ease, transform 0.2s ease;
-            }
-
-            .button2:hover {
-                background-color: #ff8c00;
-                transform: scale(1.05);
-            }
-  .card {
-            position: relative;
-            width: 100%;
-            max-width: 600px;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(8px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
-            border-radius: 12px;
-            padding: 15px;
-            box-sizing: border-box;
-            margin: 15px;
-        }
-        .card:hover {
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.8);
-            transform: translateY(-5px);
-        }
-        .card__top {
-            height: auto;
-            overflow: hidden;
-            border-radius: 8px;
-            margin-bottom: 15px;
-            position: relative;
-        }
-        .card__top img {
-            width: 100%;
-            height: auto;
-            object-fit: cover;
-            display: block;
-        }
-  .content1 {
-            display: none;
-            opacity: 0;
-            transition: opacity 0.5s ease-in-out;
-        }
-
-        .content1.active {
-            display: block;
-            opacity: 1;
-        }
-.config-header {
-        max-width: 100%;
-        background: var(--card-bg); 
-        color: #fff;
-        backdrop-filter: blur(10px);
-        border: 0px solid rgba(242, 89, 0, 1);
-        border-radius: 20px;
-        padding: 2rem;
-        box-shadow: ;
-        transform-style: preserve-3d;
-        animation: cardFloat 6s ease-in-out infinite;
-        }
-  .config-menu {
-        max-width: 100%;
-        background: var(--card-bg);
-        color: #fff;
-        backdrop-filter: blur(10px);
-        border: 0px solid rgba(242, 89, 0, 1);
-        border-radius: 20px;
-        padding: 2rem;
-        box-shadow: var(--glow);
-        transform-style: preserve-3d;
-        animation: cardFloat 6s ease-in-out infinite;
-        }
-  .config-section {
-        max-width: 100%;
-        background: var(--card-bg);
-        color: #fff;
-        backdrop-filter: blur(10px);
-        border: 0px solid rgba(242, 89, 0, 1);
-        border-radius: 20px;
-        padding: 2rem;
-        box-shadow: var(--glow);
-        transform-style: preserve-3d;
-        animation: cardFloat 6s ease-in-out infinite;
-        }
-  .config-footer {
-        max-width: 100%;
-        background: var(--card-bg);
-        color: #fff;
-        backdrop-filter: blur(10px);
-        border: 0px solid rgba(242, 89, 0, 1);
-        border-radius: 20px;
-        padding: 2rem;
-        box-shadow: ;
-        transform-style: preserve-3d;
-        animation: cardFloat 6s ease-in-out infinite;
-        }
-          .config-sectionlogo {
-            background: rgba(0, 0, 0, 0.5);
-            background-color: #000000;
-            padding: 20px;
-            color: #448998;
-            margin-right: 5px;
-            margin-left: 5px;
-            border: 2px solid #000000;
-            border-radius: 10px;
-            position: relative;
-            animation: slideIn 0.5s ease-in-out;
-            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5);
-        }
-        @keyframes slideIn {
-            from { transform: translateX(-30px); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
-        }
-
-        .config-section h3 {
-            margin-top: 0;
-            color: #e1b12c;
-            font-size: 28px;
-        }
-
-        .config-section p {
-            color: #f5f5f5;
-            font-size: 16px;
-        }
-
-        .config-toggle {
-            margin-bottom: 10px;
-        }
-
-        .config-content1 {
-            display: none;
-        }
-
-        .config-content1.active {
-            display: block;
-        }
-
-        .config-block {
-            margin-bottom: 10px;
-            padding: 15px;
-            border-radius: 10px;
-            background-color: rgba(0, 0, 0, 0.2);
-            transition: background-color 0.3s ease;
-        }
-
-        .config-block h4 {
-            margin-bottom: 8px;
-            color: #f39c12;
-            font-size: 22px;
-            font-weight: 600;
-        }
-
-        .config {
-            background-color: rgba(0, 0, 0, 0.2);
-            padding: 15px;
-            border-radius: 5px;
-            border: 2px solid #448998;
-            color: #f5f5f5;
-            word-wrap: break-word;
-            white-space: pre-wrap;
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 15px;
-        }
-        
-    
-
-        .config-divider {
-            border: none;
-            height: 1px;
-            background: linear-gradient(to right, transparent, #fff, transparent);
-            margin: 20px 0;
-        }
-
-        @media (max-width: 768px) {
-            .header h1 {
-                font-size: 32px;
-            }
-
-            .config-section h3 {
-                font-size: 24px;
-            }
-
-            .config-block h4 {
-                font-size: 20px;
-            }
-.tab {
-  overflow: hidden;
- 
-}
-.tab button {
- 
-}
-.tab button:hover {
-} 
-.tab button.active {
- 
-}
-.tabcontent {
-  display: none;
-
-}
-.tabcontent1 {
-  display: none;
-
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
-main {
-  padding-top: 80px; /* bad, because it's fixed */
+.header h1 {
+    text-align: center;
+    margin: 30px 0 20px;
+    font-size: 42px;
+    color: #f39c12; /* Golden grey */
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 4px;
 }
-.footer {
-   position: fixed;
-   left: 0;
-   bottom: 0;   
-   width: 100%;
-   text-align: center;
+h2 {
+    text-align: center;
+    font-size: 30px;
+    color: #f39c12; /* Golden grey */
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 8px;
 }
-</style>
 
+.nav-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 20px 0;
+}
 
+.nav-buttons .button {
+    background-color: transparent;
+    border: 3px solid #f39c12; /* Golden grey */
+    color: #f39c12;
+    padding: 6px 12px;
+    font-size: 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: 0.3s;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
 
-  </head>
+.nav-buttons .button:hover {
+    background-color: #f39c12; /* Golden grey */
+    color: #fff;
+    transform: scale(1.05);
+}
 
-  <body>
+.content {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
 
+.content.active {
+    display: block;
+    opacity: 1;
+}
 
-            
+.config-section {
+    background: rgba(44, 62, 80, 0.7); /* Dark Slate Blue */
+    padding: 20px;
+    border: 2px solid #f39c12;
+    border-radius: 10px;
+    position: relative;
+    animation: slideIn 0.5s ease-in-out;
+}
 
+@keyframes slideIn {
+    from { transform: translateX(-30px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
 
-<div class="container">
-   
-      
-      <div class="py-5 text-center">
-       <div class="config-header">
-<div class="card__top">
-          <img src="https://raw.githubusercontent.com/win877969/NS1/refs/heads/main/img/icon.png" alt="XVPN" height="150" width="75">
-                        
+.config-section h3 {
+    color: #e74c3c; /* Red */
+    font-size: 28px;
+    margin-top: 0;
+}
+
+.config-section p {
+    font-size: 16px;
+    color: #ecf0f1; /* Light Gray */
+}
+
+.config-toggle {
+    margin-bottom: 10px;
+}
+
+.config-content {
+    display: none;
+}
+
+.config-content.active {
+    display: block;
+}
+
+.config-block {
+    margin-bottom: 10px;
+    padding: 15px;
+    border-radius: 10px;
+    background-color: rgba(52, 152, 219, 0.2); /* Light Blue */
+    transition: background-color 0.3s;
+}
+
+.config-block h4 {
+    color: #2980b9; /* Blue */
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.config {
+    background-color: rgba(44, 62, 80, 0.3); /* Dark Slate Blue */
+    padding: 15px;
+    border-radius: 5px;
+    border: 2px solid #f39c12;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 15px;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+}
+
+.button {
+    background-color: transparent;
+    border: 2px solid #f39c12; /* Golden grey */
+    color: #f39c12;
+    padding: 4px 8px;
+    font-size: 12px;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: 0.3s;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-right: 4px;
+}
+
+.button i {
+    margin-right: 3px;
+}
+
+.button:hover {
+    background-color: #f39c12; /* Golden grey */
+    color: #fff;
+}
+
+.config-divider {
+    height: 1px;
+    background: linear-gradient(to right, transparent, #fff, transparent);
+    margin: 20px 0;
+}
+
+.watermark {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.5rem;
+    color: rgba(255, 255, 255, 0.5);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    font-weight: bold;
+    text-align: center;
+}
+
+.watermark a {
+    color: #e74c3c; /* Red */
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.watermark a:hover {
+    color: #e74c3c; /* Red */
+}
+
+@media (max-width: 768px) {
+    .header h1 { font-size: 32px; }
+    .config-section h3 { font-size: 24px; }
+    .config-block h4 { font-size: 20px; }
+}
+
+    </style>
+</head>
+<body>
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="header">
+            <h1>VLESS & TROJAN CLOUDFLARE</h1><br>
+            <h2>Free and Unlimited</h2><br>
         </div>
+        <div class="config-section">
+        <div class="nav-buttons">
+            <button class="button" onclick="showContent('vless')">List vless</button>
+            <button class="button" onclick="showContent('trojan')">List trojan</button>
+        </div>
+        <center><a href="https://t.me/Noir7R" class="button">@Noir7R</a></center><br>
+        </div><hr class="config-divider" />
+        <div class="config-section">
         
-            <!-- Sale & Revenue Start -->
-             </div>
-</div>
-      <div class="row">
-        <div class="col-md-5 order-md-2 mb-4">
-          <div class="config-menu">
-
-
-
-                          
-        <strong><b><p style="font-size: 28px;">DAFTAR WILCARD:<p></strong> 
-      <hr class="config-divider" />  
-<br>» ava.game.naver.com.${hostName}
-<br>» graph.instagram.com.${hostName}
-<br>» quiz.int.vidio.com.${hostName}
-<br>» live.iflix.com.${hostName}
-<br>» support.zoom.us.${hostName}
-<br>» blog.webex.com.${hostName}
-<br>» investors.spotify.com.${hostName}
-<br>» cache.netflix.com.${hostName}
-<br>» zaintest.vuclip.com.${hostName}
-<br>» io.ruangguru.com.${hostName}</b></hr></div>
+        <strong>LIST WILLCARD : </strong><br>
+        <br>
+        \u2730 quiz.int.vidio.com<br>
+        \u2730 zaintest.vuclip.com<br>
+        </div>
         <hr class="config-divider" />
-      
-          <div class="config-menu">
-  <table id="example" width="100%">
-  <center>
-  
-<div class="tablinks" onclick="openCity(event, 'v2rayaktif')" id="defaultOpen">
-  <p style="font-size: 30px; color: red;">LIST V2RAY<hr class="config-divider" /></p></div></center>
-  <thead>
-            <tr>
-                <th><hr/> <p style="font-size: 25px; ">ISP | COUNTRY</p><hr/> </th>
-              </tr>
-        </thead>
-        <tbody>
-            
-            ${v2raytable}
-             </tbody>
-             
-              </table>
-
-           </div>
+        <div id="vless" class="content active">
+            ${vlessConfigs}
         </div>
-
-        
-          
-        <div class="col-md-7 order-md-1"">
-               ${v2rayConfigs}
-                                  
-           
-
-      <div id="v2rayaktif" class="tabcontent">
-  <div class="config-section">  <pre><b>
-<hr class="config-divider" /><p class="config">
-» Domain      : ${hostName}
-» ISP         : CV. Rumahweb Indonesia
-» Country     : Indonesia
-» UUID        : ${generateUUIDv4()}
-» Port TLS    : 443
-» Port NTLS   : 80
-» Security    : auto
-» Network     : (WS)
-» Path Vless  : /203.194.112.119:8443
-» Path Trojan : /203.194.112.119:8443</p>
-<hr class="config-divider" /></b>
-
-</pre>  </div><hr class="config-divider" />
-         <div class="config-section">
-
-    <p style="font-size: 27px; "><strong>ISP  :  CV. Rumahweb Indonesia (ID) </strong> </p>
-    <hr />
-    
-       
-               <div class="config-block">
-                <h3>VLESS TLS:</h3>
-                <p class="config">vless://${generateUUIDv4()}@${hostName}:443?encryption=none&security=tls&sni=${hostName}&fp=randomized&type=ws&host=${hostName}&path=%2F203.194.112.119%3A8443#CV.+Rumahweb+Indonesia+(ID)</p>
-                <button class="button2" onclick='copyToClipboard("vless://${generateUUIDv4()}@${hostName}:443?encryption=none&security=tls&sni=${hostName}&fp=randomized&type=ws&host=${hostName}&path=%2F203.194.112.119%3A8443#CV.+Rumahweb+Indonesia+(ID)")'><i class="fa fa-clipboard"></i>Copy</button><hr/>
-               </div><button class="button2" onclick="toggleConfig(this, 'Show Wildcard Vless', 'Hide Wildcard Vless')">Show Wildcard Vless</button>
-        <div class="config-content1">
-            <p class="config">» ava.game.naver.com
-                <button class="button2" onclick='copyToClipboard("vless://${generateUUIDv4()}@ava.game.naver.com:443?encryption=none&security=tls&sni=ava.game.naver.com.${hostName}&fp=randomized&type=ws&host=ava.game.naver.com.${hostName}&path=%2F203.194.112.119%3A8443#CV.+Rumahweb+Indonesia+(ID)")'><i class="fa fa-clipboard"></i>Copy</button></p>
-            <p class="config">» graph.instagram.com
-                <button class="button2" onclick='copyToClipboard("vless://${generateUUIDv4()}@graph.instagram.com:443?encryption=none&security=tls&sni=graph.instagram.com.${hostName}&fp=randomized&type=ws&host=graph.instagram.com.${hostName}&path=%2F203.194.112.119%3A8443#CV.+Rumahweb+Indonesia+(ID)")'><i class="fa fa-clipboard"></i>Copy</button></p>
-            <p class="config">» quiz.int.vidio.com
-                <button class="button2" onclick='copyToClipboard("vless://${generateUUIDv4()}@quiz.int.vidio.com:443?encryption=none&security=tls&sni=quiz.int.vidio.com.${hostName}&fp=randomized&type=ws&host=quiz.int.vidio.com.${hostName}&path=%2F203.194.112.119%3A8443#CV.+Rumahweb+Indonesia+(ID)")'><i class="fa fa-clipboard"></i>Copy</button></p>
-            <p class="config">» live.iflix.com
-                <button class="button2" onclick='copyToClipboard("vless://${generateUUIDv4()}@live.iflix.com:443?encryption=none&security=tls&sni=live.iflix.com.${hostName}&fp=randomized&type=ws&host=live.iflix.com.${hostName}&path=%2F203.194.112.119%3A8443#CV.+Rumahweb+Indonesia+(ID)")'><i class="fa fa-clipboard"></i>Copy</button></p>    
-            <p class="config">» support.zoom.us
-                <button class="button2" onclick='copyToClipboard("vless://${generateUUIDv4()}@support.zoom.us.:443?encryption=none&security=tls&sni=support.zoom.us.${hostName}&fp=randomized&type=ws&host=support.zoom.us.${hostName}&path=%2F203.194.112.119%3A8443#CV.+Rumahweb+Indonesia+(ID)")'><i class="fa fa-clipboard"></i>Copy</button></p>   
-            <p class="config">» blog.webex.com
-                <button class="button2" onclick='copyToClipboard("vless://${generateUUIDv4()}@blog.webex.com:443?encryption=none&security=tls&sni=blog.webex.com.${hostName}&fp=randomized&type=ws&host=blog.webex.com.${hostName}&path=%2F203.194.112.119%3A8443#CV.+Rumahweb+Indonesia+(ID)")'><i class="fa fa-clipboard"></i>Copy</button></p>   
-            <p class="config">» investors.spotify.com
-                <button class="button2" onclick='copyToClipboard("vless://${generateUUIDv4()}@investors.spotify.com.:443?encryption=none&security=tls&sni=investors.spotify.com.${hostName}&fp=randomized&type=ws&host=investors.spotify.com.${hostName}&path=%2F203.194.112.119%3A8443#CV.+Rumahweb+Indonesia+(ID)")'><i class="fa fa-clipboard"></i>Copy</button></p>   
-            <p class="config">» cache.netflix.com
-                <button class="button2" onclick='copyToClipboard("vless://${generateUUIDv4()}@cache.netflix.com:443?encryption=none&security=tls&sni=cache.netflix.com.${hostName}&fp=randomized&type=ws&host=cache.netflix.com.${hostName}&path=%2F203.194.112.119%3A8443#CV.+Rumahweb+Indonesia+(ID)")'><i class="fa fa-clipboard"></i>Copy</button></p>  
-            <p class="config">» zaintest.vuclip.com
-                <button class="button2" onclick='copyToClipboard("vless://${generateUUIDv4()}@zaintest.vuclip.com:443?encryption=none&security=tls&sni=zaintest.vuclip.com.${hostName}&fp=randomized&type=ws&host=zaintest.vuclip.com.${hostName}&path=%2F203.194.112.119%3A8443#CV.+Rumahweb+Indonesia+(ID)")'><i class="fa fa-clipboard"></i>Copy</button></p> 
-            <p class="config">» io.ruangguru.com
-                <button class="button2" onclick='copyToClipboard("vless://${generateUUIDv4()}@io.ruangguru.com:443?encryption=none&security=tls&sni=io.ruangguru.com.${hostName}&fp=randomized&type=ws&host=io.ruangguru.com.${hostName}&path=%2F203.194.112.119%3A8443#CV.+Rumahweb+Indonesia+(ID)")'><i class="fa fa-clipboard"></i>Copy</button></p> </div>
-               
-              
-            <hr />
-            <div class="config-block">
-                <h3>VLESS NTLS:</h3>
-                <p class="config">vless://${generateUUIDv4()}@${hostName}:80?path=%2F203.194.112.119%3A8443&security=none&encryption=none&host=${hostName}&fp=randomized&type=ws&sni=${hostName}#CV.+Rumahweb+Indonesia+(ID)</p>
-                <button class="button2" onclick='copyToClipboard("vless://${generateUUIDv4()}@${hostName}:80?path=%2F203.194.112.119%3A8443&security=none&encryption=none&host=${hostName}&fp=randomized&type=ws&sni=${hostName}#CV.+Rumahweb+Indonesia+(ID)")'><i class="fa fa-clipboard"></i>Copy</button>
-            </div>
-            
-            <hr />
-            <div class="config-block">
-                <h3>TROJAN TLS:</h3>
-          <p class="config">trojan://${generateUUIDv4()}@${hostName}:443?security=tls&type=ws&host=${hostName}&sni=${hostName}&fp=random&path=%2F203.194.112.119%3A8443#CV.+Rumahweb+Indonesia+(Indonesia)</p>
-                <button class="button2" onclick='copyToClipboard("trojan://${generateUUIDv4()}@${hostName}:443?security=tls&type=ws&host=${hostName}&sni=${hostName}&fp=random&path=%2F203.194.112.119%3A8443#CV.+Rumahweb+Indonesia+(Indonesia)")'><i class="fa fa-clipboard"></i>Copy</button>
-               </div> <hr/><button class="button2" onclick="toggleConfig(this, 'Show Wildcard Trojan', 'Hide Wildcard Trojan')">Show Wildcard Trojan</button>
-        <div class="config-content1">
-            <p class="config">» ava.game.naver.com
-                <button class="button2" onclick='copyToClipboard("trojan://${generateUUIDv4()}@ava.game.naver.com:443?security=tls&type=ws&host=ava.game.naver.com.${hostName}&sni=ava.game.naver.com.${hostName}&fp=random&path=%2F203.194.112.119%3A8443#CV.+Rumahweb+Indonesia+(Indonesia)")'><i class="fa fa-clipboard"></i>Copy</button></p>
-            <p class="config">» graph.instagram.com
-                <button class="button2" onclick='copyToClipboard("trojan://${generateUUIDv4()}@graph.instagram.com:443?security=tls&type=ws&host=graph.instagram.com.${hostName}&sni=graph.instagram.com.${hostName}&fp=random&path=%2F203.194.112.119%3A8443#CV.+Rumahweb+Indonesia+(Indonesia)")'><i class="fa fa-clipboard"></i>Copy</button></p>
-            <p class="config">» quiz.int.vidio.com
-                <button class="button2" onclick='copyToClipboard("trojan://${generateUUIDv4()}@quiz.int.vidio.com:443?security=tls&type=ws&host=quiz.int.vidio.com.${hostName}&sni=quiz.int.vidio.com.${hostName}&fp=random&path=%2F203.194.112.119%3A8443#CV.+Rumahweb+Indonesia+(Indonesia)")'><i class="fa fa-clipboard"></i>Copy</button></p>
-            <p class="config">» live.iflix.com
-                <button class="button2" onclick='copyToClipboard("trojan://${generateUUIDv4()}@live.iflix.com:443?security=tls&type=ws&host=live.iflix.com.${hostName}&sni=live.iflix.com.${hostName}&fp=random&path=%2F203.194.112.119%3A8443#CV.+Rumahweb+Indonesia+(Indonesia)")'><i class="fa fa-clipboard"></i>Copy</button></p>    
-            <p class="config">» support.zoom.us
-                <button class="button2" onclick='copyToClipboard("trojan://${generateUUIDv4()}@support.zoom.us:443?security=tls&type=ws&host=support.zoom.us.${hostName}&sni=support.zoom.us.${hostName}&fp=random&path=%2F203.194.112.119%3A8443#CV.+Rumahweb+Indonesia+(Indonesia)")'><i class="fa fa-clipboard"></i>Copy</button></p>   
-            <p class="config">» blog.webex.com
-                <button class="button2" onclick='copyToClipboard("trojan://${generateUUIDv4()}@blog.webex.com:443?security=tls&type=ws&host=blog.webex.com.${hostName}&sni=blog.webex.com.${hostName}&fp=random&path=%2F203.194.112.119%3A8443#CV.+Rumahweb+Indonesia+(Indonesia)")'><i class="fa fa-clipboard"></i>Copy</button></p>   
-            <p class="config">» investors.spotify.com
-                <button class="button2" onclick='copyToClipboard("trojan://${generateUUIDv4()}@investors.spotify.com:443?security=tls&type=ws&host=investors.spotify.com.${hostName}&sni=investors.spotify.com.${hostName}&fp=random&path=%2F203.194.112.119%3A8443#CV.+Rumahweb+Indonesia+(Indonesia)")'><i class="fa fa-clipboard"></i>Copy</button></p>   
-            <p class="config">» cache.netflix.com
-                <button class="button2" onclick='copyToClipboard("trojan://${generateUUIDv4()}@cache.netflix.com:443?security=tls&type=ws&host=cache.netflix.com.${hostName}&sni=cache.netflix.com.${hostName}&fp=random&path=%2F203.194.112.119%3A8443#CV.+Rumahweb+Indonesia+(Indonesia)")'><i class="fa fa-clipboard"></i>Copy</button></p>  
-            <p class="config">» zaintest.vuclip.com
-                <button class="button2" onclick='copyToClipboard("trojan://${generateUUIDv4()}@zaintest.vuclip.com:443?security=tls&type=ws&host=zaintest.vuclip.com.${hostName}&sni=zaintest.vuclip.com.${hostName}&fp=random&path=%2F203.194.112.119%3A8443#CV.+Rumahweb+Indonesia+(Indonesia)")'><i class="fa fa-clipboard"></i>Copy</button></p> 
-            <p class="config">» io.ruangguru.com
-                <button class="button2" onclick='copyToClipboard("trojan://${generateUUIDv4()}@io.ruangguru.com:443?security=tls&type=ws&host=io.ruangguru.com.${hostName}&sni=io.ruangguru.com.${hostName}&fp=random&path=%2F203.194.112.119%3A8443#CV.+Rumahweb+Indonesia+(Indonesia)")'><i class="fa fa-clipboard"></i>Copy</button></p> 
-               
-        
-    </div>
-</hr>
-                            
-                        <a href="#defaultOpen">BACK TO SEARCH</a> 
-
-                    
-                      
-                      
-                   </div>
-         </div>
+        <div id="trojan" class="content">
+            ${trojanConfigs}
         </div>
-      </div>
-
-      
-
-            <!-- Sale & Revenue End -->
-
-
-            <!-- Sales Chart Start -->
-
-
- 
-
-
-            <!-- Footer Start -->
-              <footer class="my-5 pt-5 text-muted text-center text-small">
-
-   <div class="footer">
-    <div class="config-footer">  <p class="mb-1">
-                            &copy; <a href="#">BMKG.XYZ</a>, All Right Reserved. 
-
-                            
-                            Designed By <a href="https://t.me/seaker877/">SEAKER</a>
-                            <br>Distributed By: <a href="https://wa.me/6281335135082" target="_blank">Theme-X</a>
-                        </p>
-                          </div>  
-    </div></footer>
-
     </div>
-
-        <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script>window.jQuery || document.write('<script src="https://bmkg.xyz/bot/jquery-slim.min.js"><\/script></script>
-    <script src="https://bmkg.xyz/bot/popper.min.js"></script>
-    <script src="https://bmkg.xyz/bot/bootstrap.min.js"></script>
-    <script src="https://bmkg.xyz/vendor/holder.min.js"></script>
-      
-      
-          <script src="https://bmkg.xyz/bot/tables/table1.js"></script>
-    <script src="https://bmkg.xyz/bot/tables/query.js"></script>
-      
-        <script>
-       new DataTable('#example');
-</script>   
-
-<script>
-     function openCity(evt, cityName) {
-  var i, tabcontent, tablinks;
-  tabcontent = document.getElementsByClassName("tabcontent");
-  for (i = 0; i < tabcontent.length; i++) {
-  tabcontent[i].style.display = "none";
-  }
-  tablinks = document.getElementsByClassName("tablinks");
-  for (i = 0; i < tablinks.length; i++) {
-    tablinks[i].className = tablinks[i].className.replace(" active", "");
-  }
-  document.getElementById(cityName).style.display = "block";
-  evt.currentTarget.className += " active";
-}
-
-// Get the element with id="defaultOpen" and click on it
-document.getElementById("defaultOpen").click();
-</script>
-
-   
-     <script>
-        function showContent1(contentId) {
-            const contents = document.querySelectorAll('.content1');
-            contents.forEach(content1 => {
-                content1.classList.remove('active');
+    <a href="https://t.me/Noir7R" class="watermark" target="_blank">@Noir7R</a>
+  </div>
+    <script>
+        function showContent(contentId) {
+            const contents = document.querySelectorAll('.content');
+            contents.forEach(content => {
+                content.classList.remove('active');
             });
             document.getElementById(contentId).classList.add('active');
         }
@@ -836,7 +396,7 @@ document.getElementById("defaultOpen").click();
             document.execCommand('copy');
             alert('Teks telah disalin.');
         }
-        function copyClash(elementId) {
+        function copytrojan(elementId) {
             const text = document.getElementById(elementId).textContent;
             navigator.clipboard.writeText(text)
             .then(() => {
@@ -845,8 +405,8 @@ document.getElementById("defaultOpen").click();
             alertBox.style.position = 'fixed';
             alertBox.style.bottom = '20px';
             alertBox.style.right = '20px';
-            alertBox.style.backgroundColor = 'yellow';
-            alertBox.style.color = '#000';
+            alertBox.style.backgroundColor = 'grey';
+            alertBox.style.color = '#fff';
             alertBox.style.padding = '10px 20px';
             alertBox.style.borderRadius = '5px';
             alertBox.style.boxShadow = '0 4px 6px rgba(0,0,0,0.1)';
@@ -882,8 +442,8 @@ function fetchAndDisplayAlert(path) {
             alertBox.style.position = 'fixed';
             alertBox.style.bottom = '20px';
             alertBox.style.right = '20px';
-            alertBox.style.backgroundColor = 'yellow';
-            alertBox.style.color = '#000';
+            alertBox.style.backgroundColor = 'grey';
+            alertBox.style.color = '#fff';
             alertBox.style.padding = '10px 20px';
             alertBox.style.borderRadius = '5px';
             alertBox.style.boxShadow = '0 4px 6px rgba(0,0,0,0.1)';
@@ -914,8 +474,8 @@ function fetchAndDisplayAlert(path) {
                     alertBox.style.position = 'fixed';
                     alertBox.style.bottom = '20px';
                     alertBox.style.right = '20px';
-                    alertBox.style.backgroundColor = 'yellow';
-                    alertBox.style.color = '#000';
+                    alertBox.style.backgroundColor = 'grey';
+                    alertBox.style.color = '#fff';
                     alertBox.style.padding = '10px 20px';
                     alertBox.style.borderRadius = '5px';
                     alertBox.style.boxShadow = '0 4px 6px rgba(0,0,0,0.1)';

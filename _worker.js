@@ -6,8 +6,16 @@ let proxyPort;
 var worker_default = {
   async fetch(request, env, ctx) {
     try {
-      // Parse the list of proxies from the environment variable
-      const listProxy = (env.LIST_IP_PORT || "")
+      const listProxyUrl = "https://raw.githubusercontent.com/jaka2m/worker/refs/heads/main/proxies.json";
+
+      const response = await fetch(listProxyUrl);
+      if (!response.ok) {
+        throw new Error(Failed to fetch proxy list: ${response.statusText});
+      }
+
+      const proxiesText = await response.text();
+
+      const listProxy = proxiesText
         .split("\n")
         .filter(Boolean)
         .map(entry => {
@@ -16,7 +24,7 @@ var worker_default = {
             proxyIP: proxyIP || "Unknown",
             proxyPort: proxyPort || "Unknown",
             country: country || "Unknown",
-            isp: isp || "Unknown ISP"
+            isp: isp || "Unknown ISP",
           };
         });
 
@@ -43,7 +51,7 @@ var worker_default = {
         headers: { "Content-Type": "text/html;charset=utf-8" }
       });
     } catch (err) {
-      return new Response(`An error occurred: ${err.toString()}`, {
+      return new Response(An error occurred: ${err.toString()}, {
         status: 500
       });
     }

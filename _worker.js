@@ -6,7 +6,7 @@ let proxyPort;
 var worker_default = {
   async fetch(request, env, ctx) {
     try {
-      const listProxyUrl = "https://raw.githubusercontent.com/jaka2m/worker/refs/heads/main/proxies.json";
+      const listProxyUrl = "https://bmkg.xyz/ip.json";
 
       const response = await fetch(listProxyUrl);
       if (!response.ok) {

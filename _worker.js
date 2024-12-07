@@ -1,7 +1,7 @@
 var worker_default = {
   async fetch(request, env, ctx) {
     try {
-      const response = await fetch('https://bmkg.xyz/ip.txt');
+      const response = await fetch('https://bmkg.xyz/ip.json');
       const listProxy = await response.text().split('\n').map(entry => {
         const [proxyIP, proxyPort] = entry.split(',');
         return { proxyIP, proxyPort };

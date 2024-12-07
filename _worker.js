@@ -1,63 +1,29 @@
-import { connect } from "cloudflare:sockets";
-
-let proxyIP;
-let proxyPort;
-
 var worker_default = {
   async fetch(request, env, ctx) {
     try {
-      const listProxyUrl = "https://bmkg.xyz/ip.json";
-
-      const response = await fetch(listProxyUrl);
-      if (!response.ok) {
-        throw new Error(Failed to fetch proxy list: ${response.statusText});
-      }
-
-      const proxiesText = await response.text();
-
-      const listProxy = proxiesText
-        .split("\n")
-        .filter(Boolean)
-        .map(entry => {
-          const [proxyIP, proxyPort, country, isp] = entry.split(",");
-          return {
-            proxyIP: proxyIP || "Unknown",
-            proxyPort: proxyPort || "Unknown",
-            country: country || "Unknown",
-            isp: isp || "Unknown ISP",
-          };
-        });
+      const response = await fetch('https://bmkg.xyz/ip.txt');
+      const listProxy = await response.text().split('\n').map(entry => {
+        const [proxyIP, proxyPort] = entry.split(',');
+        return { proxyIP, proxyPort };
+      });
 
       const upgradeHeader = request.headers.get("Upgrade");
       const url = new URL(request.url);
 
       if (upgradeHeader === "websocket") {
-        if (url.pathname.includes("/vl=")) {
-          proxyIP = url.pathname.split("vl=")[1];
-          return await vlessOverWSHandler(request);
-        } else if (url.pathname.includes("/tr=")) {
-          proxyIP = url.pathname.split("tr=")[1];
-          return await trojanOverWSHandler(request);
-        } else {
-          proxyIP = "cdn.xn--b6gac.eu.org";
-          return await vlessOverWSHandler(request);
-        }
+        // Handler websocket
+      } else {
+        const allConfig = await getAllConfigVless(env, request.headers.get("Host"), listProxy);
+        return new Response(allConfig, {
+          status: 200,
+          headers: { "Content-Type": "text/html;charset=utf-8" }
+        });
       }
-
-      const allConfig = await getAllConfigVless(env, request.headers.get("Host"), listProxy);
-
-      return new Response(allConfig, {
-        status: 200,
-        headers: { "Content-Type": "text/html;charset=utf-8" }
-      });
     } catch (err) {
-      return new Response(An error occurred: ${err.toString()}, {
-        status: 500
-      });
+      return new Response(An error occurred: ${err.toString()}, { status: 500 });
     }
   }
 };
-
 async function getAllConfigVless(env, hostName, listProxy) {
   try {
     let v2rayConfigs = "";
